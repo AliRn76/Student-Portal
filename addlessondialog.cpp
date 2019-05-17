@@ -78,6 +78,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
+    QMessageBox::information(this, "test" , "its for test :D");
 }
 
 void AddLessonDialog::on_pushButton_showAllCourses_clicked()
