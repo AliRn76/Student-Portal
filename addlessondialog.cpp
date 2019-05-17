@@ -83,6 +83,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
+    // sheeeeeeeeeeeeeeeeellllllllooooooooooo
 }
 
 void AddLessonDialog::on_pushButton_showAllCourses_clicked()
