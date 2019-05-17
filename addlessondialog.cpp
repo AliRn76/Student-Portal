@@ -83,14 +83,6 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
-<<<<<<< HEAD
-    // ali
-=======
-    // hasan
-    // sheeeeeeeeeeeeeeeeellllllllooooooooooo
-    // hasan ok sho
-    // sarma nakhor , sarpa bokhor
->>>>>>> 8389c3e3f9f723b6f53df5f7ece09b24707b62b8
 }
 
 void AddLessonDialog::on_pushButton_showAllCourses_clicked()
