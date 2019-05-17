@@ -12,3 +12,9 @@ TeacherMainDialog::~TeacherMainDialog()
 {
     delete ui;
 }
+
+void TeacherMainDialog::on_pushButton_setting_clicked()
+{
+    teacherChangePassword = new TeacherChangePassword(this);
+    teacherChangePassword->show();
+}
