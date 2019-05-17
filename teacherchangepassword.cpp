@@ -17,3 +17,4 @@ void TeacherChangePassword::on_pushButton_2_clicked()
 {
     this->close();
 }
+//fust for test
