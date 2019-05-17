@@ -2,6 +2,7 @@
 #define TEACHERMAINDIALOG_H
 
 #include <QDialog>
+#include <teacherchangepassword.h>
 
 namespace Ui {
 class TeacherMainDialog;
@@ -15,8 +16,12 @@ public:
     explicit TeacherMainDialog(QWidget *parent = nullptr);
     ~TeacherMainDialog();
 
+private slots:
+    void on_pushButton_setting_clicked();
+
 private:
     Ui::TeacherMainDialog *ui;
+    TeacherChangePassword *teacherChangePassword ;
 };
 
 #endif // TEACHERMAINDIALOG_H
