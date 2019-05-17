@@ -83,6 +83,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
+    // hasan
     // sheeeeeeeeeeeeeeeeellllllllooooooooooo
     // hasan ok sho
     // sarma nakhor , sarpa bokhor
