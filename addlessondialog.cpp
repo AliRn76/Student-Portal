@@ -83,9 +83,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
-    // sheeeeeeeeeeeeeeeeellllllllooooooooooo
-    // hasan ok sho
-    // sarma nakhor , sarpa bokhor
+    // ali
 }
 
 void AddLessonDialog::on_pushButton_showAllCourses_clicked()
