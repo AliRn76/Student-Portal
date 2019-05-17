@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>B Koodak Bold.ttf</file>
+        <file>B Nazanin Bold.ttf</file>
+        <file>B Nazanin.ttf</file>
+        <file>B Titr Bold.ttf</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>hjhjhj.qml</file>
+    </qresource>
+</RCC>
