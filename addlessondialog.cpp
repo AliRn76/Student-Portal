@@ -78,6 +78,8 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
+
+    QMessageBox::information(this, "hello" , "hello mr vozhde");
 }
 
 void AddLessonDialog::on_pushButton_showAllCourses_clicked()
