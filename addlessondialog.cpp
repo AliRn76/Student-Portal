@@ -78,7 +78,11 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
+<<<<<<< HEAD
     QMessageBox::information(this, "test" , "its for test :D");
+=======
+    QMessageBox::information(this , "Test" , "Hello AliRn");
+>>>>>>> f931e562a480811d811e0e5a684c203f6dcf56a4
 }
 
 void AddLessonDialog::on_pushButton_showAllCourses_clicked()
