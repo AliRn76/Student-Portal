@@ -63,9 +63,13 @@ void MainWindow::on_pushButton_teacher_clicked()
                 qry.bindValue(":teachercode", strUsername);
                 qry.exec();
     if(qry.next()){
-        qDebug() << "Teacher is OK too";
+        if(strPassword == qry.value(0).toString()){
+            teamaindialog = new TeacherMainDialog(this);
+            teamaindialog->show();
+        }
+
     }else{
-        qDebug() <<"Teacher has problem :(";
+        QMessageBox::warning(this, "warning", "رمز عبور وارد شده صحیح نمیباشد.");
     }
 }
 
