@@ -21,10 +21,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>130</y>
+     <x>610</x>
+     <y>110</y>
      <width>461</width>
-     <height>162</height>
+     <height>226</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -148,6 +148,101 @@
         </item>
        </widget>
       </item>
+      <item>
+       <spacer name="horizontalSpacer_17">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_field_2">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: white</string>
+        </property>
+        <property name="currentText">
+         <string>مهندسی کامپیوتر - فناوری اطلاعات</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <property name="maxVisibleItems">
+         <number>20</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>مهندسی کامپیوتر - فناوری اطلاعات</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی کامپیوتر - نرم افزار</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی عمران</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی صنایع</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی مکانیک</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی معماری</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی پزشکی</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی شیمی</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی مخابرات</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی مواد</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>مهندسی هوافضا</string>
+         </property>
+        </item>
+       </widget>
+      </item>
      </layout>
     </item>
     <item>
@@ -230,16 +325,42 @@
         </property>
        </widget>
       </item>
+      <item>
+       <spacer name="horizontalSpacer_18">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <family>B Koodak</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>رشته :</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="layoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>460</y>
-     <width>811</width>
+     <x>130</x>
+     <y>530</y>
+     <width>941</width>
      <height>35</height>
     </rect>
    </property>
@@ -328,31 +449,6 @@ color: white</string>
    </layout>
   </widget>
  </widget>
- <tabstops>
-  <tabstop>lineEdit_title</tabstop>
-  <tabstop>comboBox_tedadVahed</tabstop>
-  <tabstop>comboBox_type</tabstop>
-  <tabstop>pushButton_add</tabstop>
-  <tabstop>pushButton_showAllCourses</tabstop>
-  <tabstop>pushButton_back</tabstop>
- </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButton_back</sender>
-   <signal>clicked()</signal>
-   <receiver>AddLessonDialog</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>229</x>
-     <y>486</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>449</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
