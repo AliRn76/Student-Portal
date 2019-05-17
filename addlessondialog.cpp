@@ -78,6 +78,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
+    QMessageBox::information(this , "Test" , "Hello AliRn");
 }
 
 void AddLessonDialog::on_pushButton_showAllCourses_clicked()
