@@ -78,7 +78,6 @@ void AddLessonDialog::on_pushButton_add_clicked()
                         }
         }
     }
-    qDebug() << "Hello AliRn";
 }
 
 void AddLessonDialog::on_pushButton_showAllCourses_clicked()
