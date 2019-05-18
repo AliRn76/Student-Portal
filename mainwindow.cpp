@@ -23,6 +23,8 @@ MainWindow::~MainWindow()
 
 QString EmployeeChangePasswordDialog::strUserEmp;
 QString StudentChangePasswordDialog::strUserStu;
+QString TeacherChangePassword::strUserTeach;
+QString SendJozveDialog::lessCode ;
 
 void MainWindow::on_pushButton_manager_clicked()
 {
@@ -55,6 +57,8 @@ void MainWindow::on_pushButton_teacher_clicked()
 {
     QString strUsername = ui->lineEdit_username->text();
     QString strPassword = ui->lineEdit_password->text();
+
+    TeacherChangePassword::strUserTeach = strUsername ;
 
     QSqlQuery qry;
 

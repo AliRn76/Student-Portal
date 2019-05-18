@@ -128,7 +128,7 @@ color: rgb(214, 214, 214);</string>
      </spacer>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="pushButton_SetScore">
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -159,7 +159,7 @@ color: rgb(214, 214, 214);</string>
      </spacer>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButton_ClassList">
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -200,7 +200,7 @@ color: rgb(214, 214, 214);</string>
        </font>
       </property>
       <property name="text">
-       <string>کد درس :</string>
+       <string>مشخصه :</string>
       </property>
      </widget>
     </item>
@@ -219,7 +219,7 @@ color: rgb(214, 214, 214);</string>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
-       <widget class="QLabel" name="label_employeeCode">
+       <widget class="QLabel" name="label_teacherCode">
         <property name="font">
          <font>
           <family>B Roya</family>
