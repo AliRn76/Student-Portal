@@ -14,6 +14,7 @@ RemoveEntekhabVahedDialog::RemoveEntekhabVahedDialog(QWidget *parent) :
                         Where tblPerson.ID = tblStudent.ID");
 
             ui->treeView->setModel(qryModel);
+
 }
 
 RemoveEntekhabVahedDialog::~RemoveEntekhabVahedDialog()

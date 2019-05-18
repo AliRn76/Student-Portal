@@ -23,15 +23,16 @@ void EditStudentDialog::on_pushButton_search_clicked()
     ui->lineEdit_nationalcode->clear();
     ui->comboBox_gender->setCurrentIndex(0);
     ui->label_stuCode->clear();
+    ui->comboBox_field->setCurrentIndex(0);
 
     if(ui->lineEdit->text().isEmpty()){
         QMessageBox::warning(this, "warning", "لطفا ابتدا یک کد وارد کنید.");
     }else{
-        QString arrStr[8];
+        QString arrStr[9];
 
         QString strStuCode = ui->lineEdit->text();
 
-        QSqlQuery qry("Select StudentCode, FirstName, LastName, Gender as 'Is Male', FathersName, NationalCode, BirthDate, SaalVoroud \
+        QSqlQuery qry("Select StudentCode, FirstName, LastName, Gender as 'Is Male', FathersName, NationalCode, BirthDate, SaalVoroud, Field \
                        From Student.dbo.tblPerson , Student.dbo.tblStudent \
                        Where tblPerson.ID = tblStudent.ID AND( Student.dbo.tblStudent.StudentCode like '" + strStuCode + "%' OR \
                        Student.dbo.tblPerson.Firstname like N'" + strStuCode + "%' OR \
@@ -42,7 +43,7 @@ void EditStudentDialog::on_pushButton_search_clicked()
                 QMessageBox::warning(this, "هشدار", "بیش از یک مورد " + strStuCode + " وجود دارد.");
             }
             while (qry.next()){
-                for(int i=0 ; i<8 ; i++){
+                for(int i=0 ; i<9 ; i++){
                     arrStr[i] = qry.value(i).toString();
                 }
             }
@@ -59,6 +60,7 @@ void EditStudentDialog::on_pushButton_search_clicked()
             ui->lineEdit_nationalcode->setText(arrStr[5]);
             ui->lineEdit_birthdate->setText(arrStr[6]);
             ui->lineEdit_saalevoroud->setText(arrStr[7]);
+            ui->comboBox_field->setCurrentText(arrStr[8]);
 
         }else{
                 QMessageBox::warning(this, "warning", "لطفا یک کد یا نام صحیح وارد کنید.");
@@ -101,11 +103,12 @@ void EditStudentDialog::on_pushButton_apply_clicked()
         qry2.exec();
 
         qry3.prepare("Update Student.dbo.tblStudent \
-                      Set FathersName = :fathersname, SaalVoroud = :saalevoroud \
+                      Set FathersName = :fathersname, SaalVoroud = :saalevoroud, Field = :field \
                       Where tblStudent.StudentCode = :stucode");
         qry3.bindValue(":stucode", ui->label_stuCode->text());
         qry3.bindValue(":fathersname", ui->lineEdit_fathersname->text());
         qry3.bindValue(":saalevoroud", ui->lineEdit_saalevoroud->text());
+        qry3.bindValue(":field", ui->comboBox_field->currentText());
         qry3.exec();
 
         QMessageBox::information(this, "OK", "اطلاعات دانشجو به روز شد.");
@@ -117,6 +120,7 @@ void EditStudentDialog::on_pushButton_apply_clicked()
         ui->lineEdit_nationalcode->clear();
         ui->comboBox_gender->setCurrentIndex(0);
         ui->label_stuCode->clear();
+        ui->comboBox_field->setCurrentIndex(0);
     }
 }
 
@@ -124,19 +128,4 @@ void EditStudentDialog::on_pushButton_showAllStudent_clicked()
 {
     showStuDialog = new ShowStudentDialog(this);
     showStuDialog->show();
-
-//    qDebug() << "hanuz nareside";
-//    QString str;
-
-//    if(str.isEmpty()){
-
-//        qDebug() << "reft too WHile";
-//        Sleep(400);
-//        str = ShowStudentDialog::currStuCode;
-//        qDebug() << str;
-
-  //  }
-
-//    qDebug() << "     az while oomad biroun";
-//    ui->lineEdit->setText(str);
 }

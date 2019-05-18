@@ -9,7 +9,7 @@ ShowLessonDialog::ShowLessonDialog(QWidget *parent) :
 
     qry = new QSqlQueryModel(this);
 
-    qry->setQuery("Select LessonCode as 'کد درس', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', Type as 'نوع درس' \
+    qry->setQuery("Select LessonCode as 'کد درس', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', Type as 'نوع درس', Field as 'رشته' \
                    From Student.dbo.tblLesson");
 
     ui->treeView->setModel(qry);

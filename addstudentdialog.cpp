@@ -29,6 +29,7 @@ void AddStudentDialog::on_pushButton_add_clicked()
         QString strFathersname;
         QString strSaalvoroud;
         QString stuCode;
+        QString strField;
         QVariant currentID;
         QDate birthDate;
         bool blGender;
@@ -44,6 +45,7 @@ void AddStudentDialog::on_pushButton_add_clicked()
         }else if(ui->radioButton_female->isChecked()){
             blGender = false;
         }
+        strField = ui->comboBox_field->currentText();
 
         if(strSaalvoroud.toInt()){
             if(strNationalcode.toInt()){
@@ -51,11 +53,8 @@ void AddStudentDialog::on_pushButton_add_clicked()
                     QMessageBox::warning(this, "خطا", "لطفا کد ملی خود را به صورت 10 رقمی وارد کنید.");
                 }else{
                     qry1.prepare("Insert Into Student.dbo.tblPerson \
-                                 (FirstName \
-                                 ,LastName \
-                                 ,Nationalcode \
-                                 ,Gender) \
-                                 Values(:name , :lastname , :nationalcode , :gender)"); //  , :birthdate  ,BirthDate
+                                 (FirstName, LastName, Nationalcode, Gender) \
+                                 Values(:name, :lastname, :nationalcode, :gender)"); //  , :birthdate  ,BirthDate
                                 qry1.bindValue(":name", strName);
                                 qry1.bindValue(":lastname", strLastname);
                                 qry1.bindValue(":nationalcode", strNationalcode);
@@ -66,33 +65,34 @@ void AddStudentDialog::on_pushButton_add_clicked()
                     currentID = qry3.lastInsertId().toString();
 
                     qry2.prepare("Insert Into Student.dbo.tblStudent \
-                                 (ID \
-                                 ,FathersName \
-                                 ,SaalVoroud \
-                                 ,Password) \
-                                 Values(:id , :fathersname , :saalvoroud , :password)");
+                                 (ID, FathersName, SaalVoroud, Password, Field) \
+                                 Values(:id, :fathersname, :saalvoroud, :password, :field)");
                                 qry2.bindValue(":id" , currentID);
                                 qry2.bindValue(":fathersname" , strFathersname );
                                 qry2.bindValue(":saalvoroud", strSaalvoroud);
                                 qry2.bindValue(":password", strNationalcode);
-                                qry2.exec();
+                                qry2.bindValue(":field", strField);
 
-                    qry4.prepare("Select StudentCode From Student.dbo.tblStudent \
-                                  Where tblStudent.ID = :id");
-                            qry4.bindValue(":id", currentID);
-                            qry4.exec();
+                                if(qry2.exec()){
+                                    qry4.prepare("Select StudentCode From Student.dbo.tblStudent \
+                                                  Where tblStudent.ID = :id");
+                                            qry4.bindValue(":id", currentID);
+                                            qry4.exec();
 
-                    if(qry4.next()){
-                        stuCode = qry4.value(0).toString();
-                    }
+                                    if(qry4.next()){
+                                        stuCode = qry4.value(0).toString();
+                                    }
 
-                    QMessageBox::information(this, "OK", "دانشجو اضافه شد ، شماره داشجویی : " + stuCode);
+                                    QMessageBox::information(this, "OK", "دانشجو اضافه شد ، شماره داشجویی : " + stuCode);
 
-                    ui->lineEdit_name->clear();
-                    ui->lineEdit_lastName->clear();
-                    ui->lineEdit_fathersName->clear();
-                    ui->lineEdit_saalevoroud->clear();
-                    ui->lineEdit_nationalCode->clear();
+                                    ui->lineEdit_name->clear();
+                                    ui->lineEdit_lastName->clear();
+                                    ui->lineEdit_fathersName->clear();
+                                    ui->lineEdit_saalevoroud->clear();
+                                    ui->lineEdit_nationalCode->clear();
+                                }else{
+                                    QMessageBox::warning(this, "خطا", "یه مشکلی پیش اومده ، برنامه رو نشون علی بده.");
+                                }
                 }
             }else{
                 QMessageBox::warning(this, "خطا", "لطفا کد ملی خود را تصحیح کنید.");

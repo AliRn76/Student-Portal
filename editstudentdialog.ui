@@ -281,6 +281,22 @@ color: white</string>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
+         <spacer name="horizontalSpacer_13">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Minimum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLineEdit" name="lineEdit_fathersname">
           <property name="minimumSize">
            <size>
@@ -368,6 +384,22 @@ color: white</string>
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Minimum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item>
          <widget class="QLabel" name="label_8">
           <property name="font">
@@ -566,6 +598,88 @@ color: white</string>
           </item>
          </widget>
         </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_field">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color:rgb(191, 191, 191)</string>
+          </property>
+          <property name="currentText">
+           <string>مهندسی کامپیوتر - فناوری اطلاعات</string>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <property name="maxVisibleItems">
+           <number>20</number>
+          </property>
+          <item>
+           <property name="text">
+            <string>مهندسی کامپیوتر - فناوری اطلاعات</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی کامپیوتر - نرم افزار</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی عمران</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی صنایع</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی مکانیک</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی معماری</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی پزشکی</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی شیمی</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی مخابرات</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی مواد</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>مهندسی هوافضا</string>
+           </property>
+          </item>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>
@@ -627,6 +741,19 @@ color: white</string>
           </property>
           <property name="text">
            <string>جنسیت :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <family>B Koodak</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>رشته :</string>
           </property>
          </widget>
         </item>
