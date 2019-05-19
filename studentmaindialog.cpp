@@ -1,41 +1,31 @@
 #include "studentmaindialog.h"
 #include "ui_studentmaindialog.h"
 
+QString ShowStudentEraeListDialog::stuField;
+
 StudentMainDialog::StudentMainDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentMainDialog)
 {
     ui->setupUi(this);
-/*
+
+    QSqlQuery qry;
     QString name;
-    QString lastName;
-    QString cpyStrUser = StudentChangePasswordDialog::strUserStu;
-    QSqlQuery qry1;
-    QSqlQuery qry2;
-    int currentID;
+    QString userName = StudentChangePasswordDialog::strUserStu;
 
-    qry1.prepare("Select ID \
-                  From Student.dbo.tblStudent \
-                  Where tblStudent.StudentCode = :stucode");
-            qry1.bindValue(":stucode", cpyStrUser);
-            qry1.exec();
-    if(qry1.next()){
-        currentID = qry1.value(0).toInt();
+    qry.prepare("Select FirstName, LastName, Field \
+                 From Student.dbo.tblPerson, Student.dbo.tblStudent \
+                 Where tblPerson.ID = tblStudent.ID AND tblStudent.StudentCode = :stucode");
+            qry.bindValue(":stucode", userName);
+            qry.exec();
+
+    while(qry.next()){
+        name = qry.value(0).toString() + " " + qry.value(1).toString();
+        ShowStudentEraeListDialog::stuField = qry.value(2).toString();
     }
 
-    qry2.prepare("Select FirstName, LastName \
-                  From Student.dbo.tblPerson \
-                  Where tblPerson.ID = :id");
-            qry2.bindValue(":id", currentID);
-            qry2.exec();
-    if(qry2.next()){
-        name = qry2.value(0).toString();
-        lastName = qry2.value(1).toString();
-    }
-
-    ui->label_name->setText(name + " " + lastName);
-    ui->label_employeeCode->setText(cpyStrUser);
-    */
+    ui->label_name->setText(name);
+    ui->label_stuCode->setText(userName);
 }
 
 StudentMainDialog::~StudentMainDialog()
@@ -47,4 +37,10 @@ void StudentMainDialog::on_pushButton_setting_clicked()
 {
     stuChangeDialog = new StudentChangePasswordDialog(this);
     stuChangeDialog->show();
+}
+
+void StudentMainDialog::on_pushButton_listErae_clicked()
+{
+    showStuEraListDialog = new ShowStudentEraeListDialog(this);
+    showStuEraListDialog->show();
 }

@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QtSql>
 #include <studentchangepassworddialog.h>
+#include <showstudenteraelistdialog.h>
 
 namespace Ui {
 class StudentMainDialog;
@@ -20,9 +21,12 @@ public:
 private slots:
     void on_pushButton_setting_clicked();
 
+    void on_pushButton_listErae_clicked();
+
 private:
     Ui::StudentMainDialog *ui;
     StudentChangePasswordDialog *stuChangeDialog;
+    ShowStudentEraeListDialog *showStuEraListDialog;
 };
 
 #endif // STUDENTMAINDIALOG_H
