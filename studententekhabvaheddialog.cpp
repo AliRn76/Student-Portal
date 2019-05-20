@@ -1,6 +1,8 @@
 #include "studententekhabvaheddialog.h"
 #include "ui_studententekhabvaheddialog.h"
 
+QString StudentEntekhabVahedDialog::stuID;
+
 StudentEntekhabVahedDialog::StudentEntekhabVahedDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentEntekhabVahedDialog)
@@ -9,7 +11,7 @@ StudentEntekhabVahedDialog::StudentEntekhabVahedDialog(QWidget *parent) :
 
     QSqlQuery qry;
 
-    qry.prepare("Select StudentCode, FirstName, LastName, NumberOfTerm \
+    qry.prepare("Select StudentCode, FirstName, LastName, NumberOfTerm, tblStudent.ID \
                  From Student.dbo.tblPerson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
                  Where tblPerson.ID = tblStudent.ID AND \
                        tblStudent.ID = tblEntekhabVahed.ID_Student AND \
@@ -21,9 +23,11 @@ StudentEntekhabVahedDialog::StudentEntekhabVahedDialog(QWidget *parent) :
         ui->label_stuCode->setText(qry.value(0).toString());
         ui->label_name->setText(qry.value(1).toString() + " " + qry.value(2).toString());
         ui->label_nTerm->setText(qry.value(3).toString());
+        stuID = qry.value(4).toString();
     }
 
     qryModel = new QSqlQueryModel(this);
+    qryModel3 = new QSqlQueryModel(this);
 
     qryModel->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
                        From Student.dbo.tblPerson, \
@@ -38,6 +42,18 @@ StudentEntekhabVahedDialog::StudentEntekhabVahedDialog(QWidget *parent) :
                              tblStudent.Field = N'" + stuFieldEntekhab + "'");
 
     ui->treeView->setModel(qryModel);
+
+    qryModel3->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
+                         From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+                         Where tblPerson.ID = tblTeacher.ID AND \
+                               tblTeacher.ID = tblErae.ID_Teacher AND \
+                               tblErae.ID_Lesson = tblLesson.ID AND \
+                               tblLesson.Field = tblStudent.Field AND \
+                               tblEntekhabVahed.ID_Erae = tblErae.ID AND \
+                               tblEntekhabVahed.ID_Student = tblStudent.ID AND \
+                               tblStudent.ID = " + stuID);
+
+    ui->treeView_acceptedLesson->setModel(qryModel3);
 
 }
 
@@ -114,7 +130,10 @@ void StudentEntekhabVahedDialog::on_pushButton_3_clicked()
                        tblErae.ID_Lesson = tblLesson.ID AND \
                        tblLesson.Field = tblStudent.Field AND \
                        tblStudent.Field = N'" + stuFieldEntekhab + "' AND \
-                       tblLesson.Title like N'" + ui->lineEdit->text() + "%'";
+                       (tblLesson.Title like N'" + ui->lineEdit->text() + "%' OR \
+                       tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + ui->lineEdit->text() + "%' OR \
+                       tblPerson.FirstName like N'" + ui->lineEdit->text() + "%' OR \
+                       tblPerson.LastName like N'" + ui->lineEdit->text() + "%')";
 
         qryModel2->setQuery(strQry);
         qDebug() << qryModel2->lastError();
@@ -126,25 +145,16 @@ void StudentEntekhabVahedDialog::on_pushButton_3_clicked()
 
 void StudentEntekhabVahedDialog::on_pushButton_apply_clicked()
 {
-    QSqlQuery qry1;
+//   QSqlQuery qry1;
     QSqlQuery qry2;
     QSqlQuery qry3;
     QSqlQuery qry4;
-    int stuID;
+    QString strQry;
     int eraeID = ui->label_entekhabID->text().toInt();
 
     if(ui->label_entekhabID->text().isEmpty()){
         QMessageBox::warning(this, "خطا", "لطفا ابتدا یک درس را انتخاب کنید.");
     }else{
-        qry1.prepare("Select ID From Student.dbo.tblStudent \
-                      Where tblStudent.StudentCode = :stucode");
-
-                qry1.bindValue(":stucode", stuCode);
-                qry1.exec();
-
-                while(qry1.next()){
-                    stuID = qry1.value(0).toInt();
-                }
 
         qry2.prepare("Select tblEntekhabVahed.ID \
                       From Student.dbo.tblEntekhabVahed, \
@@ -159,7 +169,7 @@ void StudentEntekhabVahedDialog::on_pushButton_apply_clicked()
                 qry2.exec();
 
             if(qry2.numRowsAffected() > 0){
-                QMessageBox::warning(this, "هشدار" , "این درس قبلا برای این دانشجو انتخاب شده است.");
+                QMessageBox::warning(this, "هشدار" , "این درس را قبلا انتخاب کرده اید.");
             }else{
                 qry3.prepare("Insert Into Student.dbo.tblEntekhabVahed \
                               (ID_Erae, ID_Student) \
@@ -170,6 +180,21 @@ void StudentEntekhabVahedDialog::on_pushButton_apply_clicked()
 
                     if(qry3.exec()){
                             QMessageBox::information(this, "OK", "درس با موفقیت انتخاب شد.");
+
+                            qryModel4 = new QSqlQueryModel(this);
+
+                            qryModel4->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
+                                                 From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+                                                 Where tblPerson.ID = tblTeacher.ID AND \
+                                                      tblTeacher.ID = tblErae.ID_Teacher AND \
+                                                      tblErae.ID_Lesson = tblLesson.ID AND \
+                                                      tblLesson.Field = tblStudent.Field AND \
+                                                      tblEntekhabVahed.ID_Erae = tblErae.ID AND \
+                                                      tblEntekhabVahed.ID_Student = tblStudent.ID AND \
+                                                      tblStudent.ID = " +  stuID);
+
+                            ui->treeView_acceptedLesson->setModel(qryModel4);
+
                             ui->label_entekhabID->clear();
                             ui->label_lessonName->clear();
                             ui->label_teacher->clear();
@@ -180,4 +205,67 @@ void StudentEntekhabVahedDialog::on_pushButton_apply_clicked()
                     }
             }
     }
+}
+
+void StudentEntekhabVahedDialog::on_pushButton_remove_clicked()
+{
+    QSqlQuery qry;
+
+    qry.prepare("Delete From Student.dbo.tblEntekhabVahed \
+                 Where ID_Erae = :iderae AND ID_Student = :idstu");
+            qry.bindValue(":iderae", ui->label_entekhabID->text());
+            qry.bindValue(":idstu", stuID);
+
+        if(qry.exec()){
+            if(qry.numRowsAffected() > 0){
+                QMessageBox::information(this, "OK", "درس مورد نظر از دروس انتخاب شده حذف شد.");
+
+                qryModel5 = new QSqlQueryModel(this);
+
+                qryModel5->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
+                                     From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+                                     Where tblPerson.ID = tblTeacher.ID AND \
+                                          tblTeacher.ID = tblErae.ID_Teacher AND \
+                                          tblErae.ID_Lesson = tblLesson.ID AND \
+                                          tblLesson.Field = tblStudent.Field AND \
+                                          tblEntekhabVahed.ID_Erae = tblErae.ID AND \
+                                          tblEntekhabVahed.ID_Student = tblStudent.ID AND \
+                                          tblStudent.ID = " +  stuID);
+
+                ui->treeView_acceptedLesson->setModel(qryModel5);
+
+                ui->label_entekhabID->clear();
+                ui->label_lessonName->clear();
+                ui->label_teacher->clear();
+                ui->label_rouz->clear();
+                ui->label_time->clear();
+            }else{
+                QMessageBox::warning(this, "خطا", "لطفا ابتدا یک درس از دروس انتخابی انتخاب کنید.");
+            }
+        }else{
+            QMessageBox::warning(this, "خطا", "امکان حذف درس نمیباشد.");
+        }
+}
+
+void StudentEntekhabVahedDialog::on_treeView_acceptedLesson_clicked(const QModelIndex &index)
+{
+    QSqlQuery qry;
+
+    qry.exec("Select Distinct tblErae.ID, Title , FirstName + ' ' + LastName, DaysOfWeek, TimeOfClass \
+              From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+              Where tblPerson.ID = tblTeacher.ID AND \
+                    tblTeacher.ID = tblErae.ID_Teacher AND \
+                    tblErae.ID_Lesson = tblLesson.ID AND \
+                    tblLesson.Field = tblStudent.Field AND \
+                    tblEntekhabVahed.ID_Erae = tblErae.ID AND \
+                    tblEntekhabVahed.ID_Student = tblStudent.ID AND \
+                    tblStudent.ID = " + stuID);
+
+    qry.seek(index.row());
+
+    ui->label_entekhabID->setText(qry.value(0).toString());
+    ui->label_lessonName->setText(qry.value(1).toString());
+    ui->label_teacher->setText(qry.value(2).toString());
+    ui->label_rouz->setText(qry.value(3).toString());
+    ui->label_time->setText(qry.value(4).toString());
 }
