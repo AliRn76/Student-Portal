@@ -53,6 +53,7 @@ SOURCES += \
     studentmaindialog.cpp \
     showteacherdialog.cpp \
     teachermaindialog.cpp \
+    sendjozvedialog.cpp \
     teacherchangepassword.cpp
 
 HEADERS += \
@@ -83,6 +84,7 @@ HEADERS += \
     studentmaindialog.h \
     showteacherdialog.h \
     teachermaindialog.h \
+    sendjozvedialog.h \
     teacherchangepassword.h
 
 FORMS += \
@@ -113,6 +115,7 @@ FORMS += \
     studentmaindialog.ui \
     showteacherdialog.ui \
     teachermaindialog.ui \
+    sendjozvedialog.ui \
     teacherchangepassword.ui
 
 # Default rules for deployment.

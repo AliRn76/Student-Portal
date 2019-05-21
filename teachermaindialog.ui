@@ -79,19 +79,22 @@ color: rgb(214, 214, 214);</string>
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>85</x>
+     <x>75</x>
      <y>160</y>
-     <width>1061</width>
+     <width>1071</width>
      <height>321</height>
     </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>80</x>
      <y>510</y>
-     <width>981</width>
+     <width>1061</width>
      <height>35</height>
     </rect>
    </property>
@@ -219,7 +222,7 @@ color: rgb(214, 214, 214);</string>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
-       <widget class="QLabel" name="label_employeeCode">
+       <widget class="QLabel" name="label_TeacherCode">
         <property name="font">
          <font>
           <family>B Roya</family>
