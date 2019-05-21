@@ -49,6 +49,7 @@ SOURCES += \
     showlessondialog.cpp \
     showstudentdialog.cpp \
     showstudenteraelistdialog.cpp \
+    studentbarnameclassdialog.cpp \
     studentchangepassworddialog.cpp \
     studententekhabvaheddialog.cpp \
     studentmaindialog.cpp \
@@ -80,6 +81,7 @@ HEADERS += \
     showlessondialog.h \
     showstudentdialog.h \
     showstudenteraelistdialog.h \
+    studentbarnameclassdialog.h \
     studentchangepassworddialog.h \
     studententekhabvaheddialog.h \
     studentmaindialog.h \
@@ -111,6 +113,7 @@ FORMS += \
     showlessondialog.ui \
     showstudentdialog.ui \
     showstudenteraelistdialog.ui \
+    studentbarnameclassdialog.ui \
     studentchangepassworddialog.ui \
     studententekhabvaheddialog.ui \
     studentmaindialog.ui \

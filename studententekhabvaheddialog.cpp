@@ -240,7 +240,7 @@ void StudentEntekhabVahedDialog::on_pushButton_remove_clicked()
                 ui->label_rouz->clear();
                 ui->label_time->clear();
             }else{
-                QMessageBox::warning(this, "خطا", "لطفا ابتدا یک درس از دروس انتخابی انتخاب کنید.");
+                QMessageBox::warning(this, "خطا", "لطفا ابتدا یک درس از 'دروس انتخاب شده' انتخاب کنید.");
             }
         }else{
             QMessageBox::warning(this, "خطا", "امکان حذف درس نمیباشد.");

@@ -4,7 +4,7 @@
 QString ShowStudentEraeListDialog::stuField;
 QString StudentEntekhabVahedDialog::stuFieldEntekhab;
 QString StudentEntekhabVahedDialog::stuCode;
-
+QString StudentBarnameClassDialog::stuCodeBarname;
 
 StudentMainDialog::StudentMainDialog(QWidget *parent) :
     QDialog(parent),
@@ -16,7 +16,8 @@ StudentMainDialog::StudentMainDialog(QWidget *parent) :
     QString name;
     QString field;
     QString userName = StudentChangePasswordDialog::strUserStu;
-    StudentEntekhabVahedDialog::stuCode = StudentChangePasswordDialog::strUserStu;
+    StudentEntekhabVahedDialog::stuCode = userName;
+    StudentBarnameClassDialog::stuCodeBarname = userName;
 
     qry.prepare("Select FirstName, LastName, Field \
                  From Student.dbo.tblPerson, Student.dbo.tblStudent \
@@ -34,6 +35,7 @@ StudentMainDialog::StudentMainDialog(QWidget *parent) :
 
     ui->label_name->setText(name);
     ui->label_stuCode->setText(userName);
+    ui->label_field->setText(field);
 }
 
 StudentMainDialog::~StudentMainDialog()
@@ -57,4 +59,10 @@ void StudentMainDialog::on_pushButton_entekhabVahed_clicked()
 {
     stuEntekhabDialog = new StudentEntekhabVahedDialog(this);
     stuEntekhabDialog->show();
+}
+
+void StudentMainDialog::on_pushButton_barnameClass_clicked()
+{
+    stuBarnameDialog = new StudentBarnameClassDialog(this);
+    stuBarnameDialog->show();
 }
