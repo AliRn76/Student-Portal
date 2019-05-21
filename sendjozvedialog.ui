@@ -54,6 +54,10 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(214, 214, 214);</string>
+      </property>
       <property name="text">
        <string>خروج</string>
       </property>
@@ -74,6 +78,12 @@
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_Send">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -82,8 +92,11 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(118, 240, 179)</string>
+      </property>
       <property name="text">
-       <string>ارسال </string>
+       <string>ارسال</string>
       </property>
      </widget>
     </item>

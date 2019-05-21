@@ -37,4 +37,5 @@ void SendJozveDialog::on_pushButton_Send_clicked()
             QMessageBox::warning(this , "Error", "به روز رسانی دیتابیس با مشکل روبرو شد .");
         }
     }
+    ui->lineEdit_link->clear();
 }

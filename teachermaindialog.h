@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <teacherchangepassword.h>
 #include <sendjozvedialog.h>
+#include <showclassmembers.h>
 
 namespace Ui {
 class TeacherMainDialog;
@@ -24,10 +25,13 @@ private slots:
 
     void on_pushButton_exit_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::TeacherMainDialog *ui;
     TeacherChangePassword *teacherChangePassword ;
     SendJozveDialog *sendJozve ;
+    ShowClassMembers *showClassMem ;
     QSqlQueryModel *model ;
 };
 

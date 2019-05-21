@@ -54,7 +54,8 @@ SOURCES += \
     showteacherdialog.cpp \
     teachermaindialog.cpp \
     sendjozvedialog.cpp \
-    teacherchangepassword.cpp
+    teacherchangepassword.cpp \
+    showclassmembers.cpp
 
 HEADERS += \
     addteacherdialog.h \
@@ -85,7 +86,8 @@ HEADERS += \
     showteacherdialog.h \
     teachermaindialog.h \
     sendjozvedialog.h \
-    teacherchangepassword.h
+    teacherchangepassword.h \
+    showclassmembers.h
 
 FORMS += \
     addteacherdialog.ui \
@@ -116,7 +118,8 @@ FORMS += \
     showteacherdialog.ui \
     teachermaindialog.ui \
     sendjozvedialog.ui \
-    teacherchangepassword.ui
+    teacherchangepassword.ui \
+    showclassmembers.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

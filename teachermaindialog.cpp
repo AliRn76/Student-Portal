@@ -24,7 +24,7 @@ TeacherMainDialog::TeacherMainDialog(QWidget *parent) :
     QSqlQuery qry1;
     qry1.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
                   from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
-                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID ");
+                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by l.Title");
             qry1.bindValue(":teacode" , username);
             qry1.exec();
     this->model = new QSqlQueryModel();
@@ -48,12 +48,30 @@ void TeacherMainDialog::on_pushButton_setting_clicked()
 
 void TeacherMainDialog::on_pushButton_3_clicked()
 {
-    SendJozveDialog::lessCode = ui->lineEdit_lesscode->text();
-    sendJozve = new SendJozveDialog(this);
-    sendJozve->show();
+    if(ui->lineEdit_lesscode->text().isEmpty()){
+        QMessageBox::information(this , "Error" , "لطفا مشخصه درس را وارد کنید.");
+    }
+    else {
+        SendJozveDialog::lessCode = ui->lineEdit_lesscode->text();
+        sendJozve = new SendJozveDialog(this);
+        sendJozve->show();
+    }
+
 }
 
 void TeacherMainDialog::on_pushButton_exit_clicked()
 {
     this->close();
+}
+
+void TeacherMainDialog::on_pushButton_clicked()
+{
+    if(ui->lineEdit_lesscode->text().isEmpty()){
+        QMessageBox::information(this , "Error" , "لطفا مشخصه درس را وارد کنید.");
+    }
+    else {
+        SendJozveDialog::lessCode = ui->lineEdit_lesscode->text();
+        showClassMem = new ShowClassMembers(this);
+        showClassMem->show();
+    }
 }
