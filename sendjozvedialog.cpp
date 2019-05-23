@@ -38,4 +38,5 @@ void SendJozveDialog::on_pushButton_Send_clicked()
         }
     }
     ui->lineEdit_link->clear();
+
 }
