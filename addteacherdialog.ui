@@ -16,15 +16,21 @@
   <widget class="QWidget" name="layoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>520</y>
-     <width>781</width>
+     <x>120</x>
+     <y>540</y>
+     <width>961</width>
      <height>51</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_3">
     <item>
      <widget class="QPushButton" name="pushButton_back">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -57,6 +63,12 @@ color:white</string>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_showTeacher">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -88,6 +100,12 @@ color:white</string>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_apply">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -109,10 +127,10 @@ color:white</string>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>100</y>
-     <width>701</width>
-     <height>311</height>
+     <x>210</x>
+     <y>120</y>
+     <width>781</width>
+     <height>291</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_5">

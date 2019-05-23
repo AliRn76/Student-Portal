@@ -48,6 +48,8 @@ SOURCES += \
     showeraelistdialog.cpp \
     showlessondialog.cpp \
     showstudentdialog.cpp \
+    showstudenteraelistdialog.cpp \
+    studentbarnameclassdialog.cpp \
     studentchangepassworddialog.cpp \
     studententekhabvaheddialog.cpp \
     studentmaindialog.cpp \
@@ -78,6 +80,8 @@ HEADERS += \
     showeraelistdialog.h \
     showlessondialog.h \
     showstudentdialog.h \
+    showstudenteraelistdialog.h \
+    studentbarnameclassdialog.h \
     studentchangepassworddialog.h \
     studententekhabvaheddialog.h \
     studentmaindialog.h \
@@ -108,6 +112,8 @@ FORMS += \
     showeraelistdialog.ui \
     showlessondialog.ui \
     showstudentdialog.ui \
+    showstudenteraelistdialog.ui \
+    studentbarnameclassdialog.ui \
     studentchangepassworddialog.ui \
     studententekhabvaheddialog.ui \
     studentmaindialog.ui \

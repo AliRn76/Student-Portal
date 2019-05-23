@@ -367,6 +367,12 @@
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QPushButton" name="pushButton_back">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -399,6 +405,12 @@ color: white</string>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_showAllCourses">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -430,6 +442,12 @@ color: white</string>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_add">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -449,6 +467,32 @@ color: white</string>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_title</tabstop>
+  <tabstop>comboBox_tedadVahed</tabstop>
+  <tabstop>comboBox_type</tabstop>
+  <tabstop>comboBox_field_2</tabstop>
+  <tabstop>pushButton_add</tabstop>
+  <tabstop>pushButton_showAllCourses</tabstop>
+  <tabstop>pushButton_back</tabstop>
+ </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_back</sender>
+   <signal>clicked()</signal>
+   <receiver>AddLessonDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>539</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>84</x>
+     <y>540</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

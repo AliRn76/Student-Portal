@@ -127,10 +127,11 @@ void EditTeacherDialog::on_pushButton_apply_clicked()
         if(qry2.exec()){
 
             qry3.prepare("Update Student.dbo.tblTeacher \
-                          Set EducationDegree = :educationdegree\
+                          Set EducationDegree = :educationdegree, Password = :password\
                           Where tblTeacher.TeacherCode = :teachcode");
             qry3.bindValue(":teachcode", ui->label_teachCode->text());
             qry3.bindValue(":educationdegree", ui->lineEdit_eduDegree->text());
+            qry3.bindValue(":password", ui->lineEdit_nationalCode->text());
 
             if(qry3.exec()){
                 QMessageBox::information(this, "OK", "اطلاعات استاد به روز شد.");

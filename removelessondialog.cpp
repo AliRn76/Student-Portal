@@ -22,18 +22,22 @@ void RemoveLessonDialog::on_pushButton_search_clicked()
     QString title;
     QString type;
     QString lessonCode;
+    QString field;
+    QString tedadVahed;
 
     lessCode = ui->lineEdit_lessCode->text();
 
     ui->label_name->clear();
     ui->label_type->clear();
     ui->label_lessonCode->clear();
+    ui->label_field->clear();
+    ui->label_tedadVahed->clear();
 
     if(lessCode.isEmpty()){
         QMessageBox::warning(this, "خطا","ابتدا یک کد یا نام وارد کنید.");
 
     }else {
-        QSqlQuery qry1("Select Title, Type, LessonCode \
+        QSqlQuery qry1("Select Title, Type, LessonCode, Field, TedadVahed \
                         From Student.dbo.tblLesson \
                         Where Student.dbo.tblLesson.LessonCode like '" + lessCode + "' \
                         OR Student.dbo.tblLesson.Title like N'" + lessCode +"'");
@@ -50,11 +54,15 @@ void RemoveLessonDialog::on_pushButton_search_clicked()
                title = qry1.value(0).toString();
                type = qry1.value(1).toString();
                lessonCode = qry1.value(2).toString();
+               field = qry1.value(3).toString();
+               tedadVahed = qry1.value(4).toString();
            }
 
            ui->label_name->setText(title);
            ui->label_type->setText(type);
            ui->label_lessonCode->setText(lessonCode);
+           ui->label_field->setText(field);
+           ui->label_tedadVahed->setText(tedadVahed);
         }
 
     }
@@ -77,6 +85,7 @@ void RemoveLessonDialog::on_pushButton_remove_clicked()
             ui->label_name->clear();
             ui->label_type->clear();
             ui->label_lessonCode->clear();
+            ui->label_field->clear();
 
         }else{
             QMessageBox::warning(this,"Error", "به دلیل اینکه این درس ارائه داده شده است ، شما قادر به حذف ان نیستید.");
