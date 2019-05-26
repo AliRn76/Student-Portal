@@ -1,5 +1,6 @@
 #include "teachermaindialog.h"
 #include "ui_teachermaindialog.h"
+#include "QTreeView"
 
 TeacherMainDialog::TeacherMainDialog(QWidget *parent) :
     QDialog(parent),
@@ -29,9 +30,11 @@ TeacherMainDialog::TeacherMainDialog(QWidget *parent) :
             qry1.exec();
     this->model = new QSqlQueryModel();
     model->setQuery(qry1);
-    ui->tableView->setModel(model);
+    ui->treeView_Lesson->setModel(model);
 
 //----------------------------------------------------------------
+
+
 
 }
 
@@ -48,15 +51,9 @@ void TeacherMainDialog::on_pushButton_setting_clicked()
 
 void TeacherMainDialog::on_pushButton_3_clicked()
 {
-    if(ui->lineEdit_lesscode->text().isEmpty()){
-        QMessageBox::information(this , "Error" , "لطفا مشخصه درس را وارد کنید.");
-    }
-    else {
-        SendJozveDialog::lessCode = ui->lineEdit_lesscode->text();
+//        SendJozveDialog::lessCode = ui->lineEdit_lesscode->text();
         sendJozve = new SendJozveDialog(this);
         sendJozve->show();
-    }
-
 }
 
 void TeacherMainDialog::on_pushButton_exit_clicked()
@@ -66,12 +63,12 @@ void TeacherMainDialog::on_pushButton_exit_clicked()
 
 void TeacherMainDialog::on_pushButton_clicked()
 {
-    if(ui->lineEdit_lesscode->text().isEmpty()){
-        QMessageBox::information(this , "Error" , "لطفا مشخصه درس را وارد کنید.");
-    }
-    else {
-        SendJozveDialog::lessCode = ui->lineEdit_lesscode->text();
+//        SendJozveDialog::lessCode = ui->lineEdit_lesscode->text();
         showClassMem = new ShowClassMembers(this);
         showClassMem->show();
-    }
+}
+
+void TeacherMainDialog::on_treeView_Lesson_doubleClicked(const QModelIndex &index)
+{
+
 }

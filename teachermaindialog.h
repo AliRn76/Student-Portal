@@ -27,6 +27,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_treeView_Lesson_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::TeacherMainDialog *ui;
     TeacherChangePassword *teacherChangePassword ;
