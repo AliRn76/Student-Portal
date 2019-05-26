@@ -103,12 +103,13 @@ void EditStudentDialog::on_pushButton_apply_clicked()
         qry2.exec();
 
         qry3.prepare("Update Student.dbo.tblStudent \
-                      Set FathersName = :fathersname, SaalVoroud = :saalevoroud, Field = :field \
+                      Set FathersName = :fathersname, SaalVoroud = :saalevoroud, Field = :field, Password = :password \
                       Where tblStudent.StudentCode = :stucode");
         qry3.bindValue(":stucode", ui->label_stuCode->text());
         qry3.bindValue(":fathersname", ui->lineEdit_fathersname->text());
         qry3.bindValue(":saalevoroud", ui->lineEdit_saalevoroud->text());
         qry3.bindValue(":field", ui->comboBox_field->currentText());
+        qry3.bindValue(":password", ui->lineEdit_nationalcode->text());
         qry3.exec();
 
         QMessageBox::information(this, "OK", "اطلاعات دانشجو به روز شد.");
