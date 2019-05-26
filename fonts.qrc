@@ -5,7 +5,5 @@
         <file>B Nazanin.ttf</file>
         <file>B Titr Bold.ttf</file>
     </qresource>
-    <qresource prefix="/">
-        <file>hjhjhj.qml</file>
-    </qresource>
+    <qresource prefix="/"/>
 </RCC>

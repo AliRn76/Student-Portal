@@ -13,7 +13,7 @@ StudentChangePasswordDialog::~StudentChangePasswordDialog()
     delete ui;
 }
 
-void StudentChangePasswordDialog::on_pushButton_clicked()
+void StudentChangePasswordDialog::on_pushButton_change_clicked()
 {
     QString oldPass= ui->lineEdit_oldPass->text();
     QString newPass = ui->lineEdit_newPass->text();

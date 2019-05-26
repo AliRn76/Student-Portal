@@ -22,6 +22,12 @@
      <height>550</height>
     </rect>
    </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="textElideMode">
+    <enum>Qt::ElideRight</enum>
+   </property>
   </widget>
  </widget>
  <resources/>

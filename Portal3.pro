@@ -29,8 +29,8 @@ SOURCES += \
     editlessondialog.cpp \
     editteacherdialog.cpp \
     eraedarsdialog.cpp \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
     employeemaindialog.cpp \
     addstudentdialog.cpp \
     removeentekhabvahed2dialog.cpp \
@@ -62,7 +62,7 @@ HEADERS += \
     editlessondialog.h \
     editteacherdialog.h \
     eraedarsdialog.h \
-        mainwindow.h \
+    mainwindow.h \
     employeemaindialog.h \
     addstudentdialog.h \
     removeentekhabvahed2dialog.h \
@@ -94,7 +94,7 @@ FORMS += \
     editlessondialog.ui \
     editteacherdialog.ui \
     eraedarsdialog.ui \
-        mainwindow.ui \
+    mainwindow.ui \
     employeemaindialog.ui \
     addstudentdialog.ui \
     removeentekhabvahed2dialog.ui \
