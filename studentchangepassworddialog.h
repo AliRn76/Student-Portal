@@ -21,7 +21,8 @@ public:
     ~StudentChangePasswordDialog();
 
 private slots:
-    void on_pushButton_clicked();
+
+    void on_pushButton_change_clicked();
 
 private:
     Ui::StudentChangePasswordDialog *ui;

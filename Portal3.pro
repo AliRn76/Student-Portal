@@ -8,7 +8,7 @@ QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Portal2
+TARGET = Portal3
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -29,8 +29,8 @@ SOURCES += \
     editlessondialog.cpp \
     editteacherdialog.cpp \
     eraedarsdialog.cpp \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
     employeemaindialog.cpp \
     addstudentdialog.cpp \
     removeentekhabvahed2dialog.cpp \
@@ -62,7 +62,7 @@ HEADERS += \
     editlessondialog.h \
     editteacherdialog.h \
     eraedarsdialog.h \
-        mainwindow.h \
+    mainwindow.h \
     employeemaindialog.h \
     addstudentdialog.h \
     removeentekhabvahed2dialog.h \
@@ -94,7 +94,7 @@ FORMS += \
     editlessondialog.ui \
     editteacherdialog.ui \
     eraedarsdialog.ui \
-        mainwindow.ui \
+    mainwindow.ui \
     employeemaindialog.ui \
     addstudentdialog.ui \
     removeentekhabvahed2dialog.ui \
