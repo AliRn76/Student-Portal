@@ -23,8 +23,8 @@ MainWindow::~MainWindow()
 
 QString EmployeeChangePasswordDialog::strUserEmp;
 QString StudentChangePasswordDialog::strUserStu;
-QString TeacherChangePassword::strUserTeach;
-QString SendJozveDialog::lessCode ;
+QString TeacherChangePassword::strUserTeacher;
+QString SendJozveDialog::lessCode;
 
 void MainWindow::on_pushButton_manager_clicked()
 {
@@ -58,8 +58,6 @@ void MainWindow::on_pushButton_teacher_clicked()
     QString strUsername = ui->lineEdit_username->text();
     QString strPassword = ui->lineEdit_password->text();
 
-    TeacherChangePassword::strUserTeach = strUsername ;
-
     QSqlQuery qry;
 
     qry.prepare("Select Password From Student.dbo.tblTeacher \
@@ -68,6 +66,7 @@ void MainWindow::on_pushButton_teacher_clicked()
                 qry.exec();
     if(qry.next()){
         if(strPassword == qry.value(0).toString()){
+            TeacherChangePassword::strUserTeacher = strUsername;
             teamaindialog = new TeacherMainDialog(this);
             teamaindialog->show();
         }
