@@ -3,8 +3,6 @@
 
 #include <QDialog>
 #include <QtSql>
-#include <sendjozvedialog.h>
-#include <teacherchangepassword.h>
 
 namespace Ui {
 class ShowClassMembers;
