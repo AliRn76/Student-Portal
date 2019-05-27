@@ -13,18 +13,27 @@
   <property name="windowTitle">
    <string>صفحه اصلی استاد</string>
   </property>
-  <widget class="QWidget" name="layoutWidget_2">
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>50</y>
-     <width>221</width>
+     <x>440</x>
+     <y>560</y>
+     <width>661</width>
      <height>35</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QPushButton" name="pushButton_exit">
+     <widget class="QPushButton" name="pushButton_refresh">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -34,16 +43,15 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(91, 91, 91);
-color: rgb(214, 214, 214);</string>
+       <string notr="true">background-color:rgb(118, 240, 179)</string>
       </property>
       <property name="text">
-       <string>خروج</string>
+       <string>رفرش</string>
       </property>
      </widget>
     </item>
     <item>
-     <spacer name="horizontalSpacer_12">
+     <spacer name="horizontalSpacer_3">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -56,7 +64,13 @@ color: rgb(214, 214, 214);</string>
      </spacer>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_setting">
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -66,79 +80,10 @@ color: rgb(214, 214, 214);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(91, 91, 91);
-color: rgb(214, 214, 214);</string>
-      </property>
-      <property name="text">
-       <string>تغییر رمز عبور</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>85</x>
-     <y>160</y>
-     <width>1061</width>
-     <height>321</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>510</y>
-     <width>981</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="font">
-       <font>
-        <family>B Nazanin</family>
-        <pointsize>9</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+       <string notr="true">background-color:rgb(118, 240, 179)</string>
       </property>
       <property name="text">
        <string>ارسال جزوه</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Expanding</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="font">
-       <font>
-        <family>B Nazanin</family>
-        <pointsize>9</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>اعلام نمره</string>
       </property>
      </widget>
     </item>
@@ -147,19 +92,22 @@ color: rgb(214, 214, 214);</string>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Expanding</enum>
-      </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>20</width>
+        <width>40</width>
         <height>20</height>
        </size>
       </property>
      </spacer>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButton_Guide">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -168,49 +116,55 @@ color: rgb(214, 214, 214);</string>
         <bold>true</bold>
        </font>
       </property>
-      <property name="text">
-       <string>لیست کلاسی</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>500</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_lesscode"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <family>B Koodak</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(118, 240, 179)</string>
       </property>
       <property name="text">
-       <string>کد درس :</string>
+       <string>?</string>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>70</y>
+     <width>1101</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>100</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>B Koodak</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>لیست دانشجویان</string>
+   </property>
+  </widget>
   <widget class="QWidget" name="layoutWidget_3">
    <property name="geometry">
     <rect>
-     <x>740</x>
-     <y>80</y>
+     <x>750</x>
+     <y>10</y>
      <width>411</width>
      <height>40</height>
     </rect>
@@ -219,7 +173,7 @@ color: rgb(214, 214, 214);</string>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
-       <widget class="QLabel" name="label_employeeCode">
+       <widget class="QLabel" name="label_TeacherCode">
         <property name="font">
          <font>
           <family>B Roya</family>
@@ -294,6 +248,214 @@ color: rgb(214, 214, 214);</string>
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>1020</x>
+     <y>100</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>B Koodak</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>لیست دروس</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>10</y>
+     <width>221</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="pushButton_exit">
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(214, 214, 214);</string>
+      </property>
+      <property name="text">
+       <string>خروج</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_12">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_setting">
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(214, 214, 214);</string>
+      </property>
+      <property name="text">
+       <string>تغییر رمز عبور</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>560</y>
+     <width>251</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_12">
+    <item>
+     <widget class="QPushButton" name="pushButton_SetScores">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(118, 240, 179)</string>
+      </property>
+      <property name="text">
+       <string>ثبت نمره</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_Score">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QTableView" name="tableView_Lesson">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>130</y>
+     <width>751</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tableView_Student">
+   <property name="geometry">
+    <rect>
+     <x>55</x>
+     <y>130</y>
+     <width>271</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_Day">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>100</y>
+     <width>191</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>مرتب سازی بر اساس روز هفته</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_Title">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>100</y>
+     <width>191</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>مرتب سازی بر اساس نام درس</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_Day_2">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>100</y>
+     <width>191</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>مرتب سازی بر اساس مشخصه</string>
+   </property>
   </widget>
  </widget>
  <resources/>
