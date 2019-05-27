@@ -8,7 +8,7 @@ QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Portal2
+TARGET = Portal3
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -29,8 +29,8 @@ SOURCES += \
     editlessondialog.cpp \
     editteacherdialog.cpp \
     eraedarsdialog.cpp \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
     employeemaindialog.cpp \
     addstudentdialog.cpp \
     removeentekhabvahed2dialog.cpp \
@@ -48,6 +48,8 @@ SOURCES += \
     showeraelistdialog.cpp \
     showlessondialog.cpp \
     showstudentdialog.cpp \
+    showstudenteraelistdialog.cpp \
+    studentbarnameclassdialog.cpp \
     studentchangepassworddialog.cpp \
     studententekhabvaheddialog.cpp \
     studentmaindialog.cpp \
@@ -61,7 +63,7 @@ HEADERS += \
     editlessondialog.h \
     editteacherdialog.h \
     eraedarsdialog.h \
-        mainwindow.h \
+    mainwindow.h \
     employeemaindialog.h \
     addstudentdialog.h \
     removeentekhabvahed2dialog.h \
@@ -79,6 +81,8 @@ HEADERS += \
     showeraelistdialog.h \
     showlessondialog.h \
     showstudentdialog.h \
+    showstudenteraelistdialog.h \
+    studentbarnameclassdialog.h \
     studentchangepassworddialog.h \
     studententekhabvaheddialog.h \
     studentmaindialog.h \
@@ -93,7 +97,7 @@ FORMS += \
     editlessondialog.ui \
     editteacherdialog.ui \
     eraedarsdialog.ui \
-        mainwindow.ui \
+    mainwindow.ui \
     employeemaindialog.ui \
     addstudentdialog.ui \
     removeentekhabvahed2dialog.ui \
@@ -111,6 +115,8 @@ FORMS += \
     showeraelistdialog.ui \
     showlessondialog.ui \
     showstudentdialog.ui \
+    showstudenteraelistdialog.ui \
+    studentbarnameclassdialog.ui \
     studentchangepassworddialog.ui \
     studententekhabvaheddialog.ui \
     studentmaindialog.ui \

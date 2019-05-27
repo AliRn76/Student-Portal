@@ -19,6 +19,7 @@ void RemoveStudentDialog::on_pushButton_search_clicked()
     ui->label_stuCode->clear();
     ui->label_fathersName->clear();
     ui->label_nationalCode->clear();
+    ui->label_field->clear();
 
     if(ui->lineEdit_stuCode->text().isEmpty()){
         QMessageBox::warning(this, "خطا", "ابتدا یک نام یا شماره شماره دانشجویی وارد کنید.");
@@ -32,10 +33,11 @@ void RemoveStudentDialog::on_pushButton_search_clicked()
         QString name;
         QString nationalCode;
         QString stuCode;
+        QString field;
 
         stuCode = ui->lineEdit_stuCode->text();
 
-        QSqlQuery qry1("Select FathersName, StudentCode, FirstName, LastName, NationalCode \
+        QSqlQuery qry1("Select FathersName, StudentCode, FirstName, LastName, NationalCode, Field \
                       From Student.dbo.tblStudent , Student.dbo.tblPerson \
                       Where tblPerson.ID = tblStudent.ID AND ( \
                       tblStudent.StudentCode like '" + stuCode +"%' OR \
@@ -55,11 +57,13 @@ void RemoveStudentDialog::on_pushButton_search_clicked()
                 strStuCode = qry1.value(1).toString();
                 name = qry1.value(2).toString() + " " + qry1.value(3).toString();
                 nationalCode = qry1.value(4).toString();
+                field = qry1.value(5).toString();
             }
             ui->label_name->setText(name);
             ui->label_nationalCode->setText(nationalCode);
             ui->label_fathersName->setText(fathersName);
             ui->label_stuCode->setText(strStuCode);
+            ui->label_field->setText(field);
         }
     }
 }
@@ -78,6 +82,7 @@ void RemoveStudentDialog::on_pushButton_remove_clicked()
     ui->label_stuCode->clear();
     ui->label_fathersName->clear();
     ui->label_nationalCode->clear();
+    ui->label_field->clear();
 
     if(!(ui->label_stuCode->text().isEmpty())){
         stuCode = ui->label_stuCode->text();
