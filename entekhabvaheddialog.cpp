@@ -160,7 +160,6 @@ void EntekhabVahedDialog::on_pushButton_apply_clicked()
                             ui->label_lessonName->clear();
                             ui->label_roozeHafte->clear();
                             ui->label_time->clear();
-
                     }else{
                         QMessageBox::warning(this, "Warning", "انتخاب درس با شکست مواجه شد.");
                     }
