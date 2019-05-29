@@ -8,6 +8,7 @@
 #include <studententekhabvaheddialog.h>
 #include <studententekhabvaheddialog.h>
 #include <studentbarnameclassdialog.h>
+#include <studentkarnamedialog.h>
 
 namespace Ui {
 class StudentMainDialog;
@@ -30,12 +31,15 @@ private slots:
 
     void on_pushButton_barnameClass_clicked();
 
+    void on_pushButton_karname_clicked();
+
 private:
     Ui::StudentMainDialog *ui;
     StudentChangePasswordDialog *stuChangeDialog;
     ShowStudentEraeListDialog *showStuEraListDialog;
     StudentEntekhabVahedDialog *stuEntekhabDialog;
     StudentBarnameClassDialog *stuBarnameDialog;
+    StudentKarnameDialog *stuKarnameDialog;
 };
 
 #endif // STUDENTMAINDIALOG_H
