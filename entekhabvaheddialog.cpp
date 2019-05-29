@@ -165,6 +165,5 @@ void EntekhabVahedDialog::on_pushButton_apply_clicked()
                     }
             }
     }
-
 }
 
