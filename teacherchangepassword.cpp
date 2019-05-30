@@ -17,7 +17,6 @@ void TeacherChangePassword::on_pushButton_2_clicked()
 {
     this->close();
 }
-<<<<<<< HEAD
 
 void TeacherChangePassword::on_pushButton_Exit_clicked()
 {
@@ -64,5 +63,3 @@ void TeacherChangePassword::on_pushButton_ChangePass_clicked()
         ui->lineEdit_newPass->clear();
         ui->lineEdit_repeatNewPass->clear();
 }
-=======
->>>>>>> refs/remotes/vozhde3/master

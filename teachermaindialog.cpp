@@ -166,9 +166,6 @@ void TeacherMainDialog::on_pushButton_SetScores_clicked()
         qry.bindValue(":lesscode" , SendJozveDialog::lessCode);
         if(qry.exec()){
             QMessageBox::information(this , "Done" , "نمره به روز رسانی شد");
-            qDebug() << ID_Stu ;
-            qDebug() << SendJozveDialog::lessCode ;
-            qDebug() << score ;
         }
         else {
             QMessageBox::information(this , "ERROR", "به روزرسانی نمره با مشکل روبرو شد !!!");
