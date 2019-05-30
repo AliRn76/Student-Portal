@@ -9,7 +9,7 @@ ShowStudentDialog::ShowStudentDialog(QWidget *parent) :
 
     qry = new QSqlQueryModel(this);
 
-    qry->setQuery("Select StudentCode as 'شماره دانشجویی', FirstName + ' ' + LastName as 'نام', FathersName as 'نام پدر', NationalCode as 'کد ملی', Age as 'سن', SaalVoroud as 'سال ورود' \
+    qry->setQuery("Select StudentCode as 'شماره دانشجویی', FirstName + ' ' + LastName as 'نام', FathersName as 'نام پدر', NationalCode as 'کد ملی', Age as 'سن', SaalVoroud as 'سال ورود', Password as 'رمز عبور' \
                    From student.dbo.tblPerson , student.dbo.tblStudent \
                    Where tblPerson.ID = tblStudent.ID");
     ui->treeView->setModel(qry);
