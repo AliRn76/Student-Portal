@@ -95,7 +95,7 @@ void StudentEntekhabVahedDialog::on_pushButton_3_clicked()
     qryModel2 = new QSqlQueryModel(this);
 
     if(ui->lineEdit->text().toInt()){
-        qry1.prepare("Select tblErae.ID, Title, FirstName + " " + LastName, DaysOfWeek, TimeOfClass \
+        qry1.prepare("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
                       From Student.dbo.tblPerson, \
                             Student.dbo.tblErae, \
                             Student.dbo.tblTeacher, \
@@ -119,7 +119,7 @@ void StudentEntekhabVahedDialog::on_pushButton_3_clicked()
             ui->label_time->setText(qry1.value(4).toString());
         }
     }else{
-        strQry = "Select Distinct tblErae.ID, Title , FirstName + ' ' + LastName, DaysOfWeek, TimeOfClass \
+        strQry = "Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
                   From Student.dbo.tblPerson, \
                        Student.dbo.tblErae, \
                        Student.dbo.tblTeacher, \
