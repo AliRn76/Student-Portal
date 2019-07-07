@@ -23,7 +23,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>ورود</string>
+   <string>Login</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:rgb(156, 180, 204)</string>
@@ -38,9 +38,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>540</x>
+      <x>550</x>
       <y>10</y>
-      <width>120</width>
+      <width>101</width>
       <height>41</height>
      </rect>
     </property>
@@ -51,7 +51,10 @@
      </font>
     </property>
     <property name="text">
-     <string>پرتال دانشجویی</string>
+     <string>پرتال دانشگاه</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QTextBrowser" name="textBrowser">
@@ -80,9 +83,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>200</y>
-      <width>351</width>
+      <x>651</x>
+      <y>201</y>
+      <width>421</width>
       <height>101</height>
      </rect>
     </property>
@@ -91,6 +94,12 @@ p, li { white-space: pre-wrap; }
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QLineEdit" name="lineEdit_username">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: white;</string>
          </property>
@@ -98,6 +107,12 @@ p, li { white-space: pre-wrap; }
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_password">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="contextMenuPolicy">
           <enum>Qt::DefaultContextMenu</enum>
          </property>
@@ -179,76 +194,38 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QPushButton" name="pushButton_login">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>400</y>
-      <width>351</width>
-      <height>35</height>
+      <x>940</x>
+      <y>410</y>
+      <width>131</width>
+      <height>33</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QPushButton" name="pushButton_teacher">
-       <property name="font">
-        <font>
-         <family>B Nazanin</family>
-         <pointsize>9</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(91, 91, 91);
-color: rgb(214, 214, 214);</string>
-       </property>
-       <property name="text">
-        <string>ورود اساتید</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_manager">
-       <property name="font">
-        <font>
-         <family>B Nazanin</family>
-         <pointsize>9</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(91, 91, 91);
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>B Nazanin</family>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(111, 111, 111);
 color: rgb(214, 214, 214);
-background-image: qradialgradient(spread: pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+
 </string>
-       </property>
-       <property name="text">
-        <string>ورود مسئول آموزش</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_stu">
-       <property name="font">
-        <font>
-         <family>B Nazanin</family>
-         <pointsize>9</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(91, 91, 91);
-color: rgb(214, 214, 214);</string>
-       </property>
-       <property name="text">
-        <string>ورود دانشجویان</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </property>
+    <property name="text">
+     <string>ورود</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -267,11 +244,26 @@ color: rgb(214, 214, 214);</string>
  <tabstops>
   <tabstop>lineEdit_username</tabstop>
   <tabstop>lineEdit_password</tabstop>
-  <tabstop>pushButton_teacher</tabstop>
-  <tabstop>pushButton_manager</tabstop>
-  <tabstop>pushButton_stu</tabstop>
+  <tabstop>pushButton_login</tabstop>
   <tabstop>textBrowser</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>lineEdit_password</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_login</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>733</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>969</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
