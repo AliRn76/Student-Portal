@@ -267,11 +267,28 @@ color: rgb(214, 214, 214);</string>
  <tabstops>
   <tabstop>lineEdit_username</tabstop>
   <tabstop>lineEdit_password</tabstop>
-  <tabstop>pushButton_teacher</tabstop>
   <tabstop>pushButton_manager</tabstop>
   <tabstop>pushButton_stu</tabstop>
+  <tabstop>pushButton_teacher</tabstop>
   <tabstop>textBrowser</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>lineEdit_password</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_manager</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>802</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>882</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

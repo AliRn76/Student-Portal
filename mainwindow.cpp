@@ -46,10 +46,10 @@ void MainWindow::on_pushButton_manager_clicked()
         }else if(strPassword == "شیئهد"){
             QMessageBox::warning(this, "هشدار", "زبان سیستم خود را به انگلیسی تغییر دهید.");
         }else{
-            QMessageBox::warning(this, "warning", "رمز عبور یا نام کاربری وارد شده صحیح نمیباشد.");
+            QMessageBox::warning(this, "خطا", "نام کاربری یا رمز عبور وارد شده صحیح نمیباشد.");
         }
     }else{
-        QMessageBox::warning(this, "warning", "رمز عبور یا نام کاربری وارد شده صحیح نمیباشد.");
+        QMessageBox::warning(this, "خطا", "نام کاربری یا رمز عبور وارد شده صحیح نمیباشد.");
     }
 }
 
@@ -72,7 +72,7 @@ void MainWindow::on_pushButton_teacher_clicked()
         }
 
     }else{
-        QMessageBox::warning(this, "warning", "رمز عبور وارد شده صحیح نمیباشد.");
+        QMessageBox::warning(this, "خطا", "رمز عبور وارد شده صحیح نمیباشد.");
     }
 }
 
@@ -94,9 +94,9 @@ void MainWindow::on_pushButton_stu_clicked()
             stuMainDialog = new StudentMainDialog(this);
             stuMainDialog->show();
         }else{
-            QMessageBox::warning(this, "warning", "رمز عبور یا نام کاربری وارد شده صحیح نمیباشد.");
+            QMessageBox::warning(this, "خطا", "نام کاربری یا رمز عبور وارد شده صحیح نمیباشد.");
         }
     }else{
-        QMessageBox::warning(this, "warning", "رمز عبور یا نام کاربری وارد شده صحیح نمیباشد.");
+        QMessageBox::warning(this, "خطا", "نام کاربری یا رمز عبور وارد شده صحیح نمیباشد.");
     }
 }
