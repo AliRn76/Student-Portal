@@ -139,7 +139,7 @@ color:white;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -472,12 +472,28 @@ color:white;</string>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>192</x>
-     <y>427</y>
+     <x>193</x>
+     <y>529</y>
     </hint>
     <hint type="destinationlabel">
      <x>69</x>
      <y>404</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_stuCode</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_search</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>119</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>279</x>
+     <y>237</y>
     </hint>
    </hints>
   </connection>

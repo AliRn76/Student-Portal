@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>ثبت دانشجو</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -133,7 +133,7 @@ color: white;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -198,6 +198,19 @@ color: white;</string>
           </property>
           <property name="maxLength">
            <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_fathersName">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: white;</string>
           </property>
          </widget>
         </item>
@@ -714,19 +727,6 @@ color: white;</string>
          </layout>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_fathersName">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: white;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QComboBox" name="comboBox_field">
           <property name="minimumSize">
            <size>
@@ -971,6 +971,21 @@ color: white;</string>
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>B Koodak</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>نام پدر :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="label_7">
           <property name="font">
            <font>
@@ -997,21 +1012,6 @@ color: white;</string>
           </property>
           <property name="text">
            <string>سال ورود :</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_3">
-          <property name="font">
-           <font>
-            <family>B Koodak</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>نام پدر :</string>
           </property>
          </widget>
         </item>
@@ -1128,6 +1128,22 @@ color: white;</string>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_name</tabstop>
+  <tabstop>lineEdit_lastName</tabstop>
+  <tabstop>lineEdit_nationalCode</tabstop>
+  <tabstop>comboBox_rouz</tabstop>
+  <tabstop>comboBox_maah</tabstop>
+  <tabstop>comboBox_saal</tabstop>
+  <tabstop>lineEdit_saalevoroud</tabstop>
+  <tabstop>checkBox_bahmani</tabstop>
+  <tabstop>comboBox_field</tabstop>
+  <tabstop>radioButton_male</tabstop>
+  <tabstop>radioButton_female</tabstop>
+  <tabstop>pushButton_add</tabstop>
+  <tabstop>pushButton_showAllStu</tabstop>
+  <tabstop>pushButton_back</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -1137,8 +1153,8 @@ color: white;</string>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>252</x>
-     <y>522</y>
+     <x>180</x>
+     <y>551</y>
     </hint>
     <hint type="destinationlabel">
      <x>85</x>
