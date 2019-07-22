@@ -16,8 +16,9 @@ class TeacherMainDialog : public QDialog
 
 public:
     int NumberOfRow_Lesson ;
-    int NumberOfRow_Student;
-    QString StuCode ;
+    QString LessonCode;
+
+
     explicit TeacherMainDialog(QWidget *parent = nullptr);
     ~TeacherMainDialog();
 
@@ -32,11 +33,11 @@ private slots:
 
     void on_tableView_Lesson_clicked(const QModelIndex &index);
 
-    void on_tableView_Student_clicked(const QModelIndex &index);
+//    void on_tableView_Student_clicked(const QModelIndex &index);
 
-    void on_pushButton_Guide_clicked();
+    void on_pushButton_SetScore_clicked();
 
-    void on_pushButton_SetScores_clicked();
+//    void on_pushButton_SetScores_clicked();
 
     void on_radioButton_Day_clicked();
 
