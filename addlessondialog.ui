@@ -494,5 +494,37 @@ color: white</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>lineEdit_title</sender>
+   <signal>returnPressed()</signal>
+   <receiver>comboBox_tedadVahed</receiver>
+   <slot>raise()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>752</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>741</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_tedadVahed</sender>
+   <signal>activated(QString)</signal>
+   <receiver>comboBox_type</receiver>
+   <slot>raise()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>648</x>
+     <y>190</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>636</x>
+     <y>253</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>

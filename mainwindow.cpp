@@ -28,77 +28,63 @@ QString SendJozveDialog::lessCode;
 QString ShowClassMembers::LessonCode;
 QString ShowClassMembers::LessonName ;
 
-void MainWindow::on_pushButton_manager_clicked()
-{
-    QString strUsername = ui->lineEdit_username->text();
-    QString strPassword = ui->lineEdit_password->text();
-
-    EmployeeChangePasswordDialog::strUserEmp = strUsername;
-
-    QSqlQuery qry;
-
-    qry.prepare("Select Password From Student.dbo.tblEmployee \
-                 Where tblEmployee.EmployeeCode = :username");
-                qry.bindValue(":username", strUsername);
-                qry.exec();
-    if(qry.next()){
-        if(strPassword == qry.value(0).toString()){
-            emploMainDialog = new EmployeeMainDialog(this);
-            emploMainDialog->show();
-        }else if(strPassword == "شیئهد"){
-            QMessageBox::warning(this, "هشدار", "زبان سیستم خود را به انگلیسی تغییر دهید.");
-        }else{
-            QMessageBox::warning(this, "warning", "رمز عبور یا نام کاربری وارد شده صحیح نمیباشد.");
-        }
-    }else{
-        QMessageBox::warning(this, "warning", "رمز عبور یا نام کاربری وارد شده صحیح نمیباشد.");
-    }
-}
-
-void MainWindow::on_pushButton_teacher_clicked()
+void MainWindow::on_pushButton_login_clicked()
 {
     QString strUsername = ui->lineEdit_username->text();
     QString strPassword = ui->lineEdit_password->text();
 
     QSqlQuery qry;
-
-    qry.prepare("Select Password From Student.dbo.tblTeacher \
-                 Where tblTeacher.TeacherCode = :teachercode");
-                qry.bindValue(":teachercode", strUsername);
-                qry.exec();
-    if(qry.next()){
-        if(strPassword == qry.value(0).toString()){
-            TeacherChangePassword::strUserTeacher = strUsername;
-            teamaindialog = new TeacherMainDialog(this);
-            teamaindialog->show();
-        }
-
-    }else{
-        QMessageBox::warning(this, "warning", "رمز عبور وارد شده صحیح نمیباشد.");
-    }
-}
-
-void MainWindow::on_pushButton_stu_clicked()
-{
-    QString strUsername = ui->lineEdit_username->text();
-    QString strPassword = ui->lineEdit_password->text();
-
-    StudentChangePasswordDialog::strUserStu = strUsername;
-
-    QSqlQuery qry;
+    QSqlQuery qry2;
+    QSqlQuery qry3;
 
     qry.prepare("Select Password From Student.dbo.tblStudent \
                  Where tblStudent.StudentCode = :stucode");
                 qry.bindValue(":stucode", strUsername);
                 qry.exec();
+
     if(qry.next()){
         if(strPassword == qry.value(0).toString()){
+            StudentChangePasswordDialog::strUserStu = strUsername;
             stuMainDialog = new StudentMainDialog(this);
             stuMainDialog->show();
         }else{
-            QMessageBox::warning(this, "warning", "رمز عبور یا نام کاربری وارد شده صحیح نمیباشد.");
+            QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
         }
+
     }else{
-        QMessageBox::warning(this, "warning", "رمز عبور یا نام کاربری وارد شده صحیح نمیباشد.");
+        qry2.prepare("Select Password From Student.dbo.tblTeacher \
+                      Where tblTeacher.TeacherCode = :teachercode");
+                    qry2.bindValue(":teachercode", strUsername);
+                    qry2.exec();
+
+        if(qry2.next()){
+            if(strPassword == qry2.value(0).toString()){
+                TeacherChangePassword::strUserTeacher = strUsername;
+                teamaindialog = new TeacherMainDialog(this);
+                teamaindialog->show();
+            }else{
+                QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
+            }
+
+        }else{
+            qry3.prepare("Select Password From Student.dbo.tblEmployee \
+                          Where tblEmployee.EmployeeCode = :username");
+                        qry3.bindValue(":username", strUsername);
+                        qry3.exec();
+
+            if(qry3.next()){
+                if(strPassword == qry3.value(0).toString()){
+                    EmployeeChangePasswordDialog::strUserEmp = strUsername;
+                    emploMainDialog = new EmployeeMainDialog(this);
+                    emploMainDialog->show();
+                }else if(strPassword == "شیئهد"){
+                    QMessageBox::warning(this, "هشدار", "زبان سیستم خود را به انگلیسی تغییر دهید.");
+                }else{
+                    QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
+                }
+            }else{
+                QMessageBox::warning(this, "خطا", "نام کاربری وارد شده معتبر نمیباشد.");
+            }
+        }
     }
 }

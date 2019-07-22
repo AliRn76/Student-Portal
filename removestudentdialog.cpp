@@ -78,12 +78,6 @@ void RemoveStudentDialog::on_pushButton_remove_clicked()
     QString currID;
     QString strQry;
 
-    ui->label_name->clear();
-    ui->label_stuCode->clear();
-    ui->label_fathersName->clear();
-    ui->label_nationalCode->clear();
-    ui->label_field->clear();
-
     if(!(ui->label_stuCode->text().isEmpty())){
         stuCode = ui->label_stuCode->text();
 
@@ -112,6 +106,12 @@ void RemoveStudentDialog::on_pushButton_remove_clicked()
     }else{
         QMessageBox::warning(this, "Warning", "لطفا اول یک کد دانشجویی را جستجو کنید.");
     }
+
+    ui->label_name->clear();
+    ui->label_stuCode->clear();
+    ui->label_fathersName->clear();
+    ui->label_nationalCode->clear();
+    ui->label_field->clear();
 }
 
 void RemoveStudentDialog::on_pushButton_showAllStu_clicked()
