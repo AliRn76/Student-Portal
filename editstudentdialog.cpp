@@ -36,7 +36,8 @@ void EditStudentDialog::on_pushButton_search_clicked()
                        From Student.dbo.tblPerson , Student.dbo.tblStudent \
                        Where tblPerson.ID = tblStudent.ID AND( Student.dbo.tblStudent.StudentCode like '" + strStuCode + "%' OR \
                        Student.dbo.tblPerson.Firstname like N'" + strStuCode + "%' OR \
-                       Student.dbo.tblPerson.Lastname like N'" + strStuCode + "%' )");
+                       Student.dbo.tblPerson.Lastname like N'" + strStuCode + "%' OR \
+                       Student.dbo.tblPerson.Firstname + ' ' + Student.dbo.tblPerson.Lastname like N'" + strStuCode + "%')");
 
         if(qry.numRowsAffected() != 0){
             if(qry.numRowsAffected() > 1){

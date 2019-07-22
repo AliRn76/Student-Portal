@@ -17,11 +17,12 @@ void EntekhabVahedDialog::on_pushButton_findStu_clicked()
 {
     ui->label_stuCode->clear();
     ui->label_stuName->clear();
+    ui->label_fieldStu->clear();
 
-    QString arrStr[3];
+    QString arrStr[4];
     QString strStuCode = ui->lineEdit_stuCode->text();
 
-    QSqlQuery qry("Select FirstName, LastName, StudentCode \
+    QSqlQuery qry("Select FirstName, LastName, StudentCode, Field \
                    From Student.dbo.tblStudent, Student.dbo.tblPerson \
                    Where tblStudent.ID = tblPerson.ID AND ( \
                    tblStudent.StudentCode like '" + strStuCode + "%' OR \
@@ -32,12 +33,13 @@ void EntekhabVahedDialog::on_pushButton_findStu_clicked()
     if(qry.numRowsAffected() != 0){
         if(qry.numRowsAffected() == 1){
             while(qry.next()){
-                for(int i=0 ; i<3 ; i++){
+                for(int i=0 ; i<4 ; i++){
                     arrStr[i] = qry.value(i).toString();
                 }
             }
             ui->label_stuName->setText(arrStr[0] + " " + arrStr[1]);
             ui->label_stuCode->setText(arrStr[2]);
+            ui->label_fieldStu->setText(arrStr[3]);
         }else{
             QMessageBox::warning(this, "warning", "بیشتر از یک مورد وجود دارد.");
         }
@@ -57,6 +59,7 @@ void EntekhabVahedDialog::on_pushButton_findLesson_clicked()
     ui->label_lessonName->clear();
     ui->label_roozeHafte->clear();
     ui->label_time->clear();
+    ui->label_fieldLess->clear();
 
     QString entekhabID;
     QSqlQuery qry1;
@@ -68,10 +71,12 @@ void EntekhabVahedDialog::on_pushButton_findLesson_clicked()
 
     }else{
         if(entekhabID.toInt()){
-            qry1.prepare("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass \
+            qry1.prepare("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field \
                          From Student.dbo.tblLesson, Student.dbo.tblErae \
                          Where tblErae.ID_Lesson = tblLesson.ID \
+                         AND tblLesson.Field = :fieldless \
                          AND tblErae.ID = :entekhabID");
+                    qry1.bindValue(":fieldless", ui->label_fieldStu->text());
                     qry1.bindValue(":entekhabID", entekhabID);
                     qry1.exec();
 
@@ -81,9 +86,11 @@ void EntekhabVahedDialog::on_pushButton_findLesson_clicked()
                         ui->label_lessonName->setText(qry1.value(1).toString());
                         ui->label_roozeHafte->setText(qry1.value(2).toString());
                         ui->label_time->setText(qry1.value(3).toString());
+                        ui->label_fieldLess->setText(qry1.value(4).toString());
                 }
             }else{
                 QMessageBox::warning(this, "خطا", "لطفا یک مشخصه صحیح وارد کنید.");
+                qDebug()<<qry1.lastError().text();
             }
         }else{
             QMessageBox::warning(this, "Warning", "لطفا یک مشخصه صحیح وارد کنید.");
@@ -160,6 +167,8 @@ void EntekhabVahedDialog::on_pushButton_apply_clicked()
                             ui->label_lessonName->clear();
                             ui->label_roozeHafte->clear();
                             ui->label_time->clear();
+                            ui->label_fieldStu->clear();
+                            ui->label_fieldLess->clear();
                     }else{
                         QMessageBox::warning(this, "Warning", "انتخاب درس با شکست مواجه شد.");
                     }

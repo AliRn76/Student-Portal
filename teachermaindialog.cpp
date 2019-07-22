@@ -78,15 +78,15 @@ void TeacherMainDialog::on_pushButton_refresh_clicked()
     model->setQuery(qry1);
     ui->tableView_Lesson->setModel(model);
     //---------------------------------------------------
-    QSqlQuery qry;
-    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
-                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
-                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
-            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
-    qry.exec();
-    this->model = new QSqlQueryModel();
-    model->setQuery(qry);
-    ui->tableView_Student->setModel(model);
+//    QSqlQuery qry;
+//    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
+//                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
+//                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
+//            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
+//    qry.exec();
+//    this->model = new QSqlQueryModel();
+//    model->setQuery(qry);
+//    ui->tableView_Student->setModel(model);
 }
 
 void TeacherMainDialog::on_tableView_Lesson_clicked(const QModelIndex &index)
@@ -106,40 +106,47 @@ void TeacherMainDialog::on_tableView_Lesson_clicked(const QModelIndex &index)
 
     qry1.seek(NumberOfRow_Lesson);
     SendJozveDialog::lessCode = qry1.value(2).toString();
+    ShowClassMembers::LessonName =qry1.value(0).toString();
+    ShowClassMembers::LessonCode = qry1.value(2).toString();
+    LessonCode = qry1.value(1).toString();
+    ui->label_name_2->setText(ShowClassMembers::LessonName);
+    ui->label_ID->setText(ShowClassMembers::LessonCode);
+    ui->label_code->setText(LessonCode);
 
 //--------------------------------------------------------
-    QSqlQuery qry;
-    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
-                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
-                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
-            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
-    qry.exec();
-    this->model = new QSqlQueryModel();
-    model->setQuery(qry);
-    ui->tableView_Student->setModel(model);
+//    QSqlQuery qry;
+//    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
+//                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
+//                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
+//            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
+//    qry.exec();
+//    this->model = new QSqlQueryModel();
+//    model->setQuery(qry);
+//    ui->tableView_Student->setModel(model);
 }
 
-void TeacherMainDialog::on_tableView_Student_clicked(const QModelIndex &index)
-{
-    NumberOfRow_Student = index.row();
-    QSqlQuery qry;
-    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
-                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
-                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
-            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
-    qry.exec();
-    this->model = new QSqlQueryModel();
-    model->setQuery(qry);
-    ui->tableView_Student->setModel(model);
-    qry.seek(NumberOfRow_Student);
-    StuCode = qry.value(1).toString();
-}
+//void TeacherMainDialog::on_tableView_Student_clicked(const QModelIndex &index)
+//{
+//    NumberOfRow_Student = index.row();
+//    QSqlQuery qry;
+//    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
+//                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
+//                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
+//            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
+//    qry.exec();
+//    this->model = new QSqlQueryModel();
+//    model->setQuery(qry);
+//    ui->tableView_Student->setModel(model);
+//    qry.seek(NumberOfRow_Student);
+//    StuCode = qry.value(1).toString();
+//}
 
-void TeacherMainDialog::on_pushButton_Guide_clicked()
+void TeacherMainDialog::on_pushButton_SetScore_clicked()
 {
     showClass = new ShowClassMembers(this);
     showClass->show();
 }
+<<<<<<< HEAD
 void TeacherMainDialog::on_pushButton_SetScores_clicked()
 {
     if(ui->lineEdit_Score->text().isEmpty()){
@@ -173,6 +180,44 @@ void TeacherMainDialog::on_pushButton_SetScores_clicked()
 
     }
 }
+=======
+//void TeacherMainDialog::on_pushButton_SetScores_clicked()
+//{
+//    if(ui->lineEdit_Score->text().isEmpty()){
+//        QMessageBox::information(this , "Error","دانشجوی موردنظر را انتخاب کرده و نمره را وارد کنید");
+//    }
+//    else {
+
+//        QString score = ui->lineEdit_Score->text();
+//        QSqlQuery qry;
+//        QSqlQuery qry1;
+
+//        QString ID_Stu;
+
+//        qry1.prepare("SELECT ID from Student.dbo.tblStudent where StudentCode = :stucode");
+//        qry1.bindValue(":stucode", StuCode);
+//        qry1.exec();
+//        if(qry1.next()){
+//            ID_Stu = qry1.value(0).toString();
+//        }
+
+//        qry.prepare("UPDATE Student.dbo.tblEntekhabVahed set Score = :score where ID_Erae = :lesscode and ID_Student = :id_stu");
+//        qry.bindValue(":score", score);
+//        qry.bindValue(":id_stu" , ID_Stu);
+//        qry.bindValue(":lesscode" , SendJozveDialog::lessCode);
+//        if(qry.exec()){
+//            QMessageBox::information(this , "Done" , "نمره به روز رسانی شد");
+//            qDebug() << ID_Stu ;
+//            qDebug() << SendJozveDialog::lessCode ;
+//            qDebug() << score ;
+//        }
+//        else {
+//            QMessageBox::information(this , "ERROR", "به روزرسانی نمره با مشکل روبرو شد !!!");
+//        }
+
+//    }
+//}
+>>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
 
 void TeacherMainDialog::on_radioButton_Day_clicked()
 {

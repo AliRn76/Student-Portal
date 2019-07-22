@@ -25,6 +25,12 @@
    <layout class="QHBoxLayout" name="horizontalLayout_5">
     <item>
      <widget class="QPushButton" name="pushButton_back">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -56,17 +62,28 @@ color: white</string>
      </spacer>
     </item>
     <item>
-     <spacer name="horizontalSpacer_6">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
+     <widget class="QPushButton" name="pushButton_showAllStudent">
+      <property name="minimumSize">
        <size>
-        <width>40</width>
-        <height>20</height>
+        <width>100</width>
+        <height>30</height>
        </size>
       </property>
-     </spacer>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(136, 182, 204)</string>
+      </property>
+      <property name="text">
+       <string>نمایش تمام دانشجو ها</string>
+      </property>
+     </widget>
     </item>
     <item>
      <spacer name="horizontalSpacer_7">
@@ -83,6 +100,12 @@ color: white</string>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_apply">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>B Nazanin</family>
@@ -118,6 +141,12 @@ color: white</string>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="pushButton_search">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <family>B Nazanin</family>
@@ -201,54 +230,6 @@ color: white</string>
       <property name="sizeHint" stdset="0">
        <size>
         <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QPushButton" name="pushButton_showAllStudent">
-        <property name="font">
-         <font>
-          <family>B Nazanin</family>
-          <pointsize>9</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(136, 182, 204)</string>
-        </property>
-        <property name="text">
-         <string>نمایش تمام دانشجو ها</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_14">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>29</width>
-          <height>22</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>318</width>
         <height>20</height>
        </size>
       </property>
@@ -767,7 +748,6 @@ color: white</string>
  <tabstops>
   <tabstop>lineEdit</tabstop>
   <tabstop>pushButton_search</tabstop>
-  <tabstop>pushButton_showAllStudent</tabstop>
   <tabstop>lineEdit_name</tabstop>
   <tabstop>lineEdit_lastname</tabstop>
   <tabstop>comboBox_gender</tabstop>
