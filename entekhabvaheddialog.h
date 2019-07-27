@@ -19,8 +19,13 @@ public:
     QString entekhabID;
     QString lessonName;
     QString roozeHafte;
-    QString time;
     QString fieldLesson;
+    QString stuName;
+    QString stuCode;
+    QString fathersName;
+    QString saat;
+    QString teacherName;
+    QString saalVoroud;
 
     explicit EntekhabVahedDialog(QWidget *parent = nullptr);
     ~EntekhabVahedDialog();
@@ -39,11 +44,14 @@ private slots:
 
     void on_pushButton_backPage2_clicked();
 
+    void on_tableView_lesson_clicked(const QModelIndex &index);
+
 private:
     Ui::EntekhabVahedDialog *ui;
     ShowStudentDialog *showStuDialog;
     ShowEraeListDialog *showEraeDialog;
     QSqlQueryModel *qryModelLesson;
+    QSqlQueryModel *qryModeStu;
 };
 
 #endif // ENTEKHABVAHEDDIALOG_H
