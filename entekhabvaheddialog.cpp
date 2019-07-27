@@ -12,9 +12,10 @@ EntekhabVahedDialog::~EntekhabVahedDialog()
 {
     delete ui;
 }
-
+/*
 void EntekhabVahedDialog::on_pushButton_findStu_clicked()
 {
+
     ui->label_stuCode->clear();
     ui->label_stuName->clear();
     ui->label_fieldStu->clear();
@@ -55,59 +56,7 @@ void EntekhabVahedDialog::on_pushButton_findStu_clicked()
 
 void EntekhabVahedDialog::on_pushButton_findLesson_clicked()
 {
-    ui->label_entekhabID->clear();
-    ui->label_lessonName->clear();
-    ui->label_roozeHafte->clear();
-    ui->label_time->clear();
-    ui->label_fieldLess->clear();
 
-    QString entekhabID;
-    QSqlQuery qry1;
-
-    entekhabID = ui->lineEdit_entekhabID->text();
-
-    if(entekhabID.isEmpty()){
-        QMessageBox::warning(this, "warning", "ابتدا یک مشخصه وارد کنید.");
-
-    }else{
-        if(entekhabID.toInt()){
-            qry1.prepare("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field \
-                         From Student.dbo.tblLesson, Student.dbo.tblErae \
-                         Where tblErae.ID_Lesson = tblLesson.ID \
-                         AND tblLesson.Field = :fieldless \
-                         AND tblErae.ID = :entekhabID");
-                    qry1.bindValue(":fieldless", ui->label_fieldStu->text());
-                    qry1.bindValue(":entekhabID", entekhabID);
-                    qry1.exec();
-
-            if(qry1.numRowsAffected() != 0){
-                while(qry1.next()){
-                        ui->label_entekhabID->setText(qry1.value(0).toString());
-                        ui->label_lessonName->setText(qry1.value(1).toString());
-                        ui->label_roozeHafte->setText(qry1.value(2).toString());
-                        ui->label_time->setText(qry1.value(3).toString());
-                        ui->label_fieldLess->setText(qry1.value(4).toString());
-                }
-            }else{
-                QMessageBox::warning(this, "خطا", "لطفا یک مشخصه صحیح وارد کنید.");
-                qDebug()<<qry1.lastError().text();
-            }
-        }else{
-            QMessageBox::warning(this, "Warning", "لطفا یک مشخصه صحیح وارد کنید.");
-        }
-    }
-}
-
-void EntekhabVahedDialog::on_pushButton_showStu_clicked()
-{
-    showStuDialog = new ShowStudentDialog(this);
-    showStuDialog->show();
-}
-
-void EntekhabVahedDialog::on_pushButton_showErae_clicked()
-{
-    showEraeDialog = new ShowEraeListDialog(this);
-    showEraeDialog->show();
 }
 
 void EntekhabVahedDialog::on_pushButton_apply_clicked()
@@ -174,5 +123,93 @@ void EntekhabVahedDialog::on_pushButton_apply_clicked()
                     }
             }
     }
+
+}
+*/
+
+
+void EntekhabVahedDialog::on_pushButton_showErae_2_clicked()
+{
+    showEraeDialog = new ShowEraeListDialog(this);
+    showEraeDialog->show();
 }
 
+void EntekhabVahedDialog::on_pushButton_showStu_2_clicked()
+{
+    showStuDialog = new ShowStudentDialog(this);
+    showStuDialog->show();
+}
+
+void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
+{
+//    ui->label_entekhabID->clear();
+//    ui->label_lessonName->clear();
+//    ui->label_roozeHafte->clear();
+//    ui->label_time->clear();
+//    ui->label_fieldLess->clear();
+
+    QSqlQuery qry1;
+    fieldLesson = ui->comboBox_field->currentText();
+    entekhabID = ui->lineEdit_entekhabID_2->text();
+
+    if(entekhabID.isEmpty()){
+        QMessageBox::warning(this, "warning", "ابتدا یک مشخصه وارد کنید.");
+
+    }else{
+        qryModelLesson = new QSqlQueryModel(this);
+        qryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
+                                 From Student.dbo.tblLesson, Student.dbo.tblErae, Student.dbo.tblTeacher \
+                                 Where tblErae.ID_Lesson = tblLesson.ID \
+                                 AND tblLesson.Field = N'" + fieldLesson + "' \
+                                 AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
+
+        ui->tableView_lesson->setModel(qryModelLesson);
+        ui->tableView_lesson->resizeRowToContents(1);
+        ui->tableView_lesson->setColumnWidth(0,75);
+        ui->tableView_lesson->setColumnWidth(2,100);
+        ui->tableView_lesson->setColumnWidth(4,350);
+        ui->tableView_lesson->setWordWrap(false);
+
+                qDebug()<< qryModelLesson->lastError().text();
+        qDebug() << entekhabID;
+   /*
+            qry1.prepare("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field \
+                         From Student.dbo.tblLesson, Student.dbo.tblErae \
+                         Where tblErae.ID_Lesson = tblLesson.ID \
+                         AND tblLesson.Field = :fieldless \
+                         AND tblErae.ID = :entekhabID");
+                    qry1.bindValue(":fieldless", fieldLess);
+                    qry1.bindValue(":entekhabID", entekhabId);
+                    qry1.exec();
+
+            if(qry1.numRowsAffected() != 0){
+                while(qry1.next()){
+                        entekhabID = qry1.value(0).toString();
+                        lessonName = qry1.value(1).toString();
+                        roozeHafte = qry1.value(2).toString();
+                        time = qry1.value(3).toString();
+                        field = qry1.value(4).toString();
+                }
+            }else{
+                QMessageBox::warning(this, "خطا", "لطفا یک مشخصه صحیح وارد کنید.");
+                qDebug()<<qry1.lastError().text();
+            }
+            */
+
+    }
+}
+
+void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
+{
+
+}
+
+void EntekhabVahedDialog::on_pushButton_continue_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void EntekhabVahedDialog::on_pushButton_backPage2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
