@@ -15,8 +15,12 @@ RemoveEntekhabVahed2Dialog::RemoveEntekhabVahed2Dialog(QWidget *parent) :
         }
 
     QString strQry = "Select tblErae.ID as 'مشخصه درس', Title as 'نام درس', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت' \
-            From Student.dbo.tblPerson, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblErae, Student.dbo.tblEntekhabVahed \
-            Where tblPerson.ID = tblTeacher.ID AND tblLesson.ID = tblErae.ID_Lesson AND tblErae.ID_Teacher = tblTeacher.ID AND tblEntekhabVahed.ID_Erae = tblErae.ID AND tblEntekhabVahed.ID_Student = " + stuID;
+                      From tblPerson, tblTeacher, tblLesson, tblErae, tblEntekhabVahed \
+                      Where tblPerson.ID = tblTeacher.ID AND \
+                            tblLesson.ID = tblErae.ID_Lesson AND \
+                            tblErae.ID_Teacher = tblTeacher.ID AND \
+                            tblEntekhabVahed.ID_Erae = tblErae.ID AND \
+                            tblEntekhabVahed.ID_Student = " + stuID;
 
     qryModel = new QSqlQueryModel(this);
 
@@ -41,8 +45,11 @@ void RemoveEntekhabVahed2Dialog::on_pushButton_choose_clicked()
     row = ui->treeView->currentIndex().row();
 
     qry.exec("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass \
-             From Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblErae, Student.dbo.tblEntekhabVahed \
-             Where tblLesson.ID = tblErae.ID_Lesson AND tblErae.ID_Teacher = tblTeacher.ID AND tblEntekhabVahed.ID_Erae = tblErae.ID AND tblEntekhabVahed.ID_Student = " + stuID );
+              From tblTeacher, tblLesson, tblErae, tblEntekhabVahed \
+              Where tblLesson.ID = tblErae.ID_Lesson AND \
+                    tblErae.ID_Teacher = tblTeacher.ID AND \
+                    tblEntekhabVahed.ID_Erae = tblErae.ID AND \
+                    tblEntekhabVahed.ID_Student = " + stuID );
 
     qry.seek(row);
 
@@ -56,8 +63,9 @@ void RemoveEntekhabVahed2Dialog::on_pushButton_remove_clicked()
 {
     QSqlQuery qry;
 
-    qry.prepare("Delete From Student.dbo.tblEntekhabVahed \
-                 Where ID_Erae = :iderae AND ID_Student = :idstu");
+    qry.prepare("Delete From tblEntekhabVahed \
+                 Where ID_Erae = :iderae AND \
+                       ID_Student = :idstu");
             qry.bindValue(":iderae", ui->label_entakhabID->text());
             qry.bindValue(":idstu", stuID);
 
@@ -65,8 +73,12 @@ void RemoveEntekhabVahed2Dialog::on_pushButton_remove_clicked()
             QMessageBox::information(this, "OK", "درس مورد نظر از دروس انتخاب شده حذف شد.");
 
             QString strQry = "Select tblErae.ID as 'مشخصه درس', Title as 'نام درس', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت' \
-                    From Student.dbo.tblPerson, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblErae, Student.dbo.tblEntekhabVahed \
-                    Where tblPerson.ID = tblTeacher.ID AND tblLesson.ID = tblErae.ID_Lesson AND tblErae.ID_Teacher = tblTeacher.ID AND tblEntekhabVahed.ID_Erae = tblErae.ID AND tblEntekhabVahed.ID_Student = " + stuID;
+                              From tblPerson, tblTeacher, tblLesson, tblErae, tblEntekhabVahed \
+                              Where tblPerson.ID = tblTeacher.ID AND \
+                                    tblLesson.ID = tblErae.ID_Lesson AND \
+                                    tblErae.ID_Teacher = tblTeacher.ID AND \
+                                    tblEntekhabVahed.ID_Erae = tblErae.ID AND \
+                                    tblEntekhabVahed.ID_Student = " + stuID;
 
             qryModel = new QSqlQueryModel(this);
 

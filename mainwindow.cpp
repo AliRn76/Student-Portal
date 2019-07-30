@@ -7,15 +7,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("mydsn32");
-    db.setHostName("localhost");
+//    db = QSqlDatabase::addDatabase("QODBC");
+//    db.setDatabaseName("mydsn32");
+//    db.setHostName("localhost");
 
-//    db = QSqlDatabase::addDatabase("QMYSQL");
-//    db.setHostName("se7enf98.ddns.net");
-//    db.setUserName("team");
-//    db.setPassword("portal98");
-//    db.setDatabaseName("Student");
+    db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("se7enf98.ddns.net");
+    db.setUserName("team");
+    db.setPassword("portal98");
+    db.setDatabaseName("Student");
 
     if(!db.open()){
         qDebug() << db.lastError().text();
@@ -42,7 +42,7 @@ void MainWindow::on_pushButton_login_clicked()
     QSqlQuery qry2;
     QSqlQuery qry3;
 
-    qry.prepare("Select Password From Student.dbo.tblStudent \
+    qry.prepare("Select Password From tblStudent \
                  Where tblStudent.StudentCode = :stucode");
                 qry.bindValue(":stucode", strUsername);
                 qry.exec();
@@ -57,7 +57,8 @@ void MainWindow::on_pushButton_login_clicked()
         }
 
     }else{
-        qry2.prepare("Select Password From Student.dbo.tblTeacher \
+        qry2.prepare("Select Password \
+                      From tblTeacher \
                       Where tblTeacher.TeacherCode = :teachercode");
                     qry2.bindValue(":teachercode", strUsername);
                     qry2.exec();
@@ -72,7 +73,8 @@ void MainWindow::on_pushButton_login_clicked()
             }
 
         }else{
-            qry3.prepare("Select Password From Student.dbo.tblEmployee \
+            qry3.prepare("Select Password \
+                          From tblEmployee \
                           Where tblEmployee.EmployeeCode = :username");
                         qry3.bindValue(":username", strUsername);
                         qry3.exec();

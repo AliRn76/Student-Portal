@@ -22,8 +22,9 @@ StudentMainDialog::StudentMainDialog(QWidget *parent) :
     StudentBarnameClassDialog::stuCodeBarname = userName;
 
     qry.prepare("Select FirstName, LastName, Field, tblStudent.ID \
-                 From Student.dbo.tblPerson, Student.dbo.tblStudent \
-                 Where tblPerson.ID = tblStudent.ID AND tblStudent.StudentCode = :stucode");
+                 From tblPerson, tblStudent \
+                 Where tblPerson.ID = tblStudent.ID AND \
+                       tblStudent.StudentCode = :stucode");
             qry.bindValue(":stucode", userName);
             qry.exec();
 

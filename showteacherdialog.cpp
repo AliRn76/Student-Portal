@@ -10,7 +10,7 @@ ShowTeacherDialog::ShowTeacherDialog(QWidget *parent) :
     qry = new QSqlQueryModel(this);
 
     qry->setQuery("Select TeacherCode as 'کد کارمندی', FirstName + ' ' + LastName as 'نام و نام خانوادگی', EducationDegree as 'مدرک تحصیلی', NationalCode as 'کد ملی', Age as 'سن', Password as 'رمز عبور' \
-                   From Student.dbo.tblPerson , Student.dbo.tblTeacher \
+                   From tblPerson , tblTeacher \
                    Where tblPerson.ID = tblTeacher.ID");
     ui->treeView->setModel(qry);
 }

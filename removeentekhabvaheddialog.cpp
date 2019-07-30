@@ -10,7 +10,7 @@ RemoveEntekhabVahedDialog::RemoveEntekhabVahedDialog(QWidget *parent) :
     qryModel = new QSqlQueryModel(this);
 
     qryModel->setQuery("Select StudentCode as 'شماره دانشجویی', FirstName + ' ' + LastName as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود' \
-                        From student.dbo.tblPerson , student.dbo.tblStudent \
+                        From tblPerson , tblStudent \
                         Where tblPerson.ID = tblStudent.ID");
 
             ui->treeView->setModel(qryModel);
@@ -37,10 +37,11 @@ void RemoveEntekhabVahedDialog::on_pushButton_search_clicked()
         QString strStuCode = ui->lineEdit_stuCode->text();
 
         QSqlQuery qry("Select StudentCode, FirstName, LastName \
-                       From Student.dbo.tblPerson , Student.dbo.tblStudent \
-                       Where tblPerson.ID = tblStudent.ID AND( Student.dbo.tblStudent.StudentCode like '" + strStuCode + "%' OR \
-                       Student.dbo.tblPerson.Firstname like N'" + strStuCode + "%' OR \
-                       Student.dbo.tblPerson.Lastname like N'" + strStuCode + "%' )");
+                       From tblPerson , tblStudent \
+                       Where tblPerson.ID = tblStudent.ID AND \
+                             ( tblStudent.StudentCode like '" + strStuCode + "%' OR \
+                               tblPerson.Firstname like N'" + strStuCode + "%' OR \
+                               tblPerson.Lastname like N'" + strStuCode + "%' )");
 
         if(qry.numRowsAffected() != 0){
             if(qry.numRowsAffected() > 1){
@@ -71,8 +72,8 @@ void RemoveEntekhabVahedDialog::on_pushButton_choose_clicked()
     row = ui->treeView->currentIndex().row();
 
     qry.exec("Select StudentCode, FirstName, LastName \
-             From student.dbo.tblPerson , student.dbo.tblStudent \
-             Where tblPerson.ID = tblStudent.ID");
+              From tblPerson , tblStudent \
+              Where tblPerson.ID = tblStudent.ID");
 
         qry.seek(row);
 

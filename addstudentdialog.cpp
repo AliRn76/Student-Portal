@@ -52,7 +52,7 @@ void AddStudentDialog::on_pushButton_add_clicked()
                 if(strNationalcode.length() != 10){
                     QMessageBox::warning(this, "خطا", "لطفا کد ملی خود را به صورت 10 رقمی وارد کنید.");
                 }else{
-                    qry1.prepare("Insert Into Student.dbo.tblPerson \
+                    qry1.prepare("Insert Into tblPerson \
                                  (FirstName, LastName, Nationalcode, Gender) \
                                  Values(:name, :lastname, :nationalcode, :gender)"); //  , :birthdate  ,BirthDate
                                 qry1.bindValue(":name", strName);
@@ -64,7 +64,7 @@ void AddStudentDialog::on_pushButton_add_clicked()
 
                     currentID = qry3.lastInsertId().toString();
 
-                    qry2.prepare("Insert Into Student.dbo.tblStudent \
+                    qry2.prepare("Insert Into tblStudent \
                                  (ID, FathersName, SaalVoroud, Password, Field) \
                                  Values(:id, :fathersname, :saalvoroud, :password, :field)");
                                 qry2.bindValue(":id" , currentID);
@@ -74,7 +74,7 @@ void AddStudentDialog::on_pushButton_add_clicked()
                                 qry2.bindValue(":field", strField);
 
                                 if(qry2.exec()){
-                                    qry4.prepare("Select StudentCode From Student.dbo.tblStudent \
+                                    qry4.prepare("Select StudentCode From tblStudent \
                                                   Where tblStudent.ID = :id");
                                             qry4.bindValue(":id", currentID);
                                             qry4.exec();

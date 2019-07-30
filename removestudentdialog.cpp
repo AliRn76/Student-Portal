@@ -38,12 +38,12 @@ void RemoveStudentDialog::on_pushButton_search_clicked()
         stuCode = ui->lineEdit_stuCode->text();
 
         QSqlQuery qry1("Select FathersName, StudentCode, FirstName, LastName, NationalCode, Field \
-                      From Student.dbo.tblStudent , Student.dbo.tblPerson \
-                      Where tblPerson.ID = tblStudent.ID AND ( \
-                      tblStudent.StudentCode like '" + stuCode +"%' OR \
-                      tblPerson.FirstName like N'" + stuCode + "%' OR \
-                      tblPerson.LastName like N'" + stuCode + "%' OR \
-                      tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + stuCode + "%')");
+                        From tblStudent , tblPerson \
+                        Where tblPerson.ID = tblStudent.ID AND \
+                              ( tblStudent.StudentCode like '" + stuCode +"%' OR \
+                                tblPerson.FirstName like N'" + stuCode + "%' OR \
+                                tblPerson.LastName like N'" + stuCode + "%' OR \
+                                tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + stuCode + "%')");
 
         if(qry1.numRowsAffected() == 0){
             QMessageBox::warning(this, "خطا" , "لطفا یک نام یا شماره دانشجویی صحیح وارد کنید.");
@@ -81,19 +81,21 @@ void RemoveStudentDialog::on_pushButton_remove_clicked()
     if(!(ui->label_stuCode->text().isEmpty())){
         stuCode = ui->label_stuCode->text();
 
-        strQry = "SELECT ID FROM Student.dbo.tblStudent WHERE Student.dbo.tblStudent.StudentCode = " + stuCode;
+        strQry = "SELECT ID \
+                  FROM tblStudent \
+                  WHERE tblStudent.StudentCode = " + stuCode;
 
         qry1.exec(strQry);
         while(qry1.next()){
             currID = qry1.value(0).toString();
         }
 
-        qry2.prepare("Delete From Student.dbo.tblStudent\
-                     Where Student.dbo.tblStudent.StudentCode = :stucode");
+        qry2.prepare("Delete From tblStudent\
+                      Where tblStudent.StudentCode = :stucode");
         qry2.bindValue(":stucode", stuCode);
         if(qry2.exec()){
-            qry3.prepare("Delete From Student.dbo.tblPerson \
-                         Where Student.dbo.tblPerson.ID = :id");
+            qry3.prepare("Delete From tblPerson \
+                         Where tblPerson.ID = :id");
             qry3.bindValue(":id", currID);
             if(qry3.exec()){
                 QMessageBox::information(this, "OK", "دانشجوی مورد نظر حذف شد.");

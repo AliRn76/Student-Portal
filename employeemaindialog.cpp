@@ -17,7 +17,7 @@ EmployeeMainDialog::EmployeeMainDialog(QWidget *parent) :
     int currentID;
 
     qry1.prepare("Select ID \
-                  From Student.dbo.tblEmployee \
+                  From tblEmployee \
                   Where tblEmployee.EmployeeCode = :empcode");
             qry1.bindValue(":empcode", cpyStrUser);
             qry1.exec();
@@ -26,7 +26,7 @@ EmployeeMainDialog::EmployeeMainDialog(QWidget *parent) :
     }
 
     qry2.prepare("Select FirstName, LastName \
-                  From Student.dbo.tblPerson \
+                  From tblPerson \
                   Where tblPerson.ID = :id");
             qry2.bindValue(":id", currentID);
             qry2.exec();

@@ -33,11 +33,11 @@ void EditStudentDialog::on_pushButton_search_clicked()
         QString strStuCode = ui->lineEdit->text();
 
         QSqlQuery qry("Select StudentCode, FirstName, LastName, Gender as 'Is Male', FathersName, NationalCode, BirthDate, SaalVoroud, Field \
-                       From Student.dbo.tblPerson , Student.dbo.tblStudent \
-                       Where tblPerson.ID = tblStudent.ID AND( Student.dbo.tblStudent.StudentCode like '" + strStuCode + "%' OR \
-                       Student.dbo.tblPerson.Firstname like N'" + strStuCode + "%' OR \
-                       Student.dbo.tblPerson.Lastname like N'" + strStuCode + "%' OR \
-                       Student.dbo.tblPerson.Firstname + ' ' + Student.dbo.tblPerson.Lastname like N'" + strStuCode + "%')");
+                       From tblPerson , tblStudent \
+                       Where tblPerson.ID = tblStudent.ID AND( tblStudent.StudentCode like '" + strStuCode + "%' OR \
+                       tblPerson.Firstname like N'" + strStuCode + "%' OR \
+                       tblPerson.Lastname like N'" + strStuCode + "%' OR \
+                       tblPerson.Firstname + ' ' + tblPerson.Lastname like N'" + strStuCode + "%')");
 
         if(qry.numRowsAffected() != 0){
             if(qry.numRowsAffected() > 1){
@@ -84,7 +84,7 @@ void EditStudentDialog::on_pushButton_apply_clicked()
             QString currID;
 
             strQry = "Select ID \
-                      From student.dbo.tblStudent \
+                      From tblStudent \
                       Where tblStudent.StudentCode = " + ui->label_stuCode->text();
 
             qry1.exec(strQry);
@@ -92,7 +92,7 @@ void EditStudentDialog::on_pushButton_apply_clicked()
                 currID = qry1.value(0).toString();
             }
 
-            qry2.prepare("Update Student.dbo.tblPerson \
+            qry2.prepare("Update tblPerson \
                           Set FirstName = :name, LastName = :lastname, NationalCode = :nationalcode, BirthDate = :birthdate, Gender = :gender \
                           Where tblPerson.ID = :id");
 
@@ -108,7 +108,7 @@ void EditStudentDialog::on_pushButton_apply_clicked()
             }
             qry2.exec();
 
-            qry3.prepare("Update Student.dbo.tblStudent \
+            qry3.prepare("Update tblStudent \
                           Set FathersName = :fathersname, SaalVoroud = :saalevoroud, Field = :field, Password = :password \
                           Where tblStudent.StudentCode = :stucode");
             qry3.bindValue(":stucode", ui->label_stuCode->text());

@@ -38,9 +38,9 @@ void RemoveLessonDialog::on_pushButton_search_clicked()
 
     }else {
         QSqlQuery qry1("Select Title, Type, LessonCode, Field, TedadVahed \
-                        From Student.dbo.tblLesson \
-                        Where Student.dbo.tblLesson.LessonCode like '" + lessCode + "' \
-                        OR Student.dbo.tblLesson.Title like N'" + lessCode +"'");
+                        From tblLesson \
+                        Where tblLesson.LessonCode like '" + lessCode + "' \
+                        OR tblLesson.Title like N'" + lessCode +"'");
 
         if(qry1.numRowsAffected() == 0 ){
            QMessageBox::warning(this, "خطا","هیچ درسی یافت نشد.");
@@ -76,8 +76,8 @@ void RemoveLessonDialog::on_pushButton_remove_clicked()
     if(!(ui->label_name->text().isEmpty())){
         lessonCode = ui->label_lessonCode->text();
 
-        qry1.prepare("Delete From Student.dbo.tblLesson \
-                      Where Student.dbo.tblLesson.LessonCode = :lessoncode");
+        qry1.prepare("Delete From tblLesson \
+                      Where tblLesson.LessonCode = :lessoncode");
         qry1.bindValue(":lessoncode", lessonCode);
 
         if(qry1.exec()){

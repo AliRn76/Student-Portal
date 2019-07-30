@@ -267,10 +267,10 @@ void EntekhabVahedDialog::on_tableView_lesson_clicked(const QModelIndex &index)
     QSqlQuery qry1;
 
     qry1.exec("Select Distinct tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field\
-              From Student.dbo.tblLesson, Student.dbo.tblErae, Student.dbo.tblTeacher \
-              Where tblErae.ID_Lesson = tblLesson.ID \
-              AND tblLesson.Field = N'" + fieldLesson + "' \
-              AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
+               From tblLesson, tblErae, tblTeacher \
+               Where tblErae.ID_Lesson = tblLesson.ID \
+               AND tblLesson.Field = N'" + fieldLesson + "' \
+               AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
 
     qry1.seek(index.row());
 
