@@ -62,8 +62,8 @@ void AddStudentDialog::on_pushButton_add_clicked()
                                // qry1.bindValue(":birthdate", birthDate);
                                 qry1.exec();
 
-                    currentID = qry3.lastInsertId().toString();
-
+                    currentID = qry1.lastInsertId().toString();
+                    qDebug() << currentID;
                     qry2.prepare("Insert Into tblStudent \
                                  (ID, FathersName, SaalVoroud, Password, Field) \
                                  Values(:id, :fathersname, :saalvoroud, :password, :field)");
@@ -91,6 +91,7 @@ void AddStudentDialog::on_pushButton_add_clicked()
                                     ui->lineEdit_saalevoroud->clear();
                                     ui->lineEdit_nationalCode->clear();
                                 }else{
+                                    qDebug()<< qry2.lastError().text();
                                     QMessageBox::warning(this, "خطا", "یه مشکلی پیش اومده ، برنامه رو نشون علی بده.");
                                 }
                 }
