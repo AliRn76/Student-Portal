@@ -50,7 +50,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QWidget" name="layoutWidget_4">
@@ -760,7 +760,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>860</x>
@@ -812,7 +812,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>640</x>
@@ -864,7 +864,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -916,7 +916,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>410</x>
@@ -968,7 +968,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>15</x>
@@ -1017,7 +1017,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>591</x>
@@ -1069,7 +1069,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>825</x>
@@ -1121,7 +1121,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>825</x>
@@ -1173,7 +1173,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>590</x>
@@ -1225,7 +1225,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>340</x>

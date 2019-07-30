@@ -10,6 +10,13 @@ MainWindow::MainWindow(QWidget *parent) :
     db = QSqlDatabase::addDatabase("QODBC");
     db.setDatabaseName("mydsn32");
     db.setHostName("localhost");
+
+//    db = QSqlDatabase::addDatabase("QMYSQL");
+//    db.setHostName("se7enf98.ddns.net");
+//    db.setUserName("team");
+//    db.setPassword("portal98");
+//    db.setDatabaseName("Student");
+
     if(!db.open()){
         qDebug() << db.lastError().text();
     }

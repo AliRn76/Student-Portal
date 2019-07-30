@@ -148,7 +148,6 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
                                  AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
 
         ui->tableView_lesson->setModel(qryModelLesson);
-        ui->tableView_lesson->resizeRowToContents(1);
         ui->tableView_lesson->setColumnWidth(0,75);
         ui->tableView_lesson->setColumnWidth(1,180);
         ui->tableView_lesson->setColumnWidth(2,90);
@@ -236,6 +235,14 @@ void EntekhabVahedDialog::on_pushButton_continue_clicked()
     ui->stackedWidget->setCurrentIndex(1);
     QSqlQuery qry1;
 
+    qry1.exec("Select FirstName + ' ' + LastName \
+               From Student.dbo.tblPerson, Student.dbo.tblTeacher, Student.dbo.tblErae \
+               Where tblErae.ID_Teacher = tblTeacher.ID AND \
+                     tblTeacher.ID = tblPerson.ID AND \
+                     tblErae.ID = " + entekhabID);
+
+    teacherName = qry1.value(0).toString();
+
     ui->label_field->setText(fieldLesson);
     ui->label_stuCode->setText(stuCode);
     ui->label_name->setText(stuName);
@@ -258,7 +265,6 @@ void EntekhabVahedDialog::on_pushButton_backPage2_clicked()
 void EntekhabVahedDialog::on_tableView_lesson_clicked(const QModelIndex &index)
 {
     QSqlQuery qry1;
-    QSqlQuery qry2;
 
     qry1.exec("Select Distinct tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field\
               From Student.dbo.tblLesson, Student.dbo.tblErae, Student.dbo.tblTeacher \
@@ -273,14 +279,6 @@ void EntekhabVahedDialog::on_tableView_lesson_clicked(const QModelIndex &index)
     roozeHafte = qry1.value(2).toString();
     saat = qry1.value(3).toString();
     fieldLesson = qry1.value(4).toString();
-
-    qry2.exec("Select FirstName + ' ' + LastName \
-               From Student.dbo.tblPerson, Student.dbo.tblTeacher, Student.dbo.tblErae \
-               Where tblErae.ID_Teacher = tblTeacher.ID AND \
-                     tblTeacher.ID = tblPerson.ID AND \
-                     tblErae.ID = " + entekhabID);
-
-    teacherName = qry2.value(0).toString();
 }
 
 
