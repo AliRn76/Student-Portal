@@ -69,3 +69,38 @@ void ShowClassMembers::on_pushButton_exit_clicked()
 {
     this->close();
 }
+
+
+void ShowClassMembers::on_pushButton_SetScore_clicked()
+{
+    if(ui->lineEdit_score->text().isEmpty()){
+        QMessageBox::information(this , "Error" , "لطفا فیلد نمره را پر کنید.");
+    }
+    else if (ui->lineEdit_score->text().toFloat()<0 || ui->lineEdit_score->text().toFloat()>20) {
+        QMessageBox::information(this , "Error" , "لطفا نمره را در بازه 0 تا 20 وارد نمایید");
+    }
+    else {
+
+
+        score = ui->lineEdit_score->text().toFloat();
+
+        QSqlQuery qry1;
+        qry1.prepare("select s.ID  \
+                      from  Student.dbo.tblStudent s \
+                      where s.StudentCode = :Scode");
+                qry1.bindValue(":Scode" , StuCode );
+
+        qry1.exec();
+        int id = qry1.value(0).toInt();
+
+
+        QSqlQuery qry;
+        qry.prepare("Update Student.dbo.tblEntekhabVahed SET Score = :sc where ID_Student = :id");
+        qry.bindValue(":sc" , score);
+        qry.bindValue(":id" , id);
+        if(qry.exec()){
+            QMessageBox::information(this , "Done" , ".نمره با موفقیت ثبت شد");
+        }
+
+    }
+}

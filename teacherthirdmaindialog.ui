@@ -590,7 +590,7 @@ color: rgb(214, 214, 214);</string>
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="day">
     <attribute name="title">
@@ -601,6 +601,12 @@ color: rgb(214, 214, 214);</string>
       <widget class="QTableView" name="tableView_3">
        <property name="layoutDirection">
         <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
        </property>
       </widget>
      </item>
@@ -615,6 +621,12 @@ color: rgb(214, 214, 214);</string>
       <widget class="QTableView" name="tableView_2">
        <property name="layoutDirection">
         <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
        </property>
       </widget>
      </item>
