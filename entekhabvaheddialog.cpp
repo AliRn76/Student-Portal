@@ -188,16 +188,16 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
     if(stuCode.isEmpty()){
         QMessageBox::warning(this, "warning", "ابتدا نام یا شماره دانشجویی وارد کنید.");
     }else{
-        qryModeStu = new QSqlQueryModel(this);
-        qryModeStu->setQuery("Select StudentCode as 'شماره دانشجویی', FirstName + ' ' + LastName as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود' , Field as 'رشته' \
-                             From Student.dbo.tblStudent, Student.dbo.tblPerson \
-                             Where tblStudent.ID = tblPerson.ID AND ( \
-                             tblStudent.StudentCode like '" + stuCode + "%' OR \
-                             tblPerson.FirstName like N'" + stuCode + "%' OR \
-                             tblPerson.LastName like N'" + stuCode + "%' OR \
-                             tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + stuCode + "%')");
+        qryModelStu = new QSqlQueryModel(this);
+        qryModelStu->setQuery("Select StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود' , Field as 'رشته' \
+                               From Student.dbo.tblStudent, Student.dbo.tblPerson \
+                               Where tblStudent.ID = tblPerson.ID AND ( \
+                                     tblStudent.StudentCode like '" + stuCode + "%' OR \
+                                     tblPerson.FirstName like N'" + stuCode + "%' OR \
+                                     tblPerson.LastName like N'" + stuCode + "%' OR \
+                                     tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + stuCode + "%')");
     }
-    ui->tableView_stu->setModel(qryModeStu);
+    ui->tableView_stu->setModel(qryModelStu);
     ui->tableView_stu->setWordWrap(false);
     ui->tableView_stu->setColumnWidth(0,115);
     ui->tableView_stu->setColumnWidth(1,180);
@@ -288,3 +288,41 @@ void EntekhabVahedDialog::on_tableView_lesson_clicked(const QModelIndex &index)
 
 
 
+
+void EntekhabVahedDialog::on_pushButton_findStuTab2_clicked()
+{
+    fieldTab2 = ui->comboBox_fieldTab2->currentText();
+
+    if(ui->lineEdit_stuCodeTab2->text().isEmpty()){
+        QMessageBox::warning(this, "warning", "لطفا ابتدا یک کد وارد کنید.");
+
+    }else{
+
+        QString strStuCode = ui->lineEdit_stuCodeTab2->text();
+        qryModelStuTab2 = new QSqlQueryModel(this);
+
+        QString strQry = ("Select StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود', Field as 'رشته' \
+                          From tblPerson , tblStudent \
+                          Where tblPerson.ID = tblStudent.ID AND \
+                                tblStudent.Field like N'" + fieldTab2 + "' AND \
+                                ( tblStudent.StudentCode like '" + strStuCode + "%' OR \
+                                  tblPerson.Firstname like N'" + strStuCode + "%' OR \
+                                  tblPerson.Lastname like N'" + strStuCode + "%' OR \
+                                  tblPerson.Firstname + ' ' + tblPerson.LastName like N'" + strStuCode + "%')");
+
+        qryModelStuTab2->setQuery(strQry);
+
+        ui->tableView_stuTab2->setModel(qryModelStuTab2);
+        ui->tableView_stuTab2->setWordWrap(false);
+        ui->tableView_stuTab2->setColumnWidth(0,115);
+        ui->tableView_stuTab2->setColumnWidth(1,180);
+        ui->tableView_stuTab2->setColumnWidth(2,80);
+        ui->tableView_stuTab2->setColumnWidth(3,70);
+        ui->tableView_stuTab2->setColumnWidth(4,260);
+
+
+        qDebug() << fieldTab2 ;
+        qDebug() << strStuCode;
+        qDebug() << qryModelStuTab2->lastError().text();
+    }
+}
