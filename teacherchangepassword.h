@@ -15,6 +15,7 @@ class TeacherChangePassword : public QDialog
 
 public:
     static QString strUserTeacher ;
+
     explicit TeacherChangePassword(QWidget *parent = nullptr);
     ~TeacherChangePassword();
 
