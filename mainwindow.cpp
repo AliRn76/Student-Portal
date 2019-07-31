@@ -55,7 +55,7 @@ void MainWindow::on_pushButton_login_clicked()
             stuMainDialog = new StudentMainDialog(this);
             stuMainDialog->show();
         }else{
-            QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
+            QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد1.");
         }
 
     }else{
@@ -71,7 +71,7 @@ void MainWindow::on_pushButton_login_clicked()
                 teamaindialog = new teacherthirdmaindialog(this);
                 teamaindialog->show();
             }else{
-                QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
+                QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد2.");
             }
 
         }else{
@@ -89,7 +89,7 @@ void MainWindow::on_pushButton_login_clicked()
                 }else if(strPassword == "شیئهد"){
                     QMessageBox::warning(this, "هشدار", "زبان سیستم خود را به انگلیسی تغییر دهید.");
                 }else{
-                    QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
+                    QMessageBox::warning(this, "3خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
                 }
             }else{
                 QMessageBox::warning(this, "خطا", "نام کاربری وارد شده معتبر نمیباشد.");
