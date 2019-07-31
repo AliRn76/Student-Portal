@@ -51,7 +51,7 @@ void AddTeacherDialog::on_pushButton_apply_clicked()
         if(strNationalcode.toInt()){
             if(strNationalcode.length() == 10){
 
-                qry1.prepare("Insert Into Student.dbo.tblPerson \
+                qry1.prepare("Insert Into tblPerson \
                              (FirstName \
                              ,LastName \
                              ,Nationalcode \
@@ -65,7 +65,7 @@ void AddTeacherDialog::on_pushButton_apply_clicked()
 
                 correntID = qry2.lastInsertId().toString();
 
-                qry3.prepare("Insert Into Student.dbo.tblTeacher \
+                qry3.prepare("Insert Into tblTeacher \
                              (ID \
                              ,EducationDegree \
                              ,Password) \
@@ -76,7 +76,7 @@ void AddTeacherDialog::on_pushButton_apply_clicked()
 
                             if(qry3.exec()){
 
-                                qry4.prepare("Select TeacherCode From Student.dbo.tblTeacher \
+                                qry4.prepare("Select TeacherCode From tblTeacher \
                                               Where tblTeacher.ID = :id");
                                         qry4.bindValue(":id", correntID);
                                         qry4.exec();

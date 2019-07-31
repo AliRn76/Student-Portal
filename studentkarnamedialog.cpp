@@ -9,12 +9,12 @@ StudentKarnameDialog::StudentKarnameDialog(QWidget *parent) :
 
     qryModel = new QSqlQueryModel(this);
     qryModel->setQuery("Select Title as 'نام درس', Type as 'نوع درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', NumberOfTerm as 'ترم', Score as 'نمره' \
-                       From Student.dbo.tblPerson, \
-                            Student.dbo.tblTeacher, \
-                            Student.dbo.tblLesson, \
-                            Student.dbo.tblErae, \
-                            Student.dbo.tblEntekhabVahed, \
-                            Student.dbo.tblStudent \
+                       From tblPerson, \
+                            tblTeacher, \
+                            tblLesson, \
+                            tblErae, \
+                            tblEntekhabVahed, \
+                            tblStudent \
                        Where tblPerson.ID = tblTeacher.ID \
                         AND tblTeacher.ID = tblErae.ID_Teacher \
                         AND tblErae.ID_Lesson = tblLesson.ID \

@@ -30,10 +30,10 @@ void EditTeacherDialog::on_pushButton_search_clicked()
         QString strTeachCode = ui->lineEdit->text();
 
         QSqlQuery qry("Select TeacherCode, FirstName, LastName, Gender, EducationDegree, NationalCode, BirthDate \
-                       From Student.dbo.tblPerson , Student.dbo.tblTeacher \
-                       Where ( tblPerson.ID = tblTeacher.ID ) AND ( Student.dbo.tblTeacher.TeacherCode like '" + strTeachCode + "%' OR \
-                       Student.dbo.tblPerson.Firstname like N'" + strTeachCode + "%' OR \
-                       Student.dbo.tblPerson.Lastname like N'" + strTeachCode + "%' OR \
+                       From tblPerson , tblTeacher \
+                       Where ( tblPerson.ID = tblTeacher.ID ) AND ( tblTeacher.TeacherCode like '" + strTeachCode + "%' OR \
+                       tblPerson.Firstname like N'" + strTeachCode + "%' OR \
+                       tblPerson.Lastname like N'" + strTeachCode + "%' OR \
                        tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + strTeachCode + "')");
 
         if(qry.numRowsAffected() != 0){
@@ -100,7 +100,7 @@ void EditTeacherDialog::on_pushButton_apply_clicked()
         QString currID;
 
         strQry = "Select ID \
-                  From student.dbo.tblTeacher \
+                  From tblTeacher \
                   Where tblTeacher.TeacherCode = " + ui->label_teachCode->text();
 
         qry1.exec(strQry);
@@ -109,7 +109,7 @@ void EditTeacherDialog::on_pushButton_apply_clicked()
             currID = qry1.value(0).toString();
         }
 
-        qry2.prepare("Update Student.dbo.tblPerson \
+        qry2.prepare("Update tblPerson \
                       Set FirstName = :name, LastName = :lastname, NationalCode = :nationalcode, BirthDate = :birthdate, Gender = :gender \
                       Where tblPerson.ID = :id");
 
@@ -126,7 +126,7 @@ void EditTeacherDialog::on_pushButton_apply_clicked()
 
         if(qry2.exec()){
 
-            qry3.prepare("Update Student.dbo.tblTeacher \
+            qry3.prepare("Update tblTeacher \
                           Set EducationDegree = :educationdegree, Password = :password\
                           Where tblTeacher.TeacherCode = :teachcode");
             qry3.bindValue(":teachcode", ui->label_teachCode->text());

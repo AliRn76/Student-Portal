@@ -40,7 +40,7 @@ void EditLessonDialog::on_pushButton_search_clicked()
         lessCode = ui->lineEdit_lessCode->text();
 
         QSqlQuery qry("Select Title, Type, TedadVahed, LessonCode, Field \
-                       From Student.dbo.tblLesson \
+                       From tblLesson \
                        Where tblLesson.LessonCode like '" + lessCode + "%' OR tblLesson.Title like N'" + lessCode + "%'");
 
         if(qry.numRowsAffected() == 0){
@@ -84,7 +84,7 @@ void EditLessonDialog::on_pushButton_apply_clicked()
         tedadVahed = ui->comboBox_tedadVahed->currentText();
         field = ui->comboBox_field->currentText();
 
-        qry1.prepare("Update Student.dbo.tblLesson \
+        qry1.prepare("Update tblLesson \
                       Set Title = :title, Type = :type, TedadVahed = :tedadvahed, Field = :field \
                       Where tblLesson.LessonCode = :lessoncode");
                 qry1.bindValue(":title", title);

@@ -27,7 +27,7 @@ void SendJozveDialog::on_pushButton_Send_clicked()
     }
     else {
         QSqlQuery qry;
-        qry.prepare("Update Student.dbo.tblErae set jozve = :link where Student.dbo.tblErae.ID = :id");
+        qry.prepare("Update tblErae set jozve = :link where tblErae.ID = :id");
         qry.bindValue(":link" , link);
         qry.bindValue(":id" , lessCode);
         if(qry.exec()){

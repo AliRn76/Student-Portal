@@ -37,11 +37,12 @@ void RemoveTeacherDialog::on_pushButton_search_clicked()
         teacherCode = ui->lineEdit_teachCode->text();
 
         QSqlQuery qry("Select  TeacherCode, EducationDegree, FirstName, LastName, NationalCode \
-                       From Student.dbo.tblPerson , Student.dbo.tblTeacher \
-                       Where ( tblPerson.ID = tblTeacher.ID ) AND ( Student.dbo.tblTeacher.TeacherCode like '" + teacherCode + "%' OR \
-                       Student.dbo.tblPerson.Firstname like N'" + teacherCode + "%' OR \
-                       Student.dbo.tblPerson.Lastname like N'" + teacherCode + "%' OR \
-                       tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + teacherCode + "%')");
+                       From tblPerson , Student.dbo.tblTeacher \
+                       Where ( tblPerson.ID = tblTeacher.ID ) AND \
+                             ( tblTeacher.TeacherCode like '" + teacherCode + "%' OR \
+                               tblPerson.Firstname like N'" + teacherCode + "%' OR \
+                               tblPerson.Lastname like N'" + teacherCode + "%' OR \
+                               tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + teacherCode + "%')");
 
         if(qry.numRowsAffected() != 0){
 
@@ -98,8 +99,8 @@ void RemoveTeacherDialog::on_pushButton_remove_clicked()
         teachCode = ui->label_teachCode->text();
 
         qry1.prepare("SELECT ID \
-                      FROM Student.dbo.tblTeacher \
-                      WHERE Student.dbo.tblTeacher.TeacherCode = :teachercode");
+                      FROM tblTeacher \
+                      WHERE tblTeacher.TeacherCode = :teachercode");
                 qry1.bindValue(":teachercode", teachCode);
                 qry1.exec();
 
@@ -107,13 +108,13 @@ void RemoveTeacherDialog::on_pushButton_remove_clicked()
             currID = qry1.value(0).toString();
         }
 
-        qry2.prepare("Delete From Student.dbo.tblTeacher\
-                      Where Student.dbo.tblTeacher.TeacherCode = :teachercode");
+        qry2.prepare("Delete From tblTeacher\
+                      Where tblTeacher.TeacherCode = :teachercode");
                 qry2.bindValue(":teachercode", teachCode);
 
         if(qry2.exec()){
-            qry3.prepare("Delete From Student.dbo.tblPerson \
-                          Where Student.dbo.tblPerson.ID = :id");
+            qry3.prepare("Delete From tblPerson \
+                          Where tblPerson.ID = :id");
                     qry3.bindValue(":id", currID);
 
             if(qry3.exec()){
