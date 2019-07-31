@@ -34,7 +34,7 @@
     <enum>QTabWidget::East</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -1301,6 +1301,9 @@ color: white</string>
        <bold>true</bold>
       </font>
      </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="page_3">
       <widget class="QTableView" name="tableView_stuTab2">
        <property name="geometry">
@@ -1738,7 +1741,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>862</x>
@@ -1785,7 +1788,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>801</x>
@@ -1832,7 +1835,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>803</x>
@@ -1879,7 +1882,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>863</x>
@@ -1926,7 +1929,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>863</x>
@@ -1973,7 +1976,7 @@ color: white</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>862</x>
