@@ -189,6 +189,10 @@ void EraeDarsDialog::on_pushButton_apply_clicked()
                              qry3.bindValue(":days", roozHafte);
                              qry3.bindValue(":time", classTime);
 
+                             qDebug() << teacherID << lessonID;
+                             qDebug() << roozHafte;
+                             qDebug() << classTime;
+
                              if(qry3.exec()){
                                  QMessageBox::information(this, "OK", "درس ارائه داده شد.");
                                  ui->label_teachCode->clear();

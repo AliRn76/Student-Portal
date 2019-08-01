@@ -63,7 +63,7 @@ void AddTeacherDialog::on_pushButton_apply_clicked()
                              qry1.bindValue(":gender", bGender );
                              qry1.exec();
 
-                correntID = qry2.lastInsertId().toString();
+                correntID = qry1.lastInsertId().toString();
 
                 qry3.prepare("Insert Into tblTeacher \
                              (ID \
@@ -87,7 +87,7 @@ void AddTeacherDialog::on_pushButton_apply_clicked()
 
                                 QMessageBox::information(this, "OK", "استاد با موفقیت اضافه شد ، کد کارمندی : " + teachCode);
                             }else{
-                                QMessageBox::information(this, "Complete", "ثبت استاد با مشکل موجه شد.");
+                                QMessageBox::warning(this, "Warning", "ثبت استاد با مشکل موجه شد.");
                             }
             }else{
                 QMessageBox::warning(this, "خطا", "لطفا کد ملی خود را به صورت 10 رقمی وارد کنید.");
