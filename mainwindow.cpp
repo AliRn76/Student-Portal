@@ -34,6 +34,7 @@ QString TeacherChangePassword::strUserTeacher;
 QString SendJozveDialog::lessCode;
 QString ShowClassMembers::LessonCode;
 QString ShowClassMembers::LessonName ;
+int teacherRequest::whichpage ;
 
 void MainWindow::on_pushButton_login_clicked()
 {

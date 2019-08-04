@@ -14,7 +14,7 @@ teacherthirdmaindialog::teacherthirdmaindialog(QWidget *parent) :
 
         QString fullname ;
         QSqlQuery qry;
-        qry.prepare("Select FirstName + ' ' +LastName from Student.dbo.tblPerson p , Student.dbo.tblTeacher t where p.ID=t.ID and t.TeacherCode = :teacode");
+        qry.prepare("Select concat(FirstName , ' ' , LastName) as fullname from tblPerson , tblTeacher where tblPerson.ID=tblTeacher.ID and tblTeacher.TeacherCode = :teacode");
         qry.bindValue(":teacode" , username);
         qry.exec();
         while(qry.next()){
@@ -185,4 +185,25 @@ void teacherthirdmaindialog::on_pushButton_SetScore_clicked()
 {
     showClass = new ShowClassMembers(this);
     showClass->show();
+}
+
+void teacherthirdmaindialog::on_pushButton_req_dars_clicked()
+{
+    teacherRequest::whichpage = 0 ;
+    teareq = new teacherRequest(this);
+    teareq->show();
+}
+
+void teacherthirdmaindialog::on_pushButton_req_parking_clicked()
+{
+    teacherRequest::whichpage = 1 ;
+    teareq = new teacherRequest(this);
+    teareq->show();
+}
+
+void teacherthirdmaindialog::on_pushButton_req_vam_clicked()
+{
+    teacherRequest::whichpage = 2 ;
+    teareq = new teacherRequest(this);
+    teareq->show();
 }

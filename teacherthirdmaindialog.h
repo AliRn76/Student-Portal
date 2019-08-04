@@ -6,6 +6,7 @@
 #include <sendjozvedialog.h>
 #include <showclassmembers.h>
 #include <teachershowlesson.h>
+#include <teacherrequest.h>
 
 namespace Ui {
 class teacherthirdmaindialog;
@@ -41,6 +42,12 @@ private slots:
 
     void on_pushButton_SetScore_clicked();
 
+    void on_pushButton_req_dars_clicked();
+
+    void on_pushButton_req_parking_clicked();
+
+    void on_pushButton_req_vam_clicked();
+
 private:
     Ui::teacherthirdmaindialog *ui;
     TeacherChangePassword *teacherChangePassword ;
@@ -48,6 +55,7 @@ private:
     QSqlQueryModel *model ;
     ShowClassMembers *showClass;
     teachershowlesson *showless ;
+    teacherRequest *teareq ;
 };
 
 #endif // TEACHERTHIRDMAINDIALOG_H
