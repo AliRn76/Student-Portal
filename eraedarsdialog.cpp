@@ -110,7 +110,7 @@ void EraeDarsDialog::on_pushButton_findLesson_clicked()
             ui->label_type->setText(arrStr[2]);
             ui->label_tedadVahed->setText(arrStr[3]);
         }else{
-            QMessageBox::warning(this, "warning", "لطفا یک نام یا کد درس صحیح وارد کنید.");
+            QMessageBox::warning(this, "Warning", "لطفا یک نام یا کد درس صحیح وارد کنید.");
         }
     }
 }
