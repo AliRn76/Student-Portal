@@ -32,6 +32,8 @@ QString EmployeeChangePasswordDialog::strUserEmp;
 QString StudentChangePasswordDialog::strUserStu;
 QString TeacherChangePassword::strUserTeacher;
 QString SendJozveDialog::lessCode;
+QString ShowClassMembers::LessonCode;
+QString ShowClassMembers::LessonName ;
 
 void MainWindow::on_pushButton_login_clicked()
 {
