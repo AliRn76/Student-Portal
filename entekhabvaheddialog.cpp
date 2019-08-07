@@ -136,13 +136,16 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
     fieldLesson = ui->comboBox_field->currentText();
     entekhabID = ui->lineEdit_entekhabID_2->text();
 
+    qDebug() << fieldLesson ;
+    qDebug() << entekhabID ;
+
     if(entekhabID.isEmpty()){
         QMessageBox::warning(this, "warning", "ابتدا یک مشخصه وارد کنید.");
 
     }else{
         qryModelLesson = new QSqlQueryModel(this);
         qryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
-                                 From Student.dbo.tblLesson, Student.dbo.tblErae, Student.dbo.tblTeacher \
+                                 From tblLesson, tblErae, tblTeacher \
                                  Where tblErae.ID_Lesson = tblLesson.ID \
                                  AND tblLesson.Field = N'" + fieldLesson + "' \
                                  AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
@@ -154,6 +157,7 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
         ui->tableView_lesson->setColumnWidth(4,260);
         ui->tableView_lesson->setWordWrap(false);
 
+        qDebug() << qryModelLesson->lastError().text();
    /*
             qry1.prepare("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field \
                          From Student.dbo.tblLesson, Student.dbo.tblErae \
@@ -185,12 +189,14 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
 {
     stuCode = ui->lineEdit_stuCode_2->text();
 
+    qDebug () << stuCode;
+
     if(stuCode.isEmpty()){
         QMessageBox::warning(this, "warning", "ابتدا نام یا شماره دانشجویی وارد کنید.");
     }else{
         qryModelStu = new QSqlQueryModel(this);
         qryModelStu->setQuery("Select StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود' , Field as 'رشته' \
-                               From Student.dbo.tblStudent, Student.dbo.tblPerson \
+                               From tblStudent, tblPerson \
                                Where tblStudent.ID = tblPerson.ID AND ( \
                                      tblStudent.StudentCode like '" + stuCode + "%' OR \
                                      tblPerson.FirstName like N'" + stuCode + "%' OR \
@@ -205,6 +211,7 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
     ui->tableView_stu->setColumnWidth(3,70);
     ui->tableView_stu->setColumnWidth(4,260);
 
+    qDebug() << qryModelStu->lastError().text();
 /*
     if(qry.numRowsAffected() != 0){
         if(qry.numRowsAffected() == 1){
@@ -325,4 +332,9 @@ void EntekhabVahedDialog::on_pushButton_findStuTab2_clicked()
         qDebug() << strStuCode;
         qDebug() << qryModelStuTab2->lastError().text();
     }
+}
+
+void EntekhabVahedDialog::on_pushButton_back_clicked()
+{
+
 }

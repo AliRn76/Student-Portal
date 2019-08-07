@@ -49,6 +49,8 @@ private slots:
 
     void on_pushButton_findStuTab2_clicked();
 
+    void on_pushButton_back_clicked();
+
 private:
     Ui::EntekhabVahedDialog *ui;
     ShowStudentDialog *showStuDialog;
