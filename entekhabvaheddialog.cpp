@@ -144,20 +144,22 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
 
     }else{
         qryModelLesson = new QSqlQueryModel(this);
-        qryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
-                                 From tblLesson, tblErae, tblTeacher \
+        qryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
+                                 From tblLesson, tblErae, tblTeacher, tblPerson \
                                  Where tblErae.ID_Lesson = tblLesson.ID \
+                                 AND tblTeacher.ID = tblPerson.ID \
                                  AND tblLesson.Field = N'" + fieldLesson + "' \
                                  AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
 
         ui->tableView_lesson->setModel(qryModelLesson);
         ui->tableView_lesson->setColumnWidth(0,75);
         ui->tableView_lesson->setColumnWidth(1,180);
-        ui->tableView_lesson->setColumnWidth(2,90);
-        ui->tableView_lesson->setColumnWidth(4,260);
+        ui->tableView_lesson->setColumnWidth(3,90);
+        ui->tableView_lesson->setColumnWidth(5,260);
         ui->tableView_lesson->setWordWrap(false);
 
-        qDebug() << qryModelLesson->lastError().text();
+
+        qDebug() << "lastError qryModelLesson: " << qryModelLesson->lastError().text();
    /*
             qry1.prepare("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field \
                          From Student.dbo.tblLesson, Student.dbo.tblErae \
@@ -240,26 +242,17 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
 void EntekhabVahedDialog::on_pushButton_continue_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    QSqlQuery qry1;
-
-    qry1.exec("Select FirstName + ' ' + LastName \
-               From Student.dbo.tblPerson, Student.dbo.tblTeacher, Student.dbo.tblErae \
-               Where tblErae.ID_Teacher = tblTeacher.ID AND \
-                     tblTeacher.ID = tblPerson.ID AND \
-                     tblErae.ID = " + entekhabID);
-
-    teacherName = qry1.value(0).toString();
 
     ui->label_field->setText(fieldLesson);
     ui->label_stuCode->setText(stuCode);
-    ui->label_name->setText(stuName);
-    ui->label_fathersName->setText(fathersName);
-    ui->label_saalVoroud->setText(saalVoroud);
-    ui->label_entekhabID->setText(entekhabID);
-    ui->label_title->setText(lessonName);
-    ui->label_teacherName->setText(teacherName);
-    ui->label_roozeHafte->setText(roozeHafte);
-    ui->label_saat->setText(saat);
+ //   ui->label_name->setText(stuName);
+ //   ui->label_fathersName->setText(fathersName);
+ //   ui->label_saalVoroud->setText(saalVoroud);
+ //   ui->label_entekhabID->setText(entekhabID);
+ //   ui->label_title->setText(lessonName);
+ //   ui->label_teacherName->setText(teacherName);
+ //   ui->label_roozeHafte->setText(roozeHafte);
+ //   ui->label_saat->setText(saat);
     ui->label_classNum->setText("Hanuz Tanzim Nashode");
 
     qDebug() << teacherName;
@@ -276,10 +269,12 @@ void EntekhabVahedDialog::on_pushButton_backPage2_clicked()
 void EntekhabVahedDialog::on_tableView_lesson_clicked(const QModelIndex &index)
 {
     QSqlQuery qry1;
+    qDebug() << "index tableView_lesson_clicked: " << index ;
 
-    qry1.exec("Select Distinct tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field\
-               From tblLesson, tblErae, tblTeacher \
+    qry1.exec("Select Distinct tblErae.ID, Title, Concat(FirstName, ' ', LastName), DaysOfWeek, TimeOfClass, Field\
+               From tblLesson, tblErae, tblTeacher, tblPerson \
                Where tblErae.ID_Lesson = tblLesson.ID \
+               AND tblTeacher.ID = tblPerson.ID \
                AND tblLesson.Field = N'" + fieldLesson + "' \
                AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
 
@@ -287,16 +282,45 @@ void EntekhabVahedDialog::on_tableView_lesson_clicked(const QModelIndex &index)
 
     entekhabID = qry1.value(0).toString();
     lessonName = qry1.value(1).toString();
-    roozeHafte = qry1.value(2).toString();
-    saat = qry1.value(3).toString();
-    fieldLesson = qry1.value(4).toString();
+    teacherName = qry1.value(2).toString();
+    roozeHafte = qry1.value(3).toString();
+    saat = qry1.value(4).toString();
+    fieldLesson = qry1.value(5).toString();
+
+    ui->label_title->setText(qry1.value(1).toString());
+    ui->label_teacherName->setText(qry1.value(2).toString());
+    ui->label_roozeHafte->setText(qry1.value(3).toString());
+    ui->label_saat->setText(qry1.value(4).toString());
+}
+
+void EntekhabVahedDialog::on_tableView_stu_clicked(const QModelIndex &index)
+{
+    QSqlQuery qry;
+    qDebug() << "index tableView_stu_clicked: " << index ;
+
+    qry.exec("Select StudentCode, Concat(FirstName , ' ' , LastName), FathersName, SaalVoroud, Field \
+             From tblStudent, tblPerson \
+             Where tblStudent.ID = tblPerson.ID AND ( \
+                   tblStudent.StudentCode like '" + stuCode + "%' OR \
+                   tblPerson.FirstName like N'" + stuCode + "%' OR \
+                   tblPerson.LastName like N'" + stuCode + "%' OR \
+                   tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + stuCode + "%')");
+    qry.seek(index.row());
+
+    stuName = qry.value(1).toString();
+    fathersName = qry.value(2).toString();
+    saalVoroud = qry.value(3).toString();
+
+    ui->label_name->setText(qry.value(1).toString());
+    ui->label_fathersName->setText(qry.value(2).toString());
+    ui->label_saalVoroud->setText(qry.value(3).toString());
 }
 
 
 
 
 
-
+//////// TAB 2 ---------->
 
 
 
@@ -338,7 +362,7 @@ void EntekhabVahedDialog::on_pushButton_findStuTab2_clicked()
     }
 }
 
-void EntekhabVahedDialog::on_pushButton_back_clicked()
-{
 
-}
+
+
+

@@ -47,9 +47,10 @@ private slots:
 
     void on_tableView_lesson_clicked(const QModelIndex &index);
 
+    void on_tableView_stu_clicked(const QModelIndex &index);
+
     void on_pushButton_findStuTab2_clicked();
 
-    void on_pushButton_back_clicked();
 
 private:
     Ui::EntekhabVahedDialog *ui;
