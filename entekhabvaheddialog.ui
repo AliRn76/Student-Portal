@@ -722,7 +722,7 @@ color: white</string>
          <widget class="QLabel" name="label_teacherName">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -750,7 +750,8 @@ color: white</string>
          <widget class="QLabel" name="label_29">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -774,7 +775,7 @@ color: white</string>
          <widget class="QLabel" name="label_stuCode">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -802,7 +803,8 @@ color: white</string>
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -826,7 +828,7 @@ color: white</string>
          <widget class="QLabel" name="label_name">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -854,7 +856,8 @@ color: white</string>
          <widget class="QLabel" name="label_5">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -878,7 +881,7 @@ color: white</string>
          <widget class="QLabel" name="label_saalVoroud">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -906,7 +909,8 @@ color: white</string>
          <widget class="QLabel" name="label_9">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -930,7 +934,7 @@ color: white</string>
          <widget class="QLabel" name="label_fathersName">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -958,7 +962,8 @@ color: white</string>
          <widget class="QLabel" name="label_10">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -982,7 +987,7 @@ color: white</string>
          <widget class="QLabel" name="label_field">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -1007,7 +1012,7 @@ color: white</string>
          <widget class="QLabel" name="label_11">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -1031,7 +1036,7 @@ color: white</string>
          <widget class="QLabel" name="label_title">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -1059,7 +1064,8 @@ color: white</string>
          <widget class="QLabel" name="label_21">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1083,7 +1089,7 @@ color: white</string>
          <widget class="QLabel" name="label_entekhabID">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -1111,7 +1117,8 @@ color: white</string>
          <widget class="QLabel" name="label_16">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1135,7 +1142,7 @@ color: white</string>
          <widget class="QLabel" name="label_roozeHafte">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -1163,7 +1170,8 @@ color: white</string>
          <widget class="QLabel" name="label_22">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1187,7 +1195,7 @@ color: white</string>
          <widget class="QLabel" name="label_saat">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -1215,7 +1223,8 @@ color: white</string>
          <widget class="QLabel" name="label_24">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1239,7 +1248,7 @@ color: white</string>
          <widget class="QLabel" name="label_classNum">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
            </font>
           </property>
           <property name="text">
@@ -1267,7 +1276,8 @@ color: white</string>
          <widget class="QLabel" name="label_26">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">

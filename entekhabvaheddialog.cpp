@@ -262,6 +262,10 @@ void EntekhabVahedDialog::on_pushButton_continue_clicked()
     ui->label_saat->setText(saat);
     ui->label_classNum->setText("Hanuz Tanzim Nashode");
 
+    qDebug() << teacherName;
+    qDebug() << stuName;
+    qDebug() << fathersName;
+    qDebug() << saalVoroud;
 }
 
 void EntekhabVahedDialog::on_pushButton_backPage2_clicked()
