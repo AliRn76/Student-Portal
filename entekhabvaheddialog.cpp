@@ -22,9 +22,10 @@ EntekhabVahedDialog::EntekhabVahedDialog(QWidget *parent) :
                            tblStudent.StudentCode like ' '");
 
     ui->tableView_lesson->setModel(preQryModelLesson);
-        ui->tableView_lesson->setColumnWidth(0,75);
-        ui->tableView_lesson->setColumnWidth(1,180);
-        ui->tableView_lesson->setColumnWidth(3,90);
+        ui->tableView_lesson->setColumnWidth(0,60);
+        ui->tableView_lesson->setColumnWidth(1,160);
+        ui->tableView_lesson->setColumnWidth(3,80);
+        ui->tableView_lesson->setColumnWidth(4,80);
         ui->tableView_lesson->setColumnWidth(5,260);
         ui->tableView_lesson->setWordWrap(false);
 
@@ -164,112 +165,125 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
 {
     fieldLesson = ui->comboBox_field->currentText();
     eraeID = ui->lineEdit_entekhabID_2->text();
+    finallField = fieldLesson;
 
-    qDebug() << fieldLesson ;
-    qDebug() << eraeID ;
+    if(fieldStudent.isEmpty() || fieldLesson == fieldStudent){
+        qDebug() << fieldLesson ;
+        qDebug() << eraeID ;
 
-    if(eraeID.isEmpty()){
-        QMessageBox::warning(this, "warning", "ابتدا یک مشخصه وارد کنید.");
+        if(eraeID.isEmpty()){
+            QMessageBox::warning(this, "warning", "ابتدا یک مشخصه وارد کنید.");
 
-    }else{
-        qryModelLesson = new QSqlQueryModel(this);
-        qryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
-                                 From tblLesson, tblErae, tblTeacher, tblPerson \
-                                 Where tblErae.ID_Lesson = tblLesson.ID \
-                                 AND tblTeacher.ID = tblPerson.ID \
-                                 AND tblLesson.Field = N'" + fieldLesson + "' \
-                                 AND ( tblErae.ID like '" + eraeID + "' OR tblLesson.Title like N'" + eraeID + "%')");
+        }else{
+            qryModelLesson = new QSqlQueryModel(this);
+            qryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
+                                     From tblLesson, tblErae, tblTeacher, tblPerson \
+                                     Where tblErae.ID_Lesson = tblLesson.ID \
+                                     AND tblTeacher.ID = tblPerson.ID \
+                                     AND tblLesson.Field = N'" + fieldLesson + "' \
+                                     AND ( tblErae.ID like '" + eraeID + "' OR tblLesson.Title like N'" + eraeID + "%')");
 
-        ui->tableView_lesson->setModel(qryModelLesson);
-        ui->tableView_lesson->setColumnWidth(0,75);
-        ui->tableView_lesson->setColumnWidth(1,180);
-        ui->tableView_lesson->setColumnWidth(3,90);
-        ui->tableView_lesson->setColumnWidth(5,260);
-        ui->tableView_lesson->setWordWrap(false);
+            ui->tableView_lesson->setModel(qryModelLesson);
+            ui->tableView_lesson->setColumnWidth(0,60);
+            ui->tableView_lesson->setColumnWidth(1,160);
+            ui->tableView_lesson->setColumnWidth(3,80);
+            ui->tableView_lesson->setColumnWidth(4,80);
+            ui->tableView_lesson->setColumnWidth(5,260);
+            ui->tableView_lesson->setWordWrap(false);
 
 
-        qDebug() << "lastError qryModelLesson: " << qryModelLesson->lastError().text();
-   /*
-            qry1.prepare("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field \
-                         From Student.dbo.tblLesson, Student.dbo.tblErae \
-                         Where tblErae.ID_Lesson = tblLesson.ID \
-                         AND tblLesson.Field = :fieldless \
-                         AND tblErae.ID = :entekhabID");
-                    qry1.bindValue(":fieldless", fieldLess);
-                    qry1.bindValue(":entekhabID", entekhabId);
-                    qry1.exec();
+            qDebug() << "lastError qryModelLesson: " << qryModelLesson->lastError().text();
+       /*
+                qry1.prepare("Select tblErae.ID, Title, DaysOfWeek, TimeOfClass, Field \
+                             From Student.dbo.tblLesson, Student.dbo.tblErae \
+                             Where tblErae.ID_Lesson = tblLesson.ID \
+                             AND tblLesson.Field = :fieldless \
+                             AND tblErae.ID = :entekhabID");
+                        qry1.bindValue(":fieldless", fieldLess);
+                        qry1.bindValue(":entekhabID", entekhabId);
+                        qry1.exec();
 
-            if(qry1.numRowsAffected() != 0){
-                while(qry1.next()){
-                        entekhabID = qry1.value(0).toString();
-                        lessonName = qry1.value(1).toString();
-                        roozeHafte = qry1.value(2).toString();
-                        time = qry1.value(3).toString();
-                        field = qry1.value(4).toString();
+                if(qry1.numRowsAffected() != 0){
+                    while(qry1.next()){
+                            entekhabID = qry1.value(0).toString();
+                            lessonName = qry1.value(1).toString();
+                            roozeHafte = qry1.value(2).toString();
+                            time = qry1.value(3).toString();
+                            field = qry1.value(4).toString();
+                    }
+                }else{
+                    QMessageBox::warning(this, "خطا", "لطفا یک مشخصه صحیح وارد کنید.");
+                    qDebug()<<qry1.lastError().text();
                 }
-            }else{
-                QMessageBox::warning(this, "خطا", "لطفا یک مشخصه صحیح وارد کنید.");
-                qDebug()<<qry1.lastError().text();
-            }
-            */
+                */
 
+        }
+    }else{
+        QMessageBox::warning(this, "خطا", "لطفا رشته را با رشته دانشجویی که انتخاب کرده اید یکی کنید.");
     }
 }
 
 void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
 {
     stuCode = ui->lineEdit_stuCode_2->text();
-    fieldLesson = ui->comboBox_field->currentText();
+    fieldStudent = ui->comboBox_field->currentText();
 
     // ye Shart Bayd begzaram ke Field e Dars ba Stu bayad yki bashe ...................................................
 
-    qDebug () << stuCode;
+    qDebug() << fieldLesson;
+    if(fieldLesson.isEmpty() || fieldLesson == fieldStudent){
 
-    if(stuCode.isEmpty()){
-        QMessageBox::warning(this, "warning", "ابتدا نام یا شماره دانشجویی وارد کنید.");
-    }else{
-        qryModelStu = new QSqlQueryModel(this);
-        qryModelStu->setQuery("Select StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود' , Field as 'رشته' \
-                               From tblStudent, tblPerson \
-                               Where tblStudent.ID = tblPerson.ID AND \
-                                     tblStudent.Field = N'" + fieldLesson + "' AND ( \
-                                     tblStudent.StudentCode like '" + stuCode + "%' OR \
-                                     tblPerson.FirstName like N'" + stuCode + "%' OR \
-                                     tblPerson.LastName like N'" + stuCode + "%' OR \
-                                     tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + stuCode + "%')");
-    }
-    ui->tableView_stu->setModel(qryModelStu);
-    ui->tableView_stu->setWordWrap(false);
-    ui->tableView_stu->setColumnWidth(0,115);
-    ui->tableView_stu->setColumnWidth(1,180);
-    ui->tableView_stu->setColumnWidth(2,80);
-    ui->tableView_stu->setColumnWidth(3,70);
-    ui->tableView_stu->setColumnWidth(4,260);
+        finallField = fieldStudent;
+        qDebug () << stuCode;
 
-    qDebug() << qryModelStu->lastError().text();
-/*
-    if(qry.numRowsAffected() != 0){
-        if(qry.numRowsAffected() == 1){
-            while(qry.next()){
-                for(int i=0 ; i<4 ; i++){
-                    arrStr[i] = qry.value(i).toString();
+        if(stuCode.isEmpty()){
+            QMessageBox::warning(this, "warning", "ابتدا نام یا شماره دانشجویی وارد کنید.");
+        }else{
+            qryModelStu = new QSqlQueryModel(this);
+            qryModelStu->setQuery("Select StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود' , Field as 'رشته' \
+                                   From tblStudent, tblPerson \
+                                   Where tblStudent.ID = tblPerson.ID AND \
+                                         tblStudent.Field = N'" + fieldStudent + "' AND ( \
+                                         tblStudent.StudentCode like '" + stuCode + "%' OR \
+                                         tblPerson.FirstName like N'" + stuCode + "%' OR \
+                                         tblPerson.LastName like N'" + stuCode + "%' OR \
+                                         tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + stuCode + "%')");
+        }
+        ui->tableView_stu->setModel(qryModelStu);
+        ui->tableView_stu->setWordWrap(false);
+        ui->tableView_stu->setColumnWidth(0,115);
+        ui->tableView_stu->setColumnWidth(1,180);
+        ui->tableView_stu->setColumnWidth(2,80);
+        ui->tableView_stu->setColumnWidth(3,70);
+        ui->tableView_stu->setColumnWidth(4,260);
+
+        qDebug() << qryModelStu->lastError().text();
+    /*
+        if(qry.numRowsAffected() != 0){
+            if(qry.numRowsAffected() == 1){
+                while(qry.next()){
+                    for(int i=0 ; i<4 ; i++){
+                        arrStr[i] = qry.value(i).toString();
+                    }
                 }
+                ui->label_stuName->setText(arrStr[0] + " " + arrStr[1]);
+                ui->label_stuCode->setText(arrStr[2]);
+                ui->label_fieldStu->setText(arrStr[3]);
+            }else{
+                QMessageBox::warning(this, "warning", "بیشتر از یک مورد وجود دارد.");
             }
-            ui->label_stuName->setText(arrStr[0] + " " + arrStr[1]);
-            ui->label_stuCode->setText(arrStr[2]);
-            ui->label_fieldStu->setText(arrStr[3]);
         }else{
-            QMessageBox::warning(this, "warning", "بیشتر از یک مورد وجود دارد.");
-        }
-    }else{
-        if(ui->lineEdit_stuCode->text().isEmpty()){
-            QMessageBox::warning(this, "warning", "ابتدا یک شماره دانشجویی وارد کنید.");
+            if(ui->lineEdit_stuCode->text().isEmpty()){
+                QMessageBox::warning(this, "warning", "ابتدا یک شماره دانشجویی وارد کنید.");
 
-        }else{
-            QMessageBox::warning(this, "warning", "لطفا یک شماره دانشجویی صحیح وارد کنید.");
+            }else{
+                QMessageBox::warning(this, "warning", "لطفا یک شماره دانشجویی صحیح وارد کنید.");
+            }
         }
+        */
+    }else{
+        QMessageBox::warning(this, "خطا", "لطفا رشته را با رشته درسی که انتخاب کرده اید یکی کنید.");
     }
-    */
 }
 
 void EntekhabVahedDialog::on_pushButton_continue_clicked()
@@ -279,7 +293,7 @@ void EntekhabVahedDialog::on_pushButton_continue_clicked()
 
         ui->stackedWidget->setCurrentIndex(1);
 
-        ui->label_field->setText(fieldLesson);
+        ui->label_field->setText(finallField);
      //   ui->label_stuCode->setText(stuCode);
      //   ui->label_name->setText(stuName);
      //   ui->label_fathersName->setText(fathersName);

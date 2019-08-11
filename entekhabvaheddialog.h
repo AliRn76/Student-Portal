@@ -20,6 +20,8 @@ public:
     QString lessonName;
     QString roozeHafte;
     QString fieldLesson;
+    QString fieldStudent;
+    QString finallField;
     QString stuName;
     QString stuCode;
     QString finallStuCode;

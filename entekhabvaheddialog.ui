@@ -1560,7 +1560,8 @@ color: white</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:rgb(191, 191, 191)</string>
+        <string notr="true">background-color:rgb(111, 111, 111);
+color: white;</string>
        </property>
        <property name="text">
         <string>برگشت</string>
@@ -1977,6 +1978,22 @@ color: white</string>
     <hint type="destinationlabel">
      <x>800</x>
      <y>648</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_backTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>EntekhabVahedDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>799</x>
+     <y>606</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>836</x>
+     <y>718</y>
     </hint>
    </hints>
   </connection>
