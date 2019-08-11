@@ -6,6 +6,35 @@ EntekhabVahedDialog::EntekhabVahedDialog(QWidget *parent) :
     ui(new Ui::EntekhabVahedDialog)
 {
     ui->setupUi(this);
+
+    preQryModelLesson = new QSqlQueryModel(this);
+    preQryModelStu = new QSqlQueryModel(this);
+
+    preQryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
+                                From tblLesson, tblErae, tblTeacher, tblPerson \
+                                Where tblErae.ID_Lesson = tblLesson.ID \
+                                AND tblTeacher.ID = tblPerson.ID \
+                                AND tblLesson.Field = N' '");
+
+    preQryModelStu->setQuery("Select StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود' , Field as 'رشته' \
+                     From tblStudent, tblPerson \
+                     Where tblStudent.ID = tblPerson.ID AND \
+                           tblStudent.StudentCode like ' '");
+
+    ui->tableView_lesson->setModel(preQryModelLesson);
+        ui->tableView_lesson->setColumnWidth(0,75);
+        ui->tableView_lesson->setColumnWidth(1,180);
+        ui->tableView_lesson->setColumnWidth(3,90);
+        ui->tableView_lesson->setColumnWidth(5,260);
+        ui->tableView_lesson->setWordWrap(false);
+
+    ui->tableView_stu->setModel(preQryModelStu);
+        ui->tableView_stu->setColumnWidth(0,115);
+        ui->tableView_stu->setColumnWidth(1,180);
+        ui->tableView_stu->setColumnWidth(2,80);
+        ui->tableView_stu->setColumnWidth(3,70);
+        ui->tableView_stu->setColumnWidth(4,260);
+        ui->tableView_stu->setWordWrap(false);
 }
 
 EntekhabVahedDialog::~EntekhabVahedDialog()
@@ -134,12 +163,12 @@ void EntekhabVahedDialog::on_pushButton_showStu_2_clicked()
 void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
 {
     fieldLesson = ui->comboBox_field->currentText();
-    entekhabID = ui->lineEdit_entekhabID_2->text();
+    eraeID = ui->lineEdit_entekhabID_2->text();
 
     qDebug() << fieldLesson ;
-    qDebug() << entekhabID ;
+    qDebug() << eraeID ;
 
-    if(entekhabID.isEmpty()){
+    if(eraeID.isEmpty()){
         QMessageBox::warning(this, "warning", "ابتدا یک مشخصه وارد کنید.");
 
     }else{
@@ -149,7 +178,7 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
                                  Where tblErae.ID_Lesson = tblLesson.ID \
                                  AND tblTeacher.ID = tblPerson.ID \
                                  AND tblLesson.Field = N'" + fieldLesson + "' \
-                                 AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
+                                 AND ( tblErae.ID like '" + eraeID + "' OR tblLesson.Title like N'" + eraeID + "%')");
 
         ui->tableView_lesson->setModel(qryModelLesson);
         ui->tableView_lesson->setColumnWidth(0,75);
@@ -190,6 +219,9 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
 void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
 {
     stuCode = ui->lineEdit_stuCode_2->text();
+    fieldLesson = ui->comboBox_field->currentText();
+
+    // ye Shart Bayd begzaram ke Field e Dars ba Stu bayad yki bashe ...................................................
 
     qDebug () << stuCode;
 
@@ -199,7 +231,8 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
         qryModelStu = new QSqlQueryModel(this);
         qryModelStu->setQuery("Select StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود' , Field as 'رشته' \
                                From tblStudent, tblPerson \
-                               Where tblStudent.ID = tblPerson.ID AND ( \
+                               Where tblStudent.ID = tblPerson.ID AND \
+                                     tblStudent.Field = N'" + fieldLesson + "' AND ( \
                                      tblStudent.StudentCode like '" + stuCode + "%' OR \
                                      tblPerson.FirstName like N'" + stuCode + "%' OR \
                                      tblPerson.LastName like N'" + stuCode + "%' OR \
@@ -241,24 +274,34 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
 
 void EntekhabVahedDialog::on_pushButton_continue_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    if(!ui->label_stuCode->text().isEmpty() && !ui->label_title->text().isEmpty()){
+        qDebug() << "joftesh click shode";
 
-    ui->label_field->setText(fieldLesson);
-    ui->label_stuCode->setText(stuCode);
- //   ui->label_name->setText(stuName);
- //   ui->label_fathersName->setText(fathersName);
- //   ui->label_saalVoroud->setText(saalVoroud);
- //   ui->label_entekhabID->setText(entekhabID);
- //   ui->label_title->setText(lessonName);
- //   ui->label_teacherName->setText(teacherName);
- //   ui->label_roozeHafte->setText(roozeHafte);
- //   ui->label_saat->setText(saat);
-    ui->label_classNum->setText("Hanuz Tanzim Nashode");
+        ui->stackedWidget->setCurrentIndex(1);
 
-    qDebug() << teacherName;
-    qDebug() << stuName;
-    qDebug() << fathersName;
-    qDebug() << saalVoroud;
+        ui->label_field->setText(fieldLesson);
+     //   ui->label_stuCode->setText(stuCode);
+     //   ui->label_name->setText(stuName);
+     //   ui->label_fathersName->setText(fathersName);
+     //   ui->label_saalVoroud->setText(saalVoroud);
+     //   ui->label_entekhabID->setText(entekhabID);
+     //   ui->label_title->setText(lessonName);
+     //   ui->label_teacherName->setText(teacherName);
+     //   ui->label_roozeHafte->setText(roozeHafte);
+     //   ui->label_saat->setText(saat);
+        ui->label_classNum->setText("Hanuz Tanzim Nashode");
+
+        qDebug() << teacherName;
+        qDebug() << stuName;
+        qDebug() << fathersName;
+        qDebug() << saalVoroud;
+    }else if(ui->label_title->text().isEmpty()){
+        QMessageBox::warning(this, "خطا", "لطفا ابتدا یک درس را از جدول انتخاب کنید.");
+    }else if(ui->label_stuCode->text().isEmpty()){
+        QMessageBox::warning(this, "خطا", "لطفا ابتدا یک دانشجو را از جدول انتخاب کنید.");
+    }else{
+        QMessageBox::warning(this, "خطا", "نمیدونم چرا ، ولی یه جای کار میلنگه.");
+    }
 }
 
 void EntekhabVahedDialog::on_pushButton_backPage2_clicked()
@@ -276,21 +319,24 @@ void EntekhabVahedDialog::on_tableView_lesson_clicked(const QModelIndex &index)
                Where tblErae.ID_Lesson = tblLesson.ID \
                AND tblTeacher.ID = tblPerson.ID \
                AND tblLesson.Field = N'" + fieldLesson + "' \
-               AND ( tblErae.ID like '" + entekhabID + "' OR tblLesson.Title like N'" + entekhabID + "%')");
+               AND ( tblErae.ID like '" + eraeID + "' OR tblLesson.Title like N'" + eraeID + "%')");
 
     qry1.seek(index.row());
 
-    entekhabID = qry1.value(0).toString();
+    eraeID = qry1.value(0).toString();
     lessonName = qry1.value(1).toString();
     teacherName = qry1.value(2).toString();
     roozeHafte = qry1.value(3).toString();
     saat = qry1.value(4).toString();
     fieldLesson = qry1.value(5).toString();
 
+    ui->label_entekhabID->setText(qry1.value(0).toString());
     ui->label_title->setText(qry1.value(1).toString());
     ui->label_teacherName->setText(qry1.value(2).toString());
     ui->label_roozeHafte->setText(qry1.value(3).toString());
     ui->label_saat->setText(qry1.value(4).toString());
+
+    // Class Num inja bayad biad .......................................................................................
 }
 
 void EntekhabVahedDialog::on_tableView_stu_clicked(const QModelIndex &index)
@@ -307,16 +353,90 @@ void EntekhabVahedDialog::on_tableView_stu_clicked(const QModelIndex &index)
                    tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + stuCode + "%')");
     qry.seek(index.row());
 
+    finallStuCode = qry.value(0).toString();
     stuName = qry.value(1).toString();
     fathersName = qry.value(2).toString();
     saalVoroud = qry.value(3).toString();
 
+    ui->label_stuCode->setText(qry.value(0).toString());
     ui->label_name->setText(qry.value(1).toString());
     ui->label_fathersName->setText(qry.value(2).toString());
     ui->label_saalVoroud->setText(qry.value(3).toString());
 }
 
+void EntekhabVahedDialog::on_pushButton_apply_clicked()
+{
+    QSqlQuery qry1;
+    QSqlQuery qry2;
+    QSqlQuery qry3;
 
+    QString tempID;
+    QString stuID;
+
+    qry1.prepare("Select ID From tblStudent \
+                  Where tblStudent.StudentCode = :stucode");
+
+            qry1.bindValue(":stucode", finallStuCode);
+            qry1.exec();
+
+            if(qry1.next()){
+                stuID = qry1.value(0).toString();
+            }
+
+            qDebug() << "finallStuCode: " << finallStuCode;
+            qDebug() << "qry1.value(0).toString(): " << qry1.value(0).toString();
+            qDebug() << "stuID: " << stuID;
+
+    qry2.prepare("Select ID From tblEntekhabVahed \
+                 Where ID_Erae = :iderae AND ID_Student = :idstudent");
+
+            qry2.bindValue(":iderae", eraeID);
+            qry2.bindValue(":idstudent", stuID);
+            qry2.exec();
+
+            while(qry2.next()){
+                tempID = qry2.value(0).toString();
+            }
+
+            qDebug() << tempID;
+
+            if(!tempID.isEmpty()) {
+                QMessageBox::warning(this, "هشدار" , "این درس قبلا برای این دانشجو انتخاب شده است.");
+
+            }else{
+                qry3.prepare("Insert Into tblEntekhabVahed \
+                              (ID_Erae, ID_Student) \
+                              Values(:iderae, :idstu) ");
+
+                             qry3.bindValue(":iderae", eraeID);
+                             qry3.bindValue(":idstu", stuID);
+
+                            qDebug() << "iderae: " << eraeID;
+                            qDebug() << "idstu: " << stuID;
+
+                if(qry3.exec()){
+                    QMessageBox::information(this, "OK", "درس با موفقیت انتخاب شد.");
+
+                    ui->label_field->clear();
+                    ui->label_stuCode->clear();
+                    ui->label_name->clear();
+                    ui->label_fathersName->clear();
+                    ui->label_saalVoroud->clear();
+                    ui->label_entekhabID->clear();
+                    ui->label_title->clear();
+                    ui->label_teacherName->clear();
+                    ui->label_roozeHafte->clear();
+                    ui->label_saat->clear();
+                    ui->label_classNum->clear();
+
+                    ui->stackedWidget->setCurrentIndex(0);
+
+                }else{
+                    QMessageBox::warning(this, "Warning", "انتخاب این درس با شکست مواجه شد.");
+                    qDebug() << qry3.lastError().text();
+                }
+            }
+}
 
 
 

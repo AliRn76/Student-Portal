@@ -16,12 +16,13 @@ class EntekhabVahedDialog : public QDialog
     Q_OBJECT
 
 public:
-    QString entekhabID;
+    QString eraeID;
     QString lessonName;
     QString roozeHafte;
     QString fieldLesson;
     QString stuName;
     QString stuCode;
+    QString finallStuCode;
     QString fathersName;
     QString saat;
     QString teacherName;
@@ -49,7 +50,13 @@ private slots:
 
     void on_tableView_stu_clicked(const QModelIndex &index);
 
+    void on_pushButton_apply_clicked();
+
+
+    //// TAB 2 ------>
+
     void on_pushButton_findStuTab2_clicked();
+
 
 
 private:
@@ -58,7 +65,10 @@ private:
     ShowEraeListDialog *showEraeDialog;
     QSqlQueryModel *qryModelLesson;
     QSqlQueryModel *qryModelStu;
+    QSqlQueryModel *preQryModelStu;
+    QSqlQueryModel *preQryModelLesson;
     QSqlQueryModel *qryModelStuTab2;
+
 };
 
 #endif // ENTEKHABVAHEDDIALOG_H
