@@ -9,6 +9,8 @@ EntekhabVahedDialog::EntekhabVahedDialog(QWidget *parent) :
 
     preQryModelLesson = new QSqlQueryModel(this);
     preQryModelStu = new QSqlQueryModel(this);
+    preQryModelStuTab2 = new QSqlQueryModel(this);
+    preQryModelLessonTab2 = new QSqlQueryModel(this);
 
     preQryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
                                 From tblLesson, tblErae, tblTeacher, tblPerson \
@@ -36,6 +38,38 @@ EntekhabVahedDialog::EntekhabVahedDialog(QWidget *parent) :
         ui->tableView_stu->setColumnWidth(3,70);
         ui->tableView_stu->setColumnWidth(4,260);
         ui->tableView_stu->setWordWrap(false);
+
+    /// Tab 2 ---------------->
+
+
+    preQryModelStuTab2->setQuery("Select Distinct StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود', Field as 'رشته' \
+                                  From tblPerson , tblStudent \
+                                  Where tblPerson.ID = tblStudent.ID AND \
+                                        tblStudent.Field like N' '");
+
+    preQryModelLessonTab2->setQuery("Select tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت' \
+                                    From tblPerson,        \
+                                         tblTeacher,       \
+                                         tblStudent,       \
+                                         tblEntekhabVahed, \
+                                         tblErae,          \
+                                         tblLesson         \
+                                    Where tblPerson.ID = tblTeacher.ID AND                \
+                                          tblTeacher.ID = tblErae.ID_Teacher AND          \
+                                          tblErae.ID_Lesson = tblLesson.ID AND            \
+                                          tblEntekhabVahed.ID_Erae = tblErae.ID AND       \
+                                          tblEntekhabVahed.ID_Student = tblStudent.ID AND \
+                                          tblStudent.StudentCode = ' '");
+
+    ui->tableView_stuTab2->setModel(preQryModelStuTab2);
+        ui->tableView_stuTab2->setWordWrap(false);
+        ui->tableView_stuTab2->setColumnWidth(0,115);
+        ui->tableView_stuTab2->setColumnWidth(1,180);
+        ui->tableView_stuTab2->setColumnWidth(2,80);
+        ui->tableView_stuTab2->setColumnWidth(3,70);
+        ui->tableView_stuTab2->setColumnWidth(4,260);
+
+    ui->tableView_LessTab2->setModel(preQryModelLessonTab2);
 }
 
 EntekhabVahedDialog::~EntekhabVahedDialog()
@@ -227,8 +261,6 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
 {
     stuCode = ui->lineEdit_stuCode_2->text();
     fieldStudent = ui->comboBox_field->currentText();
-
-    // ye Shart Bayd begzaram ke Field e Dars ba Stu bayad yki bashe ...................................................
 
     qDebug() << fieldLesson;
     if(fieldLesson.isEmpty() || fieldLesson == fieldStudent){
@@ -467,17 +499,17 @@ void EntekhabVahedDialog::on_pushButton_findStuTab2_clicked()
 
     }else{
 
-        QString strStuCode = ui->lineEdit_stuCodeTab2->text();
+        stuCodeTab2 = ui->lineEdit_stuCodeTab2->text();
         qryModelStuTab2 = new QSqlQueryModel(this);
 
-        QString strQry = ("Select StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود', Field as 'رشته' \
+        QString strQry = ("Select Distinct StudentCode as 'شماره دانشجویی', Concat(FirstName , ' ' , LastName) as 'نام', FathersName as 'نام پدر', SaalVoroud as 'سال ورود', Field as 'رشته' \
                           From tblPerson , tblStudent \
                           Where tblPerson.ID = tblStudent.ID AND \
                                 tblStudent.Field like N'" + fieldTab2 + "' AND \
-                                ( tblStudent.StudentCode like '" + strStuCode + "%' OR \
-                                  tblPerson.Firstname like N'" + strStuCode + "%' OR \
-                                  tblPerson.Lastname like N'" + strStuCode + "%' OR \
-                                  tblPerson.Firstname + ' ' + tblPerson.LastName like N'" + strStuCode + "%')");
+                                ( tblStudent.StudentCode like '" + stuCodeTab2 + "%' OR \
+                                  tblPerson.Firstname like N'" + stuCodeTab2 + "%' OR \
+                                  tblPerson.Lastname like N'" + stuCodeTab2 + "%' OR \
+                                  tblPerson.Firstname + ' ' + tblPerson.LastName like N'" + stuCodeTab2 + "%')");
 
         qryModelStuTab2->setQuery(strQry);
 
@@ -491,12 +523,127 @@ void EntekhabVahedDialog::on_pushButton_findStuTab2_clicked()
 
 
         qDebug() << fieldTab2 ;
-        qDebug() << strStuCode;
+        qDebug() << stuCodeTab2;
         qDebug() << qryModelStuTab2->lastError().text();
     }
 }
 
+void EntekhabVahedDialog::on_tableView_stuTab2_clicked(const QModelIndex &index)
+{
+    QSqlQuery qry1;
+    qryModelStuLessonsTab2 = new QSqlQueryModel(this);
+
+    qry1.exec("Select Distinct StudentCode, Concat(FirstName , ' ' , LastName), FathersName, SaalVoroud, Field \
+               From tblPerson , tblStudent \
+               Where tblPerson.ID = tblStudent.ID AND \
+                    tblStudent.Field like N'" + fieldTab2 + "' AND \
+                    ( tblStudent.StudentCode like '" + stuCodeTab2 + "%' OR \
+                      tblPerson.Firstname like N'" + stuCodeTab2 + "%' OR \
+                      tblPerson.Lastname like N'" + stuCodeTab2 + "%' OR \
+                      tblPerson.Firstname + ' ' + tblPerson.LastName like N'" + stuCodeTab2 + "%')");
+
+    qry1.seek(index.row());
+
+    finallStuCodeTab2 = qry1.value(0).toString();
+
+    ui->label_StuCodTab2->setText(finallStuCodeTab2);
+    ui->label_stuNameTab2->setText(qry1.value(1).toString());
+
+    qryModelStuLessonsTab2->setQuery("Select tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت' \
+                                      From tblPerson,        \
+                                           tblTeacher,       \
+                                           tblStudent,       \
+                                           tblEntekhabVahed, \
+                                           tblErae,          \
+                                           tblLesson         \
+                                      Where tblPerson.ID = tblTeacher.ID AND                \
+                                            tblTeacher.ID = tblErae.ID_Teacher AND          \
+                                            tblErae.ID_Lesson = tblLesson.ID AND            \
+                                            tblEntekhabVahed.ID_Erae = tblErae.ID AND       \
+                                            tblEntekhabVahed.ID_Student = tblStudent.ID AND \
+                                            tblStudent.StudentCode = " + finallStuCodeTab2);
+
+            ui->tableView_LessTab2->setModel(qryModelStuLessonsTab2);
+}
+
+void EntekhabVahedDialog::on_tableView_LessTab2_clicked(const QModelIndex &index)
+{
+    QSqlQuery qry;
+
+    qry.exec("Select Title, DaysOfWeek, TimeOfClass, tblErae.ID, FirstName, LastName \
+             From tblPerson,         \
+                  tblTeacher,        \
+                  tblStudent,        \
+                  tblEntekhabVahed,  \
+                  tblErae, tblLesson \
+             Where tblPerson.ID = tblTeacher.ID AND                \
+                   tblTeacher.ID = tblErae.ID_Teacher AND          \
+                   tblErae.ID_Lesson = tblLesson.ID AND            \
+                   tblEntekhabVahed.ID_Erae = tblErae.ID AND       \
+                   tblEntekhabVahed.ID_Student = tblStudent.ID AND \
+                   tblStudent.StudentCode = " + finallStuCodeTab2);
+
+    qry.seek(index.row());
+
+    ui->label_eraeIDTab2->setText(qry.value(0).toString());
+    ui->label_lessonNameTab2->setText(qry.value(1).toString());
+    ui->label_teacherNameTab2->setText(qry.value(2).toString());
+    ui->label_rouzTab2->setText(qry.value(3).toString());
+    ui->label_saatTab2->setText(qry.value(4).toString());
+}
+
+void EntekhabVahedDialog::on_pushButton_removeTab2_clicked()
+{
+    // #1 delete neshon mide ke delet karde vali kar nmikone
+    // #2 vaghti daneshjoo ro avaz mikone bayad etelaat oon payin marboot be dars clear beshe
+    // #3 size table dars bayad fix bshe
+
+    if(!ui->label_eraeIDTab2->text().isEmpty()){
+        QSqlQuery qry1;
+        QSqlQuery qry2;
+        QMessageBox::StandardButton reply;
+
+        reply = QMessageBox::question(this, "هشدار", "آیا از حذف اطمینان دارید؟", QMessageBox::No|QMessageBox::Yes);
+
+        if (reply == QMessageBox::Yes) {
+            qry1.prepare("Select ID \
+                          From tblStudent \
+                          Where tblStudent.StudentCode = :stucode");
+
+                    qry1.bindValue(":stucode", finallStuCodeTab2);
+                    qry1.exec();
+
+            if(qry1.next()){
+                stuIDTab2 = qry1.value(0).toString();
+            }
+
+            qry2.prepare("Delete From tblEntekhabVahed \
+                          Where ID_Erae = :iderae AND   \
+                                ID_Student = :idstu");
 
 
+                    qry2.bindValue(":iderae", ui->label_eraeIDTab2->text());
+                    qry2.bindValue(":idstu", stuIDTab2);
 
+            if(qry2.exec()){
+               QMessageBox::information(this, "OK", "درس مورد نظر از دروس انتخاب شده برای این دانشجو حذف شد.");
 
+            }else{
+                qDebug() << "qry2.lastError(): " << qry2.lastError().text();
+            }
+
+        }else {
+        qDebug() << "No Ro Click Kard!";
+        // do nothing
+
+        }
+    }else if(ui->label_StuCodTab2->text().isEmpty()){
+        QMessageBox::warning(this,"خطا", "لطفا ابتدا یک دانشجو را انتخاب کنید.");
+
+    }else if(ui->label_eraeIDTab2->text().isEmpty()){
+        QMessageBox::warning(this,"خطا", "لطفا ابتدا یک درس را انتخاب کنید.");
+
+    }else{
+        QMessageBox::warning(this,"خطا", "یه مشکل جدی پیش اومده ، برنامه رو نشون علی بده.");
+    }
+}

@@ -34,7 +34,7 @@
     <enum>QTabWidget::East</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -1567,7 +1567,7 @@ color: white;</string>
         <string>برگشت</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_backTab2_2">
+      <widget class="QPushButton" name="pushButton_removeTab2">
        <property name="geometry">
         <rect>
          <x>1020</x>
@@ -1686,7 +1686,7 @@ color: white;</string>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
-         <widget class="QLabel" name="label_entekhabIDTab2">
+         <widget class="QLabel" name="label_eraeIDTab2">
           <property name="text">
            <string/>
           </property>
@@ -1866,8 +1866,8 @@ color: white;</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>863</x>
-         <y>460</y>
+         <x>860</x>
+         <y>500</y>
          <width>261</width>
          <height>32</height>
         </rect>
@@ -1913,8 +1913,8 @@ color: white;</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>862</x>
-         <y>510</y>
+         <x>859</x>
+         <y>550</y>
          <width>261</width>
          <height>32</height>
         </rect>
@@ -1952,6 +1952,53 @@ color: white;</string>
           </property>
           <property name="text">
            <string>ساعت :</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>860</x>
+         <y>450</y>
+         <width>261</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_23">
+        <item>
+         <widget class="QLabel" name="label_teacherNameTab2">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_23">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_25">
+          <property name="font">
+           <font>
+            <family>B Nazanin</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>نام استاد :</string>
           </property>
          </widget>
         </item>
