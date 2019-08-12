@@ -34,13 +34,16 @@
     <enum>QTabWidget::East</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
      <string>انتخاب واحد برای دانشجو</string>
     </attribute>
     <widget class="QStackedWidget" name="stackedWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -643,15 +646,16 @@ color: white</string>
       <widget class="QLabel" name="label_14">
        <property name="geometry">
         <rect>
-         <x>970</x>
+         <x>950</x>
          <y>110</y>
-         <width>131</width>
-         <height>21</height>
+         <width>151</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>B Titr</family>
+         <pointsize>11</pointsize>
          <weight>50</weight>
          <bold>false</bold>
         </font>
@@ -663,22 +667,23 @@ color: white</string>
       <widget class="QLabel" name="label_15">
        <property name="geometry">
         <rect>
-         <x>994</x>
+         <x>964</x>
          <y>260</y>
-         <width>111</width>
-         <height>20</height>
+         <width>141</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>B Titr</family>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="text">
         <string>مشخصات درس :</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_apply">
        <property name="geometry">
         <rect>
          <x>960</x>
@@ -722,35 +727,27 @@ color: white</string>
          <widget class="QLabel" name="label_teacherName">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_12">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_29">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -763,10 +760,10 @@ color: white</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>860</x>
+         <x>863</x>
          <y>170</y>
-         <width>244</width>
-         <height>31</height>
+         <width>241</width>
+         <height>41</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -774,35 +771,27 @@ color: white</string>
          <widget class="QLabel" name="label_stuCode">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -815,10 +804,10 @@ color: white</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>640</x>
+         <x>561</x>
          <y>170</y>
-         <width>162</width>
-         <height>31</height>
+         <width>251</width>
+         <height>41</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -826,35 +815,27 @@ color: white</string>
          <widget class="QLabel" name="label_name">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_5">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -867,10 +848,10 @@ color: white</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>180</x>
+         <x>90</x>
          <y>170</y>
          <width>200</width>
-         <height>31</height>
+         <height>41</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -878,35 +859,27 @@ color: white</string>
          <widget class="QLabel" name="label_saalVoroud">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_9">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -919,10 +892,10 @@ color: white</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>410</x>
+         <x>330</x>
          <y>170</y>
          <width>185</width>
-         <height>31</height>
+         <height>41</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -930,35 +903,27 @@ color: white</string>
          <widget class="QLabel" name="label_fathersName">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_10">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -973,8 +938,8 @@ color: white</string>
         <rect>
          <x>15</x>
          <y>10</y>
-         <width>371</width>
-         <height>31</height>
+         <width>271</width>
+         <height>37</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -982,8 +947,12 @@ color: white</string>
          <widget class="QLabel" name="label_field">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
@@ -994,6 +963,9 @@ color: white</string>
          <spacer name="horizontalSpacer_5">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Preferred</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -1008,6 +980,7 @@ color: white</string>
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1031,35 +1004,27 @@ color: white</string>
          <widget class="QLabel" name="label_title">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_7">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_21">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1083,35 +1048,27 @@ color: white</string>
          <widget class="QLabel" name="label_entekhabID">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_16">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1135,35 +1092,27 @@ color: white</string>
          <widget class="QLabel" name="label_roozeHafte">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_9">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_22">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1187,35 +1136,27 @@ color: white</string>
          <widget class="QLabel" name="label_saat">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_10">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_24">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1239,35 +1180,27 @@ color: white</string>
          <widget class="QLabel" name="label_classNum">
           <property name="font">
            <font>
-            <family>B Koodak</family>
+            <family>B Nazanin</family>
+            <pointsize>11</pointsize>
            </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
           </property>
           <property name="text">
            <string/>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_11">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="label_26">
           <property name="font">
            <font>
             <family>B Koodak</family>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">
@@ -1627,13 +1560,14 @@ color: white</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:rgb(191, 191, 191)</string>
+        <string notr="true">background-color:rgb(111, 111, 111);
+color: white;</string>
        </property>
        <property name="text">
         <string>برگشت</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_backTab2_2">
+      <widget class="QPushButton" name="pushButton_removeTab2">
        <property name="geometry">
         <rect>
          <x>1020</x>
@@ -1752,7 +1686,7 @@ color: white</string>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
-         <widget class="QLabel" name="label_entekhabIDTab2">
+         <widget class="QLabel" name="label_eraeIDTab2">
           <property name="text">
            <string/>
           </property>
@@ -1932,8 +1866,8 @@ color: white</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>863</x>
-         <y>460</y>
+         <x>860</x>
+         <y>500</y>
          <width>261</width>
          <height>32</height>
         </rect>
@@ -1979,8 +1913,8 @@ color: white</string>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>862</x>
-         <y>510</y>
+         <x>859</x>
+         <y>550</y>
          <width>261</width>
          <height>32</height>
         </rect>
@@ -2023,6 +1957,53 @@ color: white</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="layoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>860</x>
+         <y>450</y>
+         <width>261</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_23">
+        <item>
+         <widget class="QLabel" name="label_teacherNameTab2">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_23">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_25">
+          <property name="font">
+           <font>
+            <family>B Nazanin</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>نام استاد :</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
      <widget class="QWidget" name="page_4"/>
     </widget>
@@ -2044,6 +2025,22 @@ color: white</string>
     <hint type="destinationlabel">
      <x>800</x>
      <y>648</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_backTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>EntekhabVahedDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>799</x>
+     <y>606</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>836</x>
+     <y>718</y>
     </hint>
    </hints>
   </connection>
