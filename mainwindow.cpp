@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if(!db.open()){
         qDebug() << db.lastError().text();
+        QMessageBox::warning(this,"warning", db.lastError().text());
     }
 }
 

@@ -564,13 +564,19 @@ void EntekhabVahedDialog::on_tableView_stuTab2_clicked(const QModelIndex &index)
                                             tblStudent.StudentCode = " + finallStuCodeTab2);
 
             ui->tableView_LessTab2->setModel(qryModelStuLessonsTab2);
+
+    ui->label_eraeIDTab2->clear();
+    ui->label_lessonNameTab2->clear();
+    ui->label_teacherNameTab2->clear();
+    ui->label_rouzTab2->clear();
+    ui->label_saatTab2->clear();
 }
 
 void EntekhabVahedDialog::on_tableView_LessTab2_clicked(const QModelIndex &index)
 {
     QSqlQuery qry;
 
-    qry.exec("Select Title, DaysOfWeek, TimeOfClass, tblErae.ID, FirstName, LastName \
+    qry.exec("Select tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت' \
              From tblPerson,         \
                   tblTeacher,        \
                   tblStudent,        \
@@ -594,9 +600,9 @@ void EntekhabVahedDialog::on_tableView_LessTab2_clicked(const QModelIndex &index
 
 void EntekhabVahedDialog::on_pushButton_removeTab2_clicked()
 {
-    // #1 delete neshon mide ke delet karde vali kar nmikone
-    // #2 vaghti daneshjoo ro avaz mikone bayad etelaat oon payin marboot be dars clear beshe
-    // #3 size table dars bayad fix bshe
+    //Haal Shod  // #1 delete neshon mide ke delet karde vali kar nmikone
+    //Haal Shod  // #2 vaghti daneshjoo ro avaz mikone bayad etelaat oon payin marboot be dars clear beshe
+                 // #3 size table dars bayad fix bshe
 
     if(!ui->label_eraeIDTab2->text().isEmpty()){
         QSqlQuery qry1;
