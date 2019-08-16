@@ -669,7 +669,7 @@ color: rgb(214, 214, 214);</string>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>420</x>
      <y>580</y>
      <width>471</width>
      <height>35</height>
