@@ -1,0 +1,145 @@
+Create Database Portal;
+
+Create Table tblPerson(
+	 ID int Not Null Primary Key AUTO_INCREMENT
+	,FirstName varchar(50) CHARACTER SET utf8 Not Null 
+	,LastName varchar(50) CHARACTER SET utf8 Not Null
+	,NationalCode char(10) Not Null
+	,BirthDate date
+	,Gender bit Not Null
+);
+
+Create Table tblStudent(
+	 ID int Not Null Primary Key
+	,FathersName varchar(50) CHARACTER SET utf8
+	,SaalVoroud char(10)
+	,StudentCode int Not Null AUTO_INCREMENT
+	,Password varchar(10) Not Null
+	,Field varchar(50) CHARACTER SET utf8 Not Null
+    	,FOREIGN KEY (ID) REFERENCES tblPerson(ID)
+    	,KEY (StudentCode)
+);
+
+ALTER TABLE tblStudent AUTO_INCREMENT = 6000 ;
+
+Create Table tblTeacher(
+	 ID int Not Null Primary Key
+	,EducationDegree varchar(100) CHARACTER SET utf8
+	,TeacherCode int Not Null AUTO_INCREMENT
+	,Password varchar(10) Not Null
+	,Foreign Key (ID) References tblPerson(ID)
+	,KEY (TeacherCode)
+);
+
+ALTER TABLE tblTeacher AUTO_INCREMENT = 3000 ;
+
+Create Table tblEmployee(
+	 ID int Not Null Primary Key
+	,EmployeeCode int Not Null AUTO_INCREMENT
+	,Password varchar(10) Not Null
+    	,Foreign Key (ID) References tblPerson(ID)
+    	,KEY (EmployeeCode)
+);
+
+Create Table tblLesson(
+	 ID int Not Null Primary Key AUTO_INCREMENT
+	,Title varchar(100) CHARACTER SET utf8 Not Null
+	,TedadVahed tinyint
+	,Type varchar(50) CHARACTER SET utf8 Not Null
+	,LessonCode int AS (ID * 7)
+	,Field varchar(50) CHARACTER SET utf8 Not Null
+);
+
+Create Table tblErae (
+	 ID int Not Null Primary Key AUTO_INCREMENT
+	,ID_Teacher int Not Null
+	,ID_Lesson int Not Null
+	,DaysOfWeek varchar(50) CHARACTER SET utf8
+	,TimeOfClass time(0)
+	,Capacity int
+	,ClassNum varchar(10) CHARACTER SET utf8
+	,Foreign Key (ID_Teacher) References tblTeacher(ID)
+    	,Foreign Key (ID_Lesson) References tblLesson(ID)
+);
+
+Create Table tblEntekhabVahed(
+	 ID int Not Null Primary Key AUTO_INCREMENT
+	,ID_Erae int Not Null 
+	,ID_Student int Not Null 
+	,NumberOfTerm int 
+	,Score int 
+	,Foreign Key (ID_Erae) References tblErae(ID) 
+	,Foreign Key (ID_Student) References tblStudent(ID)
+);
+
+Create Table tblRequestTeacher(
+	 ID int Not Null Primary Key AUTO_INCREMENT
+        ,ID_Teacher int Not Null
+	,TimeOfRequest datetime
+	,Foreign Key (ID_Teacher) References tblTeacher(ID)
+);
+
+Create Table tblParking(
+	 ID int Not Null Primary Key
+	,ImageOfCard BLOB 
+	,Foreign Key (ID) References tblRequestTeacher(ID)
+);
+
+Create Table tblReqLesson(
+	 ID int Not Null Primary Key
+	,Title varchar(50) Character Set utf8 Not Null
+	,Description Text Character Set utf8
+	,Accepted bit
+	,Foreign Key (ID) References tblRequestTeacher(ID)
+);
+
+Create Table tblVaamTeacher(
+	 ID int Not Null Primary Key
+	,Amount char(9) Not Null
+	,Description Text Character Set utf8
+	,Accepted bit
+	,NumberOfInstallment int 
+	,PaymentComplete bit
+	,Foreign Key (ID) References tblRequestTeacher(ID)
+);
+
+Create Table tblRequestStudent(
+	 ID int Not Null Primary Key Auto_Increment
+	,ID_Student int Not Null 
+	,TimeOfRequest datetime
+	,Foreign Key (ID_Student) References tblStudent(ID)
+);
+
+Create Table tblEshteghalBeTahsil(
+	 ID int Not Null Primary Key
+	,Description Text Character Set utf8
+	,Accepted bit
+	,ReasonOfReject Text Character Set utf8	
+	,Foreign Key (ID) References tblRequestStudent(ID)
+);
+
+Create Table tblKhabgah(
+	 ID int Not Null Primary Key
+	,Description Text Character Set utf8
+	,Accepted bit
+	,ReasonOfReject Text Character Set utf8
+	,Foreign Key (ID) References tblRequestStudent(ID)
+);
+
+Create Table tblRizNomarat(
+	 ID int Not Null Primary Key
+	,Description Text Character Set utf8
+	,Accepted bit
+	,ReasonOfReject Text Character Set utf8
+	,Foreign Key (ID) References tblRequestStudent(ID)
+);
+
+Create Table tblVaamStudent(
+	 ID int Not Null Primary Key
+	,Amount char(9) Not Null
+	,Description Text Character Set utf8
+	,Accepted bit
+	,NumberOfInstallment int 
+	,PaymentComplete bit
+	,Foreign Key (ID) References tblRequestStudent(ID)
+);
