@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     db.setHostName("se7enf98.ddns.net");
     db.setUserName("team");
     db.setPassword("portal98");
-    db.setDatabaseName("Student");
+    db.setDatabaseName("Portal");
 
     if(!db.open()){
         qDebug() << db.lastError().text();
