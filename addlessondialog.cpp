@@ -63,8 +63,8 @@ void AddLessonDialog::on_pushButton_add_clicked()
                     qry1.bindValue(":field", strField);
 
                         if(qry1.exec()){
-                            currentID = qry3.lastInsertId().toString();
-                            qry4.prepare("Select LessonCode FromtblLesson \
+                            currentID = qry1.lastInsertId().toString();
+                            qry4.prepare("Select LessonCode From tblLesson \
                                           Where tblLesson.ID = :id");
                                qry4.bindValue(":id", currentID);
                                qry4.exec();
@@ -72,6 +72,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
                                if(qry4.next()){
                                    currentCode = qry4.value(0).toString();
                                }
+                            qDebug() << currentID ;
 
                             QMessageBox::information(this, "Ok", "درس اضافه شد، کد درس : " + currentCode);
                             ui->lineEdit_title->clear();

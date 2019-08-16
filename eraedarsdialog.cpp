@@ -110,7 +110,7 @@ void EraeDarsDialog::on_pushButton_findLesson_clicked()
             ui->label_type->setText(arrStr[2]);
             ui->label_tedadVahed->setText(arrStr[3]);
         }else{
-            QMessageBox::warning(this, "warning", "لطفا یک نام یا کد درس صحیح وارد کنید.");
+            QMessageBox::warning(this, "Warning", "لطفا یک نام یا کد درس صحیح وارد کنید.");
         }
     }
 }
@@ -188,6 +188,10 @@ void EraeDarsDialog::on_pushButton_apply_clicked()
                              qry3.bindValue(":idlesson", lessonID);
                              qry3.bindValue(":days", roozHafte);
                              qry3.bindValue(":time", classTime);
+
+                             qDebug() << teacherID << lessonID;
+                             qDebug() << roozHafte;
+                             qDebug() << classTime;
 
                              if(qry3.exec()){
                                  QMessageBox::information(this, "OK", "درس ارائه داده شد.");

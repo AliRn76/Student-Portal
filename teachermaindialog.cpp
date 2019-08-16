@@ -78,6 +78,20 @@ void TeacherMainDialog::on_pushButton_refresh_clicked()
     model->setQuery(qry1);
     ui->tableView_Lesson->setModel(model);
     //---------------------------------------------------
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    QSqlQuery qry;
+    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
+                 from tblPerson p , tblStudent s , tblErae e , tblEntekhabVahed en , tblTeacher t \
+                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
+            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
+    qry.exec();
+    this->model = new QSqlQueryModel();
+    model->setQuery(qry);
+    ui->tableView_Student->setModel(model);
+=======
+>>>>>>> 075c508081ab030a1ad4e149c486dfbbcff020a9
 //    QSqlQuery qry;
 //    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
 //                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
@@ -87,6 +101,10 @@ void TeacherMainDialog::on_pushButton_refresh_clicked()
 //    this->model = new QSqlQueryModel();
 //    model->setQuery(qry);
 //    ui->tableView_Student->setModel(model);
+<<<<<<< HEAD
+=======
+>>>>>>> 17a1244bf0076c81d66eb54ca237c8978fd84456
+>>>>>>> 075c508081ab030a1ad4e149c486dfbbcff020a9
 }
 
 void TeacherMainDialog::on_tableView_Lesson_clicked(const QModelIndex &index)
@@ -114,6 +132,37 @@ void TeacherMainDialog::on_tableView_Lesson_clicked(const QModelIndex &index)
     ui->label_code->setText(LessonCode);
 
 //--------------------------------------------------------
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    QSqlQuery qry;
+    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
+                 from tblPerson p , tblStudent s , tblErae e , tblEntekhabVahed en , tblTeacher t \
+                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
+            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
+    qry.exec();
+    this->model = new QSqlQueryModel();
+    model->setQuery(qry);
+    ui->tableView_Student->setModel(model);
+}
+
+void TeacherMainDialog::on_tableView_Student_clicked(const QModelIndex &index)
+{
+    NumberOfRow_Student = index.row();
+    QSqlQuery qry;
+    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
+                 from tblPerson p , tblStudent s , tblErae e , tblEntekhabVahed en , tblTeacher t \
+                 where p.ID = s.ID and e.ID = :lesscode and en.ID_Student = s.ID and en.ID_Erae = e.ID ");
+            qry.bindValue(":lesscode",SendJozveDialog::lessCode);
+    qry.exec();
+    this->model = new QSqlQueryModel();
+    model->setQuery(qry);
+    ui->tableView_Student->setModel(model);
+    qry.seek(NumberOfRow_Student);
+    StuCode = qry.value(1).toString();
+}
+=======
+>>>>>>> 075c508081ab030a1ad4e149c486dfbbcff020a9
 //    QSqlQuery qry;
 //    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
 //                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
@@ -140,6 +189,10 @@ void TeacherMainDialog::on_tableView_Lesson_clicked(const QModelIndex &index)
 //    qry.seek(NumberOfRow_Student);
 //    StuCode = qry.value(1).toString();
 //}
+<<<<<<< HEAD
+=======
+>>>>>>> 17a1244bf0076c81d66eb54ca237c8978fd84456
+>>>>>>> 075c508081ab030a1ad4e149c486dfbbcff020a9
 
 void TeacherMainDialog::on_pushButton_SetScore_clicked()
 {
