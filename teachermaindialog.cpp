@@ -78,6 +78,7 @@ void TeacherMainDialog::on_pushButton_refresh_clicked()
     model->setQuery(qry1);
     ui->tableView_Lesson->setModel(model);
     //---------------------------------------------------
+
 //    QSqlQuery qry;
 //    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
 //                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
@@ -87,6 +88,7 @@ void TeacherMainDialog::on_pushButton_refresh_clicked()
 //    this->model = new QSqlQueryModel();
 //    model->setQuery(qry);
 //    ui->tableView_Student->setModel(model);
+
 }
 
 void TeacherMainDialog::on_tableView_Lesson_clicked(const QModelIndex &index)
@@ -114,6 +116,7 @@ void TeacherMainDialog::on_tableView_Lesson_clicked(const QModelIndex &index)
     ui->label_code->setText(LessonCode);
 
 //--------------------------------------------------------
+
 //    QSqlQuery qry;
 //    qry.prepare("Select Distinct p.FirstName +' ' + p.LastName as 'نام و نام خانوادگی ' ,s.StudentCode as 'شماره دانشجویی' ,s.Field as 'رشته' \
 //                 from Student.dbo.tblPerson p , Student.dbo.tblStudent s , Student.dbo.tblErae e , Student.dbo.tblEntekhabVahed en , Student.dbo.tblTeacher t \
@@ -146,6 +149,7 @@ void TeacherMainDialog::on_pushButton_SetScore_clicked()
     showClass = new ShowClassMembers(this);
     showClass->show();
 }
+
 //void TeacherMainDialog::on_pushButton_SetScores_clicked()
 //{
 //    if(ui->lineEdit_Score->text().isEmpty()){
@@ -182,7 +186,6 @@ void TeacherMainDialog::on_pushButton_SetScore_clicked()
 
 //    }
 //}
-
 void TeacherMainDialog::on_radioButton_Day_clicked()
 {
     QString username = TeacherChangePassword::strUserTeacher;

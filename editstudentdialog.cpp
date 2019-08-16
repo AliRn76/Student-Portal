@@ -52,7 +52,7 @@ void EditStudentDialog::on_pushButton_search_clicked()
             ui->label_stuCode->setText(arrStr[0]);
             ui->lineEdit_name->setText(arrStr[1]);
             ui->lineEdit_lastname->setText(arrStr[2]);
-            if(arrStr[3] == "1"){
+            if(arrStr[3] == "\u0001"){
                 ui->comboBox_gender->setCurrentText("مرد");
             }else{
                 ui->comboBox_gender->setCurrentText("زن");
@@ -62,6 +62,7 @@ void EditStudentDialog::on_pushButton_search_clicked()
             ui->lineEdit_birthdate->setText(arrStr[6]);
             ui->lineEdit_saalevoroud->setText(arrStr[7]);
             ui->comboBox_field->setCurrentText(arrStr[8]);
+            qDebug() << arrStr[3];
 
         }else{
                 QMessageBox::warning(this, "warning", "لطفا یک کد یا نام صحیح وارد کنید.");

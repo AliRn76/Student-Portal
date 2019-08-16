@@ -56,7 +56,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>450</x>
+
+     <x>240</x>
+
      <y>150</y>
      <width>121</width>
      <height>20</height>
@@ -74,6 +76,7 @@
     <string>نام و نام خانوادگی :</string>
    </property>
   </widget>
+
   <widget class="QLabel" name="label_lessonCode">
    <property name="geometry">
     <rect>
@@ -95,6 +98,7 @@
     <string>-------</string>
    </property>
   </widget>
+
   <widget class="QLabel" name="label_lessonName">
    <property name="geometry">
     <rect>
@@ -106,6 +110,7 @@
    </property>
    <property name="font">
     <font>
+
      <family>B Koodak</family>
      <pointsize>10</pointsize>
      <weight>75</weight>
@@ -119,7 +124,9 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>290</x>
+
+     <x>80</x>
+
      <y>40</y>
      <width>81</width>
      <height>36</height>
@@ -135,6 +142,7 @@
     <string>مشخصه :</string>
    </property>
   </widget>
+
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
@@ -239,6 +247,7 @@
     </font>
    </property>
    <property name="text">
+
     <string/>
    </property>
   </widget>

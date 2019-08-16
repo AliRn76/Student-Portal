@@ -49,7 +49,7 @@ void EditTeacherDialog::on_pushButton_search_clicked()
               ui->label_teachCode->setText(arrStr[0]);
               ui->lineEdit_name->setText(arrStr[1]);
               ui->lineEdit_lastName->setText(arrStr[2]);
-              if(arrStr[3] == "1"){
+              if(arrStr[3] == "\u0001"){
                   ui->comboBox_gender->setCurrentText("مرد");
               }else{
                   ui->comboBox_gender->setCurrentText("زن");
