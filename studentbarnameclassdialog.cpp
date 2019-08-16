@@ -11,7 +11,7 @@ StudentBarnameClassDialog::StudentBarnameClassDialog(QWidget *parent) :
     QString stuID;
 
     qry.prepare("Select ID \
-                 From Student.dbo.tblStudent \
+                 From tblStudent \
                  Where tblStudent.StudentCode = :stucode");
             qry.bindValue(":stucode", stuCodeBarname);
             qry.exec();
@@ -25,7 +25,7 @@ StudentBarnameClassDialog::StudentBarnameClassDialog(QWidget *parent) :
     qDebug() << stuID << stuCodeBarname;
 
     qryModel->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
-                       From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+                       From tblPerson, tblErae, tblTeacher, tblLesson, tblStudent, tblEntekhabVahed \
                        Where tblPerson.ID = tblTeacher.ID AND \
                             tblTeacher.ID = tblErae.ID_Teacher AND \
                             tblErae.ID_Lesson = tblLesson.ID AND \

@@ -35,11 +35,11 @@ void EraeDarsDialog::on_pushButton_findTeach_clicked()
         QMessageBox::warning(this, "Warning", "ابتدا یک نام یا کد کارمندی وارد کنید.");
     }else{
         QSqlQuery qry("Select TeacherCode, FirstName, LastName, EducationDegree \
-                       From Student.dbo.tblPerson , Student.dbo.tblTeacher \
-                       Where ( tblPerson.ID = tblTeacher.ID ) AND ( Student.dbo.tblTeacher.TeacherCode like '" + strTeacherCode + "%' OR \
-                       Student.dbo.tblPerson.Firstname like N'" + strTeacherCode + "%' OR \
-                       Student.dbo.tblPerson.Lastname like N'" + strTeacherCode + "%' OR \
-                       tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + strTeacherCode + "')");
+                       From tblPerson , tblTeacher \
+                       Where ( tblPerson.ID = tblTeacher.ID ) AND ( tblTeacher.TeacherCode like '" + strTeacherCode + "%' OR \
+                               tblPerson.Firstname like N'" + strTeacherCode + "%' OR \
+                               tblPerson.Lastname like N'" + strTeacherCode + "%' OR \
+                               tblPerson.FirstName + ' ' + tblPerson.LastName like N'" + strTeacherCode + "')");
 
         if(qry.numRowsAffected() > 1){
           QMessageBox::information(this, "Warning", "بیش از یک مورد " + strTeacherCode + " وجود دارد.");
@@ -88,8 +88,9 @@ void EraeDarsDialog::on_pushButton_findLesson_clicked()
         QMessageBox::warning(this, "Warning", "ابتدا یک نام یا کد درس وارد کنید.");
     }else{
         QSqlQuery qry("Select LessonCode, Title, Type, TedadVahed \
-                       From Student.dbo.tblLesson \
-                       Where ( tblLesson.LessonCode like '" + strLesson+ "%') OR ( tblLesson.Title like N'" + strLesson + "%')" );
+                       From tblLesson \
+                       Where ( tblLesson.LessonCode like '" + strLesson+ "%') OR \
+                             ( tblLesson.Title like N'" + strLesson + "%')" );
 
         if(qry.numRowsAffected() > 1){
           QMessageBox::information(this, "Warning", "بیش از یک مورد " + strLesson + " وجود دارد.");
@@ -134,7 +135,7 @@ void EraeDarsDialog::on_pushButton_apply_clicked()
         QMessageBox::warning(this, "warning", "لطفا موارد بالا را پر کنید.");
     }else{
         qry1.prepare("Select ID \
-                      From Student.dbo.tblTeacher \
+                      From tblTeacher \
                       Where tblTeacher.teacherCode = :teachcode");
 
                     qry1.bindValue(":teachcode", ui->label_teachCode->text());
@@ -145,7 +146,7 @@ void EraeDarsDialog::on_pushButton_apply_clicked()
         }
 
         qry2.prepare("Select ID \
-                      From Student.dbo.tblLesson \
+                      From tblLesson \
                       Where tblLesson.LessonCode = :lessoncode");
 
                     qry2.bindValue(":lessoncode", ui->label_lessonCode->text());
@@ -155,7 +156,7 @@ void EraeDarsDialog::on_pushButton_apply_clicked()
             lessonID = qry2.value(0).toInt();
         }
 
-        qry4.prepare("Select DaysOfWeek, TimeOfClass From Student.dbo.tblErae \
+        qry4.prepare("Select DaysOfWeek, TimeOfClass From tblErae \
                       Where tblErae.ID_Teacher = :idteacher AND tblErae.ID_Lesson = :idlesson");
                 qry4.bindValue(":idteacher", teacherID);
                 qry4.bindValue(":idlesson", lessonID);
@@ -179,7 +180,7 @@ void EraeDarsDialog::on_pushButton_apply_clicked()
                 ui->timeEdit->clear();
 
             }else{
-                qry3.prepare("Insert Into Student.dbo.tblErae \
+                qry3.prepare("Insert Into tblErae \
                               (ID_Teacher, ID_Lesson, DaysOfWeek, TimeOfClass) \
                               Values(:idteacher, :idlesson, :days, :time)");
 

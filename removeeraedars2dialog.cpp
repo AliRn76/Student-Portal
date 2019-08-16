@@ -60,15 +60,18 @@ void RemoveEraeDars2Dialog::on_pushButton_remove_clicked()
     QString day = ui->label_rouz->text();
     QString time = ui->label_time->text();
 
-    QSqlQuery qry("Delete From Student.dbo.tblErae \
-                   Where tblErae.ID_Teacher like " + teacherID + " AND tblErae.ID_Lesson like " + lessID + " AND tblErae.DaysOfWeek like N'" + day + "' AND tblErae.TimeOfClass like '" + time + "'");
+    QSqlQuery qry("Delete From tblErae \
+                   Where tblErae.ID_Teacher like " + teacherID + " AND \
+                         tblErae.ID_Lesson like " + lessID + " AND \
+                         tblErae.DaysOfWeek like N'" + day + "' AND \
+                         tblErae.TimeOfClass like '" + time + "'");
 
         if(qry.exec()){
             QMessageBox::information(this, "OK", "درس مورد نظر از دروس ارائه شده حذف شد.");
 
             QString strQry = "Select tblErae.ID as 'مشخصه درس', Title as 'نام درس', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت' \
-                    From Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblErae \
-                    Where tblLesson.ID = tblErae.ID_Lesson AND tblErae.ID_Teacher = tblTeacher.ID AND tblTeacher.ID = " + teachID;
+                              From tblTeacher, tblLesson, tblErae \
+                              Where tblLesson.ID = tblErae.ID_Lesson AND tblErae.ID_Teacher = tblTeacher.ID AND tblTeacher.ID = " + teachID;
 
             qryModel = new QSqlQueryModel(this);
 

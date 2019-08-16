@@ -40,7 +40,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
 
     }else{
         QSqlQuery qry2("Select Title, Type, TedadVahed, Field \
-                        From Student.dbo.tblLesson \
+                        From tblLesson \
                         Where tblLesson.Title like N'" + strTitle + "' \
                         AND tblLesson.Type like N'" + strType + "' \
                         AND tblLesson.TedadVahed like '" + strTedadVahed + "' \
@@ -54,7 +54,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
             ui->comboBox_field_2->setCurrentIndex(0);
 
         }else{
-            qry1.prepare("Insert Into Student.dbo.tblLesson \
+            qry1.prepare("Insert Into tblLesson \
                          (Title, TedadVahed, Type, Field) \
                          Values(:title, :tedadvahed, :type, :field)");
                     qry1.bindValue(":title", strTitle);
@@ -64,7 +64,7 @@ void AddLessonDialog::on_pushButton_add_clicked()
 
                         if(qry1.exec()){
                             currentID = qry3.lastInsertId().toString();
-                            qry4.prepare("Select LessonCode From Student.dbo.tblLesson \
+                            qry4.prepare("Select LessonCode FromtblLesson \
                                           Where tblLesson.ID = :id");
                                qry4.bindValue(":id", currentID);
                                qry4.exec();

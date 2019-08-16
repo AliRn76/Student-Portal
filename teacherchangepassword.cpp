@@ -32,7 +32,7 @@ void TeacherChangePassword::on_pushButton_ChangePass_clicked()
     QSqlQuery qry1;
     QSqlQuery qry2;
 
-    qry1.prepare("Select Password From Student.dbo.tblTeacher \
+    qry1.prepare("Select Password From tblTeacher \
                   Where tblTeacher.TeacherCode = :teacode");
             qry1.bindValue(":teacode", strUserTeacher);
             qry1.exec();
@@ -46,7 +46,7 @@ void TeacherChangePassword::on_pushButton_ChangePass_clicked()
                 QMessageBox::warning(this, "warning", "اطلاعات را صحیح وارد کنید.");
 
             }else{
-                qry2.prepare("Update Student.dbo.tblTeacher \
+                qry2.prepare("Update tblTeacher \
                              Set Password = :pass \
                              Where tblTeacher.TeacherCode = :teacode");
                         qry2.bindValue(":pass", newPass);

@@ -7,9 +7,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("mydsn32");
-    db.setHostName("localhost");
+//    db = QSqlDatabase::addDatabase("QODBC");
+//    db.setDatabaseName("mydsn32");
+//    db.setHostName("localhost");
+
+    db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("se7enf98.ddns.net");
+    db.setUserName("team");
+    db.setPassword("portal98");
+    db.setDatabaseName("Portal");
+
     if(!db.open()){
         qDebug() << db.lastError().text();
     }
@@ -27,6 +34,7 @@ QString TeacherChangePassword::strUserTeacher;
 QString SendJozveDialog::lessCode;
 QString ShowClassMembers::LessonCode;
 QString ShowClassMembers::LessonName ;
+int teacherRequest::whichpage ;
 
 void MainWindow::on_pushButton_login_clicked()
 {
@@ -37,7 +45,7 @@ void MainWindow::on_pushButton_login_clicked()
     QSqlQuery qry2;
     QSqlQuery qry3;
 
-    qry.prepare("Select Password From Student.dbo.tblStudent \
+    qry.prepare("Select Password From tblStudent \
                  Where tblStudent.StudentCode = :stucode");
                 qry.bindValue(":stucode", strUsername);
                 qry.exec();
@@ -48,11 +56,12 @@ void MainWindow::on_pushButton_login_clicked()
             stuMainDialog = new StudentMainDialog(this);
             stuMainDialog->show();
         }else{
-            QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
+            QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد1.");
         }
 
     }else{
-        qry2.prepare("Select Password From Student.dbo.tblTeacher \
+        qry2.prepare("Select Password \
+                      From tblTeacher \
                       Where tblTeacher.TeacherCode = :teachercode");
                     qry2.bindValue(":teachercode", strUsername);
                     qry2.exec();
@@ -60,14 +69,15 @@ void MainWindow::on_pushButton_login_clicked()
         if(qry2.next()){
             if(strPassword == qry2.value(0).toString()){
                 TeacherChangePassword::strUserTeacher = strUsername;
-                teamaindialog = new TeacherMainDialog(this);
+                teamaindialog = new teacherthirdmaindialog(this);
                 teamaindialog->show();
             }else{
-                QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
+                QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد2.");
             }
 
         }else{
-            qry3.prepare("Select Password From Student.dbo.tblEmployee \
+            qry3.prepare("Select Password \
+                          From tblEmployee \
                           Where tblEmployee.EmployeeCode = :username");
                         qry3.bindValue(":username", strUsername);
                         qry3.exec();
@@ -80,7 +90,7 @@ void MainWindow::on_pushButton_login_clicked()
                 }else if(strPassword == "شیئهد"){
                     QMessageBox::warning(this, "هشدار", "زبان سیستم خود را به انگلیسی تغییر دهید.");
                 }else{
-                    QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
+                    QMessageBox::warning(this, "3خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد.");
                 }
             }else{
                 QMessageBox::warning(this, "خطا", "نام کاربری وارد شده معتبر نمیباشد.");

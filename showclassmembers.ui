@@ -13,23 +13,11 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-<<<<<<< HEAD
-  <widget class="QTableView" name="tableView_Student">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>50</y>
-     <width>271</width>
-     <height>531</height>
-    </rect>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::RightToLeft</enum>
-=======
+
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>530</x>
      <y>40</y>
      <width>81</width>
      <height>36</height>
@@ -48,7 +36,7 @@
   <widget class="QLabel" name="label_fullName">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>290</x>
      <y>150</y>
      <width>121</width>
      <height>20</height>
@@ -64,18 +52,14 @@
    </property>
    <property name="text">
     <string/>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>240</x>
-<<<<<<< HEAD
-     <y>140</y>
-=======
+
+     <x>450</x>
      <y>150</y>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
      <width>121</width>
      <height>20</height>
     </rect>
@@ -92,21 +76,12 @@
     <string>نام و نام خانوادگی :</string>
    </property>
   </widget>
-<<<<<<< HEAD
-  <widget class="QLabel" name="label_fullName">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>140</y>
-     <width>121</width>
-=======
   <widget class="QLabel" name="label_lessonCode">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>270</x>
      <y>50</y>
      <width>31</width>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
      <height>20</height>
     </rect>
    </property>
@@ -122,35 +97,18 @@
     <string>-------</string>
    </property>
   </widget>
-<<<<<<< HEAD
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>30</y>
-     <width>81</width>
-     <height>36</height>
-=======
+
   <widget class="QLabel" name="label_lessonName">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>390</x>
      <y>50</y>
      <width>141</width>
      <height>20</height>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
     </rect>
    </property>
    <property name="font">
     <font>
-<<<<<<< HEAD
-     <family>B Titr</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>نام درس :</string>
-=======
      <family>B Koodak</family>
      <pointsize>10</pointsize>
      <weight>75</weight>
@@ -159,18 +117,14 @@
    </property>
    <property name="text">
     <string>-------</string>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>80</x>
-<<<<<<< HEAD
-     <y>30</y>
-=======
+
+     <x>290</x>
      <y>40</y>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
      <width>81</width>
      <height>36</height>
     </rect>
@@ -185,25 +139,10 @@
     <string>مشخصه :</string>
    </property>
   </widget>
-<<<<<<< HEAD
-  <widget class="QLabel" name="label_lessonName">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>40</y>
-     <width>31</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>B Koodak</family>
-     <pointsize>10</pointsize>
-=======
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>260</x>
      <y>90</y>
      <width>361</width>
      <height>20</height>
@@ -216,8 +155,8 @@
   <widget class="QPushButton" name="pushButton_exit">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>540</y>
+     <x>310</x>
+     <y>530</y>
      <width>100</width>
      <height>33</height>
     </rect>
@@ -232,23 +171,10 @@
     <font>
      <family>B Nazanin</family>
      <pointsize>9</pointsize>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
-<<<<<<< HEAD
-   <property name="text">
-    <string>-------</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_lessonCode">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>40</y>
-     <width>31</width>
-=======
    <property name="styleSheet">
     <string notr="true">background-color:rgb(118, 240, 179)</string>
    </property>
@@ -256,11 +182,11 @@
     <string>خروج</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_nextPage">
+  <widget class="QPushButton" name="pushButton_SetScore">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>540</y>
+     <x>470</x>
+     <y>530</y>
      <width>100</width>
      <height>33</height>
     </rect>
@@ -283,13 +209,13 @@
     <string notr="true">background-color:rgb(118, 240, 179)</string>
    </property>
    <property name="text">
-    <string>صفحه بعد</string>
+    <string>ثبت نمره</string>
    </property>
   </widget>
   <widget class="QTableView" name="tableView_Student">
    <property name="geometry">
     <rect>
-     <x>795</x>
+     <x>750</x>
      <y>40</y>
      <width>281</width>
      <height>561</height>
@@ -302,10 +228,9 @@
   <widget class="QLabel" name="label_stuCode">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>350</x>
      <y>210</y>
      <width>61</width>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
      <height>20</height>
     </rect>
    </property>
@@ -318,29 +243,13 @@
     </font>
    </property>
    <property name="text">
-<<<<<<< HEAD
-    <string>-------</string>
-   </property>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>80</y>
-     <width>361</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-=======
     <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>450</x>
      <y>210</y>
      <width>121</width>
      <height>20</height>
@@ -356,7 +265,37 @@
    </property>
    <property name="text">
     <string>شماره دانشجویی :</string>
->>>>>>> 2b8d5e8553553b85583bc0cd2fd1b09d7eab35e9
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Score">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>320</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>B Koodak</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>نمره :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_score">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>320</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
    </property>
   </widget>
  </widget>

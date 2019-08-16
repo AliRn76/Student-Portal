@@ -12,7 +12,7 @@ ShowEntekhabVahedDialog::ShowEntekhabVahedDialog(QWidget *parent) :
     QString strQry;
 
     strQry = "Select StudentCode as 'شماره دانشجویی', FirstName + ' ' + LastName as 'نام', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', Score as 'نمره' \
-              From Student.dbo.tblPerson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed, Student.dbo.tblLesson, Student.dbo.tblErae \
+              From tblPerson, tblStudent, tblEntekhabVahed, tblLesson, tblErae \
               Where tblPerson.ID = tblStudent.ID \
               AND tblEntekhabVahed.ID_Erae = tblErae.ID \
               AND tblEntekhabVahed.ID_Student = tblStudent.ID \

@@ -10,7 +10,7 @@ RemoveEraeDarsDialog::RemoveEraeDarsDialog(QWidget *parent) :
     qryModel = new QSqlQueryModel(this);
 
     qryModel->setQuery("Select TeacherCode as 'کد کارمندی', FirstName + ' ' + LastName as 'نام', EducationDegree as 'مدرک تحصیلی' \
-                        From student.dbo.tblPerson , student.dbo.tblTeacher \
+                        From tblPerson , tblTeacher \
                         Where tblPerson.ID = tblTeacher.ID");
 
             ui->treeView->setModel(qryModel);
@@ -35,10 +35,11 @@ void RemoveEraeDarsDialog::on_pushButton_search_clicked()
         QString strTeachCode = ui->lineEdit_teachCode->text();
 
         QSqlQuery qry("Select TeacherCode, FirstName, LastName \
-                       From Student.dbo.tblPerson , Student.dbo.tblTeacher \
-                       Where tblPerson.ID = tblTeacher.ID AND( Student.dbo.tblTeacher.TeacherCode like '" + strTeachCode + "%' OR \
-                       Student.dbo.tblPerson.Firstname like N'" + strTeachCode + "%' OR \
-                       Student.dbo.tblPerson.Lastname like N'" + strTeachCode + "%' )");
+                       From tblPerson , tblTeacher \
+                       Where tblPerson.ID = tblTeacher.ID AND \
+                             ( tblTeacher.TeacherCode like '" + strTeachCode + "%' OR \
+                               tblPerson.Firstname like N'" + strTeachCode + "%' OR \
+                               tblPerson.Lastname like N'" + strTeachCode + "%' )");
 
         if(qry.numRowsAffected() != 0){
             if(qry.numRowsAffected() > 1){
@@ -69,8 +70,8 @@ void RemoveEraeDarsDialog::on_pushButton_choose_clicked()
     row = ui->treeView->currentIndex().row();
 
     qry.exec("Select TeacherCode, FirstName, LastName \
-             From student.dbo.tblPerson , student.dbo.tblTeacher \
-             Where tblPerson.ID = tblTeacher.ID");
+              From tblPerson , tblTeacher \
+              Where tblPerson.ID = tblTeacher.ID");
 
         qry.seek(row);
 

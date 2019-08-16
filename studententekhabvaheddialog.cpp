@@ -12,7 +12,7 @@ StudentEntekhabVahedDialog::StudentEntekhabVahedDialog(QWidget *parent) :
     QSqlQuery qry;
 
     qry.prepare("Select StudentCode, FirstName, LastName, NumberOfTerm, tblStudent.ID \
-                 From Student.dbo.tblPerson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+                 From tblPerson, tblStudent, tblEntekhabVahed \
                  Where tblPerson.ID = tblStudent.ID AND \
                        tblStudent.ID = tblEntekhabVahed.ID_Student AND \
                        tblStudent.StudentCode = :stucode");
@@ -30,11 +30,11 @@ StudentEntekhabVahedDialog::StudentEntekhabVahedDialog(QWidget *parent) :
     qryModel3 = new QSqlQueryModel(this);
 
     qryModel->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
-                       From Student.dbo.tblPerson, \
-                            Student.dbo.tblErae, \
-                            Student.dbo.tblTeacher, \
-                            Student.dbo.tblLesson, \
-                            Student.dbo.tblStudent \
+                       From tblPerson,  \
+                            tblErae,    \
+                            tblTeacher, \
+                            tblLesson,  \
+                            tblStudent  \
                        Where tblPerson.ID = tblTeacher.ID AND \
                              tblTeacher.ID = tblErae.ID_Teacher AND \
                              tblErae.ID_Lesson = tblLesson.ID AND \
@@ -44,7 +44,7 @@ StudentEntekhabVahedDialog::StudentEntekhabVahedDialog(QWidget *parent) :
     ui->treeView->setModel(qryModel);
 
     qryModel3->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
-                         From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+                         From tblPerson, tblErae, tblTeacher, tblLesson, tblStudent, tblEntekhabVahed \
                          Where tblPerson.ID = tblTeacher.ID AND \
                                tblTeacher.ID = tblErae.ID_Teacher AND \
                                tblErae.ID_Lesson = tblLesson.ID AND \
@@ -67,11 +67,11 @@ void StudentEntekhabVahedDialog::on_treeView_clicked(const QModelIndex &index)
     QSqlQuery qry;
 
     qry.exec("Select Distinct tblErae.ID, Title , FirstName + ' ' + LastName, DaysOfWeek, TimeOfClass \
-              From Student.dbo.tblPerson, \
-                   Student.dbo.tblErae, \
-                   Student.dbo.tblTeacher, \
-                   Student.dbo.tblLesson, \
-                   Student.dbo.tblStudent \
+              From tblPerson, \
+                   tblErae, \
+                   tblTeacher, \
+                   tblLesson, \
+                   tblStudent \
              Where tblPerson.ID = tblTeacher.ID AND \
                    tblTeacher.ID = tblErae.ID_Teacher AND \
                    tblErae.ID_Lesson = tblLesson.ID AND \
@@ -96,11 +96,11 @@ void StudentEntekhabVahedDialog::on_pushButton_3_clicked()
 
     if(ui->lineEdit->text().toInt()){
         qry1.prepare("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
-                      From Student.dbo.tblPerson, \
-                            Student.dbo.tblErae, \
-                            Student.dbo.tblTeacher, \
-                            Student.dbo.tblLesson, \
-                            Student.dbo.tblStudent \
+                      From tblPerson,   \
+                            tblErae,    \
+                            tblTeacher, \
+                            tblLesson,  \
+                            tblStudent  \
                       Where tblPerson.ID = tblTeacher.ID AND \
                             tblTeacher.ID = tblErae.ID_Teacher AND \
                             tblErae.ID_Lesson = tblLesson.ID AND \
@@ -120,11 +120,11 @@ void StudentEntekhabVahedDialog::on_pushButton_3_clicked()
         }
     }else{
         strQry = "Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
-                  From Student.dbo.tblPerson, \
-                       Student.dbo.tblErae, \
-                       Student.dbo.tblTeacher, \
-                       Student.dbo.tblLesson, \
-                       Student.dbo.tblStudent \
+                  From tblPerson,  \
+                       tblErae,    \
+                       tblTeacher, \
+                       tblLesson,  \
+                       tblStudent  \
                  Where tblPerson.ID = tblTeacher.ID AND \
                        tblTeacher.ID = tblErae.ID_Teacher AND \
                        tblErae.ID_Lesson = tblLesson.ID AND \
@@ -157,9 +157,9 @@ void StudentEntekhabVahedDialog::on_pushButton_apply_clicked()
     }else{
 
         qry2.prepare("Select tblEntekhabVahed.ID \
-                      From Student.dbo.tblEntekhabVahed, \
-                           Student.dbo.tblErae, \
-                           Student.dbo.tblLesson \
+                      From tblEntekhabVahed, \
+                           tblErae, \
+                           tblLesson \
                       Where tblEntekhabVahed.ID_Student = :idstudent AND \
                             tblEntekhabVahed.ID_Erae = tblErae.ID AND \
                             tblErae.ID_Lesson = tblLesson.ID AND \
@@ -171,7 +171,7 @@ void StudentEntekhabVahedDialog::on_pushButton_apply_clicked()
             if(qry2.numRowsAffected() > 0){
                 QMessageBox::warning(this, "هشدار" , "این درس را قبلا انتخاب کرده اید.");
             }else{
-                qry3.prepare("Insert Into Student.dbo.tblEntekhabVahed \
+                qry3.prepare("Insert Into tblEntekhabVahed \
                               (ID_Erae, ID_Student) \
                               Values(:iderae, :idstu) ");
 
@@ -184,7 +184,7 @@ void StudentEntekhabVahedDialog::on_pushButton_apply_clicked()
                             qryModel4 = new QSqlQueryModel(this);
 
                             qryModel4->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
-                                                 From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+                                                 From tblPerson, tblErae, tblTeacher, tblLesson, tblStudent, tblEntekhabVahed \
                                                  Where tblPerson.ID = tblTeacher.ID AND \
                                                       tblTeacher.ID = tblErae.ID_Teacher AND \
                                                       tblErae.ID_Lesson = tblLesson.ID AND \
@@ -211,7 +211,7 @@ void StudentEntekhabVahedDialog::on_pushButton_remove_clicked()
 {
     QSqlQuery qry;
 
-    qry.prepare("Delete From Student.dbo.tblEntekhabVahed \
+    qry.prepare("Delete From tblEntekhabVahed \
                  Where ID_Erae = :iderae AND ID_Student = :idstu");
             qry.bindValue(":iderae", ui->label_entekhabID->text());
             qry.bindValue(":idstu", stuID);
@@ -223,7 +223,7 @@ void StudentEntekhabVahedDialog::on_pushButton_remove_clicked()
                 qryModel5 = new QSqlQueryModel(this);
 
                 qryModel5->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', TedadVahed as 'تعداد واحد', FirstName + ' ' + LastName as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'زمان کلاس' \
-                                     From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+                                     From tblPerson, tblErae, tblTeacher, tblLesson, tblStudent, tblEntekhabVahed \
                                      Where tblPerson.ID = tblTeacher.ID AND \
                                           tblTeacher.ID = tblErae.ID_Teacher AND \
                                           tblErae.ID_Lesson = tblLesson.ID AND \
@@ -252,7 +252,7 @@ void StudentEntekhabVahedDialog::on_treeView_acceptedLesson_clicked(const QModel
     QSqlQuery qry;
 
     qry.exec("Select Distinct tblErae.ID, Title , FirstName + ' ' + LastName, DaysOfWeek, TimeOfClass \
-              From Student.dbo.tblPerson, Student.dbo.tblErae, Student.dbo.tblTeacher, Student.dbo.tblLesson, Student.dbo.tblStudent, Student.dbo.tblEntekhabVahed \
+              From tblPerson, tblErae, tblTeacher, tblLesson, tblStudent, tblEntekhabVahed \
               Where tblPerson.ID = tblTeacher.ID AND \
                     tblTeacher.ID = tblErae.ID_Teacher AND \
                     tblErae.ID_Lesson = tblLesson.ID AND \
