@@ -15,6 +15,7 @@ AddLessonDialog::~AddLessonDialog()
 
 void AddLessonDialog::on_pushButton_add_clicked()
 {
+    // helllo
     QSqlQuery qry1;
     QSqlQuery qry2;
     QSqlQuery qry3;
