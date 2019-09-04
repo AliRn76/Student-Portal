@@ -85,6 +85,7 @@ void MainWindow::on_pushButton_login_clicked()
                     EmployeeChangePasswordDialog::strUserEmp = strUsername;
                     emploMainDialog = new EmployeeMainDialog(this);
                     emploMainDialog->show();
+                    hide();
                 }else if(strPassword == "شیئهد"){
                     QMessageBox::warning(this, "هشدار", "زبان سیستم خود را به انگلیسی تغییر دهید.");
                 }else{

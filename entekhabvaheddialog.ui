@@ -34,7 +34,7 @@
     <enum>QTabWidget::East</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -2010,6 +2010,26 @@ color: white;</string>
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>comboBox_field</tabstop>
+  <tabstop>lineEdit_entekhabID_2</tabstop>
+  <tabstop>pushButton_findLesson_2</tabstop>
+  <tabstop>pushButton_showErae_2</tabstop>
+  <tabstop>lineEdit_stuCode_2</tabstop>
+  <tabstop>pushButton_findStu_2</tabstop>
+  <tabstop>pushButton_showStu_2</tabstop>
+  <tabstop>pushButton_continue</tabstop>
+  <tabstop>pushButton_back</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>pushButton_backPage2</tabstop>
+  <tabstop>pushButton_apply</tabstop>
+  <tabstop>lineEdit_stuCodeTab2</tabstop>
+  <tabstop>pushButton_showStuTab2</tabstop>
+  <tabstop>pushButton_findStuTab2</tabstop>
+  <tabstop>pushButton_backTab2</tabstop>
+  <tabstop>pushButton_removeTab2</tabstop>
+  <tabstop>comboBox_fieldTab2</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -2041,6 +2061,38 @@ color: white;</string>
     <hint type="destinationlabel">
      <x>836</x>
      <y>718</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_entekhabID_2</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_findLesson_2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>845</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>816</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_stuCode_2</sender>
+   <signal>editingFinished()</signal>
+   <receiver>pushButton_findStu_2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>832</x>
+     <y>377</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>814</x>
+     <y>426</y>
     </hint>
    </hints>
   </connection>

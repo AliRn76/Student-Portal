@@ -82,6 +82,7 @@ private:
     QSqlQueryModel *qryModelStuLessonsTab2;
     QSqlQueryModel *preQryModelStuTab2;
     QSqlQueryModel *preQryModelLessonTab2;
+    QSqlQueryModel *afterRmvQryModelStuLessonsTab2;
 
 };
 
