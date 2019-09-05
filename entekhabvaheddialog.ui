@@ -2029,15 +2029,15 @@ color: white;</string>
   <tabstop>pushButton_showStu_2</tabstop>
   <tabstop>pushButton_continue</tabstop>
   <tabstop>pushButton_back</tabstop>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>pushButton_backPage2</tabstop>
   <tabstop>pushButton_apply</tabstop>
-  <tabstop>lineEdit_stuCodeTab2</tabstop>
-  <tabstop>pushButton_showStuTab2</tabstop>
-  <tabstop>pushButton_findStuTab2</tabstop>
-  <tabstop>pushButton_backTab2</tabstop>
-  <tabstop>pushButton_removeTab2</tabstop>
+  <tabstop>pushButton_backPage2</tabstop>
   <tabstop>comboBox_fieldTab2</tabstop>
+  <tabstop>lineEdit_stuCodeTab2</tabstop>
+  <tabstop>pushButton_findStuTab2</tabstop>
+  <tabstop>pushButton_showStuTab2</tabstop>
+  <tabstop>pushButton_removeTab2</tabstop>
+  <tabstop>pushButton_backTab2</tabstop>
+  <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -2048,8 +2048,8 @@ color: white;</string>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>835</x>
-     <y>582</y>
+     <x>837</x>
+     <y>624</y>
     </hint>
     <hint type="destinationlabel">
      <x>800</x>
@@ -2064,8 +2064,8 @@ color: white;</string>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>799</x>
-     <y>606</y>
+     <x>831</x>
+     <y>628</y>
     </hint>
     <hint type="destinationlabel">
      <x>836</x>
@@ -2080,12 +2080,12 @@ color: white;</string>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>845</x>
-     <y>102</y>
+     <x>848</x>
+     <y>147</y>
     </hint>
     <hint type="destinationlabel">
-     <x>816</x>
-     <y>156</y>
+     <x>818</x>
+     <y>198</y>
     </hint>
    </hints>
   </connection>
@@ -2096,12 +2096,28 @@ color: white;</string>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>832</x>
-     <y>377</y>
+     <x>835</x>
+     <y>422</y>
     </hint>
     <hint type="destinationlabel">
-     <x>814</x>
-     <y>426</y>
+     <x>816</x>
+     <y>468</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_stuCodeTab2</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_findStuTab2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>824</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>319</y>
     </hint>
    </hints>
   </connection>

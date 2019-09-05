@@ -671,3 +671,9 @@ void EntekhabVahedDialog::on_pushButton_removeTab2_clicked()
         QMessageBox::warning(this,"خطا", "یه مشکل جدی پیش اومده ، برنامه رو نشون علی بده.");
     }
 }
+
+void EntekhabVahedDialog::on_pushButton_showStuTab2_clicked()
+{
+    showStuDialog = new ShowStudentDialog(this);
+    showStuDialog->show();
+}
