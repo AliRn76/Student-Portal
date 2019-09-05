@@ -83,7 +83,7 @@ void MainWindow::on_pushButton_login_clicked()
             if(qry3.next()){
                 if(strPassword == qry3.value(0).toString()){
                     EmployeeChangePasswordDialog::strUserEmp = strUsername;
-                    emploMainWindow = new EmployeeMainWindow(this);
+                    emploMainWindow = new EmployeeMainWindow();
                     emploMainWindow->show();
                     hide();
                 }else if(strPassword == "شیئهد"){
