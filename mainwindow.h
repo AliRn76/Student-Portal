@@ -6,7 +6,7 @@
 #include <QtGui>
 #include <QtCore>
 #include <QDebug>
-#include <employeemaindialog.h>
+#include <employeemainwindow.h>
 #include <employeechangepassworddialog.h>
 #include <studentmaindialog.h>
 #include <studentchangepassworddialog.h>
@@ -31,7 +31,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
-    EmployeeMainDialog *emploMainDialog;
+    EmployeeMainWindow *emploMainWindow;
     StudentMainDialog *stuMainDialog;
     TeacherMainDialog *teamaindialog;
 };

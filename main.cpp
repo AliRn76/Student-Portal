@@ -1,3 +1,4 @@
+//#include "logindialog.h"
 #include "mainwindow.h"
 #include <QApplication>
 
