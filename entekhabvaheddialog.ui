@@ -10,6 +10,12 @@
     <height>650</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>650</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>انتخاب واحد</string>
   </property>
@@ -2073,8 +2079,8 @@ color: white;</string>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>837</x>
-     <y>624</y>
+     <x>885</x>
+     <y>615</y>
     </hint>
     <hint type="destinationlabel">
      <x>800</x>
@@ -2099,34 +2105,18 @@ color: white;</string>
    </hints>
   </connection>
   <connection>
-   <sender>lineEdit_entekhabID_2</sender>
-   <signal>returnPressed()</signal>
-   <receiver>pushButton_findLesson_2</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>848</x>
-     <y>147</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>818</x>
-     <y>198</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>lineEdit_stuCode_2</sender>
    <signal>editingFinished()</signal>
    <receiver>pushButton_findStu_2</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>835</x>
-     <y>422</y>
+     <x>893</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>816</x>
-     <y>468</y>
+     <x>874</x>
+     <y>446</y>
     </hint>
    </hints>
   </connection>
@@ -2143,6 +2133,22 @@ color: white;</string>
     <hint type="destinationlabel">
      <x>823</x>
      <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_entekhabID_2</sender>
+   <signal>editingFinished()</signal>
+   <receiver>pushButton_findLesson_2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>872</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>854</x>
+     <y>300</y>
     </hint>
    </hints>
   </connection>
