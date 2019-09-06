@@ -31,7 +31,7 @@
       <enum>QTabWidget::Triangular</enum>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <property name="documentMode">
       <bool>true</bool>
@@ -1957,6 +1957,12 @@ color:white;</string>
              <layout class="QHBoxLayout" name="horizontalLayout_11">
               <item>
                <widget class="QPushButton" name="pushButton_searchTab3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="minimumSize">
                  <size>
                   <width>100</width>
@@ -2205,6 +2211,37 @@ color:white;</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_firstName</tabstop>
+  <tabstop>lineEdit_lastName</tabstop>
+  <tabstop>lineEdit_nationalCode</tabstop>
+  <tabstop>lineEdit_degree</tabstop>
+  <tabstop>comboBox_day</tabstop>
+  <tabstop>comboBox_month</tabstop>
+  <tabstop>comboBox_year</tabstop>
+  <tabstop>radioButton_male</tabstop>
+  <tabstop>radioButton_female</tabstop>
+  <tabstop>pushButton_apply</tabstop>
+  <tabstop>pushButton_showTeacher</tabstop>
+  <tabstop>pushButton_back</tabstop>
+  <tabstop>lineEdit_Tab2</tabstop>
+  <tabstop>pushButton_searchTab2</tabstop>
+  <tabstop>pushButton_showAllStudentTab2</tabstop>
+  <tabstop>lineEdit_nameTab2</tabstop>
+  <tabstop>lineEdit_lastNameTab2</tabstop>
+  <tabstop>comboBox_genderTab2</tabstop>
+  <tabstop>lineEdit_eduDegreeTab2</tabstop>
+  <tabstop>lineEdit_nationalCodeTab2</tabstop>
+  <tabstop>lineEdit_birthDateTab2</tabstop>
+  <tabstop>pushButton_applyTab2</tabstop>
+  <tabstop>pushButton_backTab2</tabstop>
+  <tabstop>lineEdit_teachCodeTab3</tabstop>
+  <tabstop>pushButton_searchTab3</tabstop>
+  <tabstop>pushButton_remove</tabstop>
+  <tabstop>pushButton_showTeacherTab3</tabstop>
+  <tabstop>pushButton_backTab3</tabstop>
+  <tabstop>tabWidget</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -2214,8 +2251,8 @@ color:white;</string>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>136</x>
-     <y>582</y>
+     <x>134</x>
+     <y>587</y>
     </hint>
     <hint type="destinationlabel">
      <x>153</x>
@@ -2252,6 +2289,38 @@ color:white;</string>
     <hint type="destinationlabel">
      <x>9</x>
      <y>626</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_teachCodeTab3</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_searchTab3</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>265</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>255</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_Tab2</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_searchTab2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>123</y>
     </hint>
    </hints>
   </connection>

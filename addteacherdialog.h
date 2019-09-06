@@ -23,6 +23,18 @@ private slots:
 
     void on_pushButton_apply_clicked();
 
+    void on_pushButton_searchTab2_clicked();
+
+    void on_pushButton_applyTab2_clicked();
+
+    void on_pushButton_showAllStudentTab2_clicked();
+
+    void on_pushButton_searchTab3_clicked();
+
+    void on_pushButton_remove_clicked();
+
+    void on_pushButton_showTeacherTab3_clicked();
+
 private:
     Ui::AddTeacherDialog *ui;
     ShowTeacherDialog *showTeachDialog;
