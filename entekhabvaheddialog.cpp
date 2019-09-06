@@ -25,15 +25,15 @@ EntekhabVahedDialog::EntekhabVahedDialog(QWidget *parent) :
 
     ui->tableView_lesson->setModel(preQryModelLesson);
         ui->tableView_lesson->setColumnWidth(0,60);
-        ui->tableView_lesson->setColumnWidth(1,160);
-        ui->tableView_lesson->setColumnWidth(3,80);
+        ui->tableView_lesson->setColumnWidth(1,165);
+        ui->tableView_lesson->setColumnWidth(3,85);
         ui->tableView_lesson->setColumnWidth(4,80);
         ui->tableView_lesson->setColumnWidth(5,260);
         ui->tableView_lesson->setWordWrap(false);
 
     ui->tableView_stu->setModel(preQryModelStu);
         ui->tableView_stu->setColumnWidth(0,115);
-        ui->tableView_stu->setColumnWidth(1,180);
+        ui->tableView_stu->setColumnWidth(1,200);
         ui->tableView_stu->setColumnWidth(2,80);
         ui->tableView_stu->setColumnWidth(3,70);
         ui->tableView_stu->setColumnWidth(4,260);
@@ -220,8 +220,8 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
 
             ui->tableView_lesson->setModel(qryModelLesson);
             ui->tableView_lesson->setColumnWidth(0,60);
-            ui->tableView_lesson->setColumnWidth(1,160);
-            ui->tableView_lesson->setColumnWidth(3,80);
+            ui->tableView_lesson->setColumnWidth(1,165);
+            ui->tableView_lesson->setColumnWidth(3,85);
             ui->tableView_lesson->setColumnWidth(4,80);
             ui->tableView_lesson->setColumnWidth(5,260);
             ui->tableView_lesson->setWordWrap(false);
@@ -285,7 +285,7 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
         ui->tableView_stu->setModel(qryModelStu);
         ui->tableView_stu->setWordWrap(false);
         ui->tableView_stu->setColumnWidth(0,115);
-        ui->tableView_stu->setColumnWidth(1,180);
+        ui->tableView_stu->setColumnWidth(1,200);
         ui->tableView_stu->setColumnWidth(2,80);
         ui->tableView_stu->setColumnWidth(3,70);
         ui->tableView_stu->setColumnWidth(4,260);
