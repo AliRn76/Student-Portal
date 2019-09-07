@@ -1,4 +1,4 @@
-#include "addteacherdialog.h"
+#include "teacherdialog.h"
 #include "ui_addteacherdialog.h"
 
 AddTeacherDialog::AddTeacherDialog(QWidget *parent) :

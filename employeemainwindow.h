@@ -3,17 +3,13 @@
 
 #include <QMainWindow>
 #include <QtSql>
-#include <addstudentdialog.h>
+#include <studentdialog.h>
 #include <removestudentdialog.h>
 #include <editstudentdialog.h>
 #include <entekhabvaheddialog.h>
 #include <employeechangepassworddialog.h>
-#include <addlessondialog.h>
-#include <removelessondialog.h>
-#include <editlessondialog.h>
-#include <addteacherdialog.h>
-#include <removeteacherdialog.h>
-#include <editteacherdialog.h>
+#include <lessondialog.h>
+#include <teacherdialog.h>
 #include <eraedarsdialog.h>
 #include <showstudentdialog.h>
 #include <showteacherdialog.h>
@@ -38,25 +34,13 @@ public:
 private slots:
     void on_pushButton_addStu_clicked();
 
-    void on_pushButton_removeStu_clicked();
-
-    void on_pushButton_editStu_clicked();
-
     void on_pushButton_entekhabVahed_clicked();
 
     void on_pushButton_setting_clicked();
 
     void on_pushButton_addLesson_clicked();
 
-    void on_pushButton_removeLesson_clicked();
-
-    void on_pushButton_editLesson_clicked();
-
     void on_pushButton_addTeacher_clicked();
-
-    void on_pushButton_removeTeacher_clicked();
-
-    void on_pushButton_editTeacher_clicked();
 
     void on_pushButton_eraeDars_clicked();
 
@@ -81,11 +65,7 @@ private:
     EntekhabVahedDialog *entekhVahedDialog;
     EmployeeChangePasswordDialog *empChangeDialog;
     AddLessonDialog *addLessDialog;
-    RemoveLessonDialog *rmvLessDialog;
-    EditLessonDialog *editLessDialog;
     AddTeacherDialog *addTeachDialog;
-    RemoveTeacherDialog *rmvTeachDialog;
-    EditTeacherDialog *editTeachDialog;
     EraeDarsDialog *eraeDialog;
     ShowStudentDialog *showStuDialog;
     ShowTeacherDialog *showTeachDialog;

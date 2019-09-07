@@ -52,18 +52,6 @@ void EmployeeMainWindow::on_pushButton_addStu_clicked()
     addStuDialog->show();
 }
 
-void EmployeeMainWindow::on_pushButton_removeStu_clicked()
-{
-    rmvStuDialog = new RemoveStudentDialog(this);
-    rmvStuDialog->show();
-}
-
-void EmployeeMainWindow::on_pushButton_editStu_clicked()
-{
-    editStuDialog = new EditStudentDialog(this);
-    editStuDialog->show();
-}
-
 void EmployeeMainWindow::on_pushButton_entekhabVahed_clicked()
 {
     entekhVahedDialog = new EntekhabVahedDialog(this);
@@ -82,34 +70,10 @@ void EmployeeMainWindow::on_pushButton_addLesson_clicked()
     addLessDialog->show();
 }
 
-void EmployeeMainWindow::on_pushButton_removeLesson_clicked()
-{
-    rmvLessDialog = new RemoveLessonDialog(this);
-    rmvLessDialog->show();
-}
-
-void EmployeeMainWindow::on_pushButton_editLesson_clicked()
-{
-    editLessDialog = new EditLessonDialog(this);
-    editLessDialog->show();
-}
-
 void EmployeeMainWindow::on_pushButton_addTeacher_clicked()
 {
     addTeachDialog = new AddTeacherDialog(this);
     addTeachDialog->show();
-}
-
-void EmployeeMainWindow::on_pushButton_removeTeacher_clicked()
-{
-    rmvTeachDialog = new RemoveTeacherDialog(this);
-    rmvTeachDialog->show();
-}
-
-void EmployeeMainWindow::on_pushButton_editTeacher_clicked()
-{
-    editTeachDialog = new EditTeacherDialog(this);
-    editTeachDialog->show();
 }
 
 void EmployeeMainWindow::on_pushButton_eraeDars_clicked()

@@ -1,4 +1,4 @@
-#include "addlessondialog.h"
+#include "lessondialog.h"
 #include "ui_addlessondialog.h"
 
 AddLessonDialog::AddLessonDialog(QWidget *parent) :

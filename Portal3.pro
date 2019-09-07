@@ -25,27 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-    addteacherdialog.cpp \
-    editlessondialog.cpp \
-    editteacherdialog.cpp \
     employeemainwindow.cpp \
     eraedarsdialog.cpp \
-    logindialog.cpp \
+    lessondialog.cpp \
     main.cpp \
     mainwindow.cpp \
-    employeemaindialog.cpp \
-    addstudentdialog.cpp \
     removeentekhabvahed2dialog.cpp \
     removeentekhabvaheddialog.cpp \
     removeeraedars2dialog.cpp \
     removeeraedarsdialog.cpp \
-    removelessondialog.cpp \
-    removestudentdialog.cpp \
-    editstudentdialog.cpp \
     entekhabvaheddialog.cpp \
-    addlessondialog.cpp \
     employeechangepassworddialog.cpp \
-    removeteacherdialog.cpp \
     showentekhabvaheddialog.cpp \
     showeraelistdialog.cpp \
     showlessondialog.cpp \
@@ -53,35 +43,27 @@ SOURCES += \
     showstudenteraelistdialog.cpp \
     studentbarnameclassdialog.cpp \
     studentchangepassworddialog.cpp \
+    studentdialog.cpp \
     studententekhabvaheddialog.cpp \
     studentkarnamedialog.cpp \
     studentmaindialog.cpp \
     showteacherdialog.cpp \
+    teacherdialog.cpp \
     teachermaindialog.cpp \
     sendjozvedialog.cpp \
     teacherchangepassword.cpp \
     showclassmembers.cpp
 HEADERS += \
-    addteacherdialog.h \
-    editlessondialog.h \
-    editteacherdialog.h \
     employeemainwindow.h \
     eraedarsdialog.h \
-    logindialog.h \
+    lessondialog.h \
     mainwindow.h \
-    employeemaindialog.h \
-    addstudentdialog.h \
     removeentekhabvahed2dialog.h \
     removeentekhabvaheddialog.h \
     removeeraedars2dialog.h \
     removeeraedarsdialog.h \
-    removelessondialog.h \
-    removestudentdialog.h \
-    editstudentdialog.h \
     entekhabvaheddialog.h \
-    addlessondialog.h \
     employeechangepassworddialog.h \
-    removeteacherdialog.h \
     showentekhabvaheddialog.h \
     showeraelistdialog.h \
     showlessondialog.h \
@@ -89,36 +71,28 @@ HEADERS += \
     showstudenteraelistdialog.h \
     studentbarnameclassdialog.h \
     studentchangepassworddialog.h \
+    studentdialog.h \
     studententekhabvaheddialog.h \
     studentkarnamedialog.h \
     studentmaindialog.h \
     showteacherdialog.h \
+    teacherdialog.h \
     teachermaindialog.h \
     sendjozvedialog.h \
     teacherchangepassword.h \
     showclassmembers.h
 
 FORMS += \
-    addteacherdialog.ui \
-    editlessondialog.ui \
-    editteacherdialog.ui \
     employeemainwindow.ui \
     eraedarsdialog.ui \
-    logindialog.ui \
+    lessondialog.ui \
     mainwindow.ui \
-    employeemaindialog.ui \
-    addstudentdialog.ui \
     removeentekhabvahed2dialog.ui \
     removeentekhabvaheddialog.ui \
     removeeraedars2dialog.ui \
     removeeraedarsdialog.ui \
-    removelessondialog.ui \
-    removestudentdialog.ui \
-    editstudentdialog.ui \
     entekhabvaheddialog.ui \
-    addlessondialog.ui \
     employeechangepassworddialog.ui \
-    removeteacherdialog.ui \
     showentekhabvaheddialog.ui \
     showeraelistdialog.ui \
     showlessondialog.ui \
@@ -126,10 +100,12 @@ FORMS += \
     showstudenteraelistdialog.ui \
     studentbarnameclassdialog.ui \
     studentchangepassworddialog.ui \
+    studentdialog.ui \
     studententekhabvaheddialog.ui \
     studentkarnamedialog.ui \
     studentmaindialog.ui \
     showteacherdialog.ui \
+    teacherdialog.ui \
     teachermaindialog.ui \
     sendjozvedialog.ui \
     teacherchangepassword.ui \
