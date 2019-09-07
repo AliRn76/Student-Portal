@@ -53,7 +53,7 @@ void AddTeacherDialog::on_pushButton_apply_clicked()
             bGender = false;
         }
 
-        if(strNationalcode.toInt()){
+        if(strNationalcode.toULongLong()){
             if(strNationalcode.length() == 10){
 
                 qry1.prepare("Insert Into tblPerson \
