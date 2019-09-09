@@ -42,7 +42,7 @@
       <enum>QTabWidget::Triangular</enum>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="documentMode">
       <bool>true</bool>
@@ -446,7 +446,7 @@
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color:rgb(136, 182, 204)</string>
+               <string notr="true">background-color: rgb(255, 248, 165)</string>
               </property>
               <property name="text">
                <string>نمایش تمام دروس</string>
@@ -792,7 +792,7 @@ color: white</string>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(136, 182, 204)</string>
+                 <string notr="true">background-color: rgb(255, 248, 165)</string>
                 </property>
                 <property name="text">
                  <string>نمایش تمام دروس</string>
@@ -1742,7 +1742,7 @@ color:white;</string>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(136, 182, 204)</string>
+               <string notr="true">background-color: rgb(255, 248, 165)</string>
               </property>
               <property name="text">
                <string>نمایش تمام دروس</string>

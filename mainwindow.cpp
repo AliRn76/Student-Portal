@@ -43,6 +43,7 @@ void MainWindow::on_pushButton_login_clicked()
     QSqlQuery qry2;
     QSqlQuery qry3;
 
+
     qry.prepare("Select Password From tblStudent \
                  Where tblStudent.StudentCode = :stucode");
                 qry.bindValue(":stucode", strUsername);

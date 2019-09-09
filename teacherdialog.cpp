@@ -1,5 +1,5 @@
 #include "teacherdialog.h"
-#include "ui_addteacherdialog.h"
+#include "ui_teacherdialog.h"
 
 AddTeacherDialog::AddTeacherDialog(QWidget *parent) :
     QDialog(parent),

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>650</height>
+    <height>651</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -148,7 +148,7 @@ color: white;</string>
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color:rgb(136, 182, 204)</string>
+               <string notr="true">background-color: rgb(255, 248, 165)</string>
               </property>
               <property name="text">
                <string>نمایش تمام دانشجویان</string>
@@ -1350,7 +1350,7 @@ color: white</string>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(136, 182, 204)</string>
+               <string notr="true">background-color: rgb(255, 248, 165)</string>
               </property>
               <property name="text">
                <string>نمایش تمام دانشجو ها</string>
@@ -2116,7 +2116,7 @@ color:white;</string>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(136, 182, 204)</string>
+               <string notr="true">background-color: rgb(255, 248, 165)</string>
               </property>
               <property name="text">
                <string>نمایش تمام دانشجویان</string>

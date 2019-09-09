@@ -1,5 +1,5 @@
 #include "studentdialog.h"
-#include "ui_addstudentdialog.h"
+#include "ui_studentdialog.h"
 
 AddStudentDialog::AddStudentDialog(QWidget *parent) :
     QDialog(parent),

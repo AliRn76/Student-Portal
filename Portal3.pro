@@ -48,6 +48,7 @@ SOURCES += \
     studentkarnamedialog.cpp \
     studentmaindialog.cpp \
     showteacherdialog.cpp \
+    studentsrequestdialog.cpp \
     teacherdialog.cpp \
     teachermaindialog.cpp \
     sendjozvedialog.cpp \
@@ -76,6 +77,7 @@ HEADERS += \
     studentkarnamedialog.h \
     studentmaindialog.h \
     showteacherdialog.h \
+    studentsrequestdialog.h \
     teacherdialog.h \
     teachermaindialog.h \
     sendjozvedialog.h \
@@ -105,6 +107,7 @@ FORMS += \
     studentkarnamedialog.ui \
     studentmaindialog.ui \
     showteacherdialog.ui \
+    studentsrequestdialog.ui \
     teacherdialog.ui \
     teachermaindialog.ui \
     sendjozvedialog.ui \
