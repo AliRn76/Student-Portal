@@ -25,15 +25,15 @@ EntekhabVahedDialog::EntekhabVahedDialog(QWidget *parent) :
 
     ui->tableView_lesson->setModel(preQryModelLesson);
         ui->tableView_lesson->setColumnWidth(0,60);
-        ui->tableView_lesson->setColumnWidth(1,160);
-        ui->tableView_lesson->setColumnWidth(3,80);
+        ui->tableView_lesson->setColumnWidth(1,165);
+        ui->tableView_lesson->setColumnWidth(3,85);
         ui->tableView_lesson->setColumnWidth(4,80);
         ui->tableView_lesson->setColumnWidth(5,260);
         ui->tableView_lesson->setWordWrap(false);
 
     ui->tableView_stu->setModel(preQryModelStu);
         ui->tableView_stu->setColumnWidth(0,115);
-        ui->tableView_stu->setColumnWidth(1,180);
+        ui->tableView_stu->setColumnWidth(1,200);
         ui->tableView_stu->setColumnWidth(2,80);
         ui->tableView_stu->setColumnWidth(3,70);
         ui->tableView_stu->setColumnWidth(4,260);
@@ -210,17 +210,18 @@ void EntekhabVahedDialog::on_pushButton_findLesson_2_clicked()
 
         }else{
             qryModelLesson = new QSqlQueryModel(this);
-            qryModelLesson->setQuery("Select Distinct tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
+            qryModelLesson->setQuery("Select tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت', Field as 'رشته'\
                                      From tblLesson, tblErae, tblTeacher, tblPerson \
                                      Where tblErae.ID_Lesson = tblLesson.ID \
+                                     AND tblErae.ID_Teacher = tblTeacher.ID \
                                      AND tblTeacher.ID = tblPerson.ID \
                                      AND tblLesson.Field = N'" + fieldLesson + "' \
                                      AND ( tblErae.ID like '" + eraeID + "' OR tblLesson.Title like N'" + eraeID + "%')");
 
             ui->tableView_lesson->setModel(qryModelLesson);
             ui->tableView_lesson->setColumnWidth(0,60);
-            ui->tableView_lesson->setColumnWidth(1,160);
-            ui->tableView_lesson->setColumnWidth(3,80);
+            ui->tableView_lesson->setColumnWidth(1,165);
+            ui->tableView_lesson->setColumnWidth(3,85);
             ui->tableView_lesson->setColumnWidth(4,80);
             ui->tableView_lesson->setColumnWidth(5,260);
             ui->tableView_lesson->setWordWrap(false);
@@ -284,7 +285,7 @@ void EntekhabVahedDialog::on_pushButton_findStu_2_clicked()
         ui->tableView_stu->setModel(qryModelStu);
         ui->tableView_stu->setWordWrap(false);
         ui->tableView_stu->setColumnWidth(0,115);
-        ui->tableView_stu->setColumnWidth(1,180);
+        ui->tableView_stu->setColumnWidth(1,200);
         ui->tableView_stu->setColumnWidth(2,80);
         ui->tableView_stu->setColumnWidth(3,70);
         ui->tableView_stu->setColumnWidth(4,260);
@@ -603,6 +604,7 @@ void EntekhabVahedDialog::on_pushButton_removeTab2_clicked()
     //Haal Shod  // #1 delete neshon mide ke delet karde vali kar nmikone
     //Haal Shod  // #2 vaghti daneshjoo ro avaz mikone bayad etelaat oon payin marboot be dars clear beshe
                  // #3 size table dars bayad fix bshe
+    afterRmvQryModelStuLessonsTab2 = new QSqlQueryModel(this);
 
     if(!ui->label_eraeIDTab2->text().isEmpty()){
         QSqlQuery qry1;
@@ -633,6 +635,22 @@ void EntekhabVahedDialog::on_pushButton_removeTab2_clicked()
 
             if(qry2.exec()){
                QMessageBox::information(this, "OK", "درس مورد نظر از دروس انتخاب شده برای این دانشجو حذف شد.");
+               //table rafresh beshe
+               afterRmvQryModelStuLessonsTab2->setQuery("Select tblErae.ID as 'مشخصه', Title as 'عنوان درس', Concat(FirstName, ' ', LastName) as 'نام استاد', DaysOfWeek as 'روز هفته', TimeOfClass as 'ساعت' \
+                                                    From tblPerson,        \
+                                                         tblTeacher,       \
+                                                         tblStudent,       \
+                                                         tblEntekhabVahed, \
+                                                         tblErae,          \
+                                                         tblLesson         \
+                                                    Where tblPerson.ID = tblTeacher.ID AND                \
+                                                          tblTeacher.ID = tblErae.ID_Teacher AND          \
+                                                          tblErae.ID_Lesson = tblLesson.ID AND            \
+                                                          tblEntekhabVahed.ID_Erae = tblErae.ID AND       \
+                                                          tblEntekhabVahed.ID_Student = tblStudent.ID AND \
+                                                          tblStudent.StudentCode = " + finallStuCodeTab2);
+
+               ui->tableView_LessTab2->setModel(afterRmvQryModelStuLessonsTab2);
 
             }else{
                 qDebug() << "qry2.lastError(): " << qry2.lastError().text();
@@ -652,4 +670,10 @@ void EntekhabVahedDialog::on_pushButton_removeTab2_clicked()
     }else{
         QMessageBox::warning(this,"خطا", "یه مشکل جدی پیش اومده ، برنامه رو نشون علی بده.");
     }
+}
+
+void EntekhabVahedDialog::on_pushButton_showStuTab2_clicked()
+{
+    showStuDialog = new ShowStudentDialog(this);
+    showStuDialog->show();
 }

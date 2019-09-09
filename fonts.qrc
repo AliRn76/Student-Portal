@@ -6,4 +6,7 @@
         <file>B Titr Bold.ttf</file>
     </qresource>
     <qresource prefix="/"/>
+    <qresource prefix="/new/prefix2">
+        <file>hnet.com-image.ico</file>
+    </qresource>
 </RCC>

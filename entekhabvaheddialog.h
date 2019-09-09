@@ -69,6 +69,8 @@ private slots:
 
     void on_pushButton_removeTab2_clicked();
 
+    void on_pushButton_showStuTab2_clicked();
+
 private:
     Ui::EntekhabVahedDialog *ui;
     ShowStudentDialog *showStuDialog;
@@ -82,6 +84,7 @@ private:
     QSqlQueryModel *qryModelStuLessonsTab2;
     QSqlQueryModel *preQryModelStuTab2;
     QSqlQueryModel *preQryModelLessonTab2;
+    QSqlQueryModel *afterRmvQryModelStuLessonsTab2;
 
 };
 

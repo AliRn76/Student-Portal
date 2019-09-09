@@ -45,6 +45,7 @@ void MainWindow::on_pushButton_login_clicked()
     QSqlQuery qry2;
     QSqlQuery qry3;
 
+
     qry.prepare("Select Password From tblStudent \
                  Where tblStudent.StudentCode = :stucode");
                 qry.bindValue(":stucode", strUsername);
@@ -85,8 +86,9 @@ void MainWindow::on_pushButton_login_clicked()
             if(qry3.next()){
                 if(strPassword == qry3.value(0).toString()){
                     EmployeeChangePasswordDialog::strUserEmp = strUsername;
-                    emploMainDialog = new EmployeeMainDialog(this);
-                    emploMainDialog->show();
+                    emploMainWindow = new EmployeeMainWindow();
+                    emploMainWindow->show();
+                    hide();
                 }else if(strPassword == "شیئهد"){
                     QMessageBox::warning(this, "هشدار", "زبان سیستم خود را به انگلیسی تغییر دهید.");
                 }else{
