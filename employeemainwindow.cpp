@@ -117,3 +117,9 @@ void EmployeeMainWindow::on_pushButton_showErae_clicked()
     showEraeDialog = new ShowEraeListDialog(this);
     showEraeDialog->show();
 }
+
+void EmployeeMainWindow::on_pushButton_stuReqs_clicked()
+{
+    stuReqsDialog = new StudentsRequestDialog(this);
+    stuReqsDialog->show();
+}

@@ -18,6 +18,7 @@
 #include <showentekhabvaheddialog.h>
 #include <removeentekhabvaheddialog.h>
 #include <removeeraedarsdialog.h>
+#include <studentsrequestdialog.h>
 
 namespace Ui {
 class EmployeeMainWindow;
@@ -56,6 +57,8 @@ private slots:
 
     void on_pushButton_showErae_clicked();
 
+    void on_pushButton_stuReqs_clicked();
+
 private:
     Ui::EmployeeMainWindow *ui;
 
@@ -74,6 +77,7 @@ private:
     ShowEntekhabVahedDialog *showEntekhabDialog;
     RemoveEntekhabVahedDialog *rmvEntekhabDialog;
     RemoveEraeDarsDialog *rmvEraeDialog;
+    StudentsRequestDialog *stuReqsDialog;
 
 };
 

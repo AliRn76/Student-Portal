@@ -413,7 +413,7 @@ color: rgb(214, 214, 214);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>414</x>
@@ -426,7 +426,7 @@ color: rgb(214, 214, 214);</string>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton_addStu_2">
+        <widget class="QPushButton" name="pushButton_stuReqs">
          <property name="minimumSize">
           <size>
            <width>100</width>
@@ -450,7 +450,7 @@ color: rgb(214, 214, 214);</string>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_addLesson_2">
+        <widget class="QPushButton" name="pushButton_teacherReqs">
          <property name="minimumSize">
           <size>
            <width>100</width>
@@ -511,7 +511,7 @@ color: rgb(214, 214, 214);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -646,7 +646,7 @@ color: rgb(214, 214, 214);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>830</x>
