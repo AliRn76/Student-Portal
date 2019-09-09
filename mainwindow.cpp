@@ -35,6 +35,7 @@ QString TeacherChangePassword::strUserTeacher;
 QString SendJozveDialog::lessCode;
 QString ShowClassMembers::LessonCode;
 QString ShowClassMembers::LessonName ;
+int teacherRequest::whichpage ;
 
 void MainWindow::on_pushButton_login_clicked()
 {
@@ -70,7 +71,7 @@ void MainWindow::on_pushButton_login_clicked()
         if(qry2.next()){
             if(strPassword == qry2.value(0).toString()){
                 TeacherChangePassword::strUserTeacher = strUsername;
-                teamaindialog = new TeacherMainDialog(this);
+                teamaindialog = new teacherthirdmaindialog(this);
                 teamaindialog->show();
             }else{
                 QMessageBox::warning(this, "خطا", "نام کاربری یا کلمه عبور وارد شده صحیح نمیباشد #2.");

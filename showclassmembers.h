@@ -16,8 +16,10 @@ class ShowClassMembers : public QDialog
 public:
     int NumberOfRow_Student;
     int StuNumber;
+    float score ;
     QString StuCode ;
-    QString FullName;
+    QString firstname;
+    QString lastname;
     static QString LessonCode;
     static QString LessonName;
 
@@ -28,6 +30,8 @@ private slots:
     void on_tableView_Student_clicked(const QModelIndex &index);
 
     void on_pushButton_exit_clicked();
+
+    void on_pushButton_SetScore_clicked();
 
 private:
     Ui::ShowClassMembers *ui;
