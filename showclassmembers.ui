@@ -16,8 +16,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>40</y>
+     <x>450</x>
+     <y>20</y>
      <width>81</width>
      <height>36</height>
     </rect>
@@ -32,56 +32,11 @@
     <string>نام درس :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_fullName">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>150</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>B Koodak</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-
-     <x>240</x>
-
-     <y>150</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>B Koodak</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>نام و نام خانوادگی :</string>
-   </property>
-  </widget>
-
   <widget class="QLabel" name="label_lessonCode">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>50</y>
+     <x>90</x>
+     <y>30</y>
      <width>31</width>
      <height>20</height>
     </rect>
@@ -98,19 +53,17 @@
     <string>-------</string>
    </property>
   </widget>
-
   <widget class="QLabel" name="label_lessonName">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>50</y>
-     <width>141</width>
+     <x>270</x>
+     <y>30</y>
+     <width>181</width>
      <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
-
      <family>B Koodak</family>
      <pointsize>10</pointsize>
      <weight>75</weight>
@@ -124,11 +77,9 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-
-     <x>80</x>
-
-     <y>40</y>
-     <width>81</width>
+     <x>140</x>
+     <y>20</y>
+     <width>101</width>
      <height>36</height>
     </rect>
    </property>
@@ -139,16 +90,15 @@
     </font>
    </property>
    <property name="text">
-    <string>مشخصه :</string>
+    <string>مشخصه درس  :</string>
    </property>
   </widget>
-
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>90</y>
-     <width>361</width>
+     <x>90</x>
+     <y>70</y>
+     <width>451</width>
      <height>20</height>
     </rect>
    </property>
@@ -159,8 +109,8 @@
   <widget class="QPushButton" name="pushButton_exit">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>530</y>
+     <x>180</x>
+     <y>500</y>
      <width>100</width>
      <height>33</height>
     </rect>
@@ -189,8 +139,8 @@
   <widget class="QPushButton" name="pushButton_SetScore">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>530</y>
+     <x>330</x>
+     <y>500</y>
      <width>100</width>
      <height>33</height>
     </rect>
@@ -219,89 +169,205 @@
   <widget class="QTableView" name="tableView_Student">
    <property name="geometry">
     <rect>
-     <x>750</x>
-     <y>40</y>
-     <width>281</width>
-     <height>561</height>
+     <x>600</x>
+     <y>100</y>
+     <width>521</width>
+     <height>491</height>
     </rect>
    </property>
    <property name="layoutDirection">
     <enum>Qt::RightToLeft</enum>
    </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectRows</enum>
+   </property>
   </widget>
-  <widget class="QLabel" name="label_stuCode">
+  <widget class="Line" name="line_2">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>210</y>
-     <width>61</width>
+     <x>610</x>
+     <y>70</y>
+     <width>511</width>
      <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>20</y>
+     <width>231</width>
+     <height>36</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>B Koodak</family>
+     <family>B Titr</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
     </font>
    </property>
    <property name="text">
-
-    <string/>
+    <string>لیست دانشجویان</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>210</y>
-     <width>121</width>
-     <height>20</height>
+     <x>180</x>
+     <y>180</y>
+     <width>261</width>
+     <height>191</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>B Koodak</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>شماره دانشجویی :</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_Score">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>320</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>B Koodak</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>نمره :</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_score">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>320</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_firstName">
+        <property name="font">
+         <font>
+          <family>B Koodak</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>B Koodak</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>نام :</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_lastName">
+        <property name="font">
+         <font>
+          <family>B Koodak</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="font">
+         <font>
+          <family>B Koodak</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>نام خانوادگی :</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_stuCode">
+        <property name="font">
+         <font>
+          <family>B Koodak</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <family>B Koodak</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>شماره دانشجویی :</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLineEdit" name="lineEdit_score"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_Score">
+        <property name="font">
+         <font>
+          <family>B Koodak</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>نمره :</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

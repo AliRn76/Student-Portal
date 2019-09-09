@@ -25,9 +25,9 @@ teacherthirdmaindialog::teacherthirdmaindialog(QWidget *parent) :
         //----------------------------------------------------------------
 
         QSqlQuery qry1;
-        qry1.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
-                      from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
-                      where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by l.Title");
+        qry1.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس' , TimeOfClass as 'رمان کلاس'  \
+                     From tblLesson , tblErae , tblTeacher \
+                   Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblLesson.Title");
                 qry1.bindValue(":teacode" , username);
                 qry1.exec();
         this->model = new QSqlQueryModel();
@@ -37,9 +37,12 @@ teacherthirdmaindialog::teacherthirdmaindialog(QWidget *parent) :
         //-----------------------------------------------------------------
 
         QSqlQuery qry2;
-        qry2.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
-                      from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
-                      where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by e.DaysOfWeek");
+//        qry2.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' \
+//                      from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
+//                      where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by e.DaysOfWeek");
+                qry2.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس',TimeOfClass as 'رمان کلاس' \
+                             From tblLesson , tblErae , tblTeacher \
+                           Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblErae.DaysOfWeek");
                 qry2.bindValue(":teacode" , username);
                 qry2.exec();
         this->model = new QSqlQueryModel();
@@ -49,9 +52,9 @@ teacherthirdmaindialog::teacherthirdmaindialog(QWidget *parent) :
         //------------------------------------------------------------------
 
         QSqlQuery qry3;
-        qry3.prepare("Select tblLesson.Title as 'نام درس' , tblLesson.LessonCode as 'کد درس' , tblErae.ID as 'مشخصه' , tblErae.TimeOfClass as 'زمان کلاس' , tblErae.DaysOfWeek as 'روز کلاس' , tblErae..ClassNum as 'شماره کلاس' , tblErae.jozve as 'جزوه'\
-                      from tblLesson  , tblErae  , tblTeacher  \
-                      where tblTeacher.TeacherCode = :teacode and tblLesson.ID = tblErae.ID_Lesson and tblErae.ID_Teacher = tblTeacher.ID order by tblErae.ID");
+        qry3.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس' , TimeOfClass as 'رمان کلاس' \
+                      From tblLesson , tblErae , tblTeacher \
+                    Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblErae.ID");
                 qry3.bindValue(":teacode" , username);
                 qry3.exec();
         this->model = new QSqlQueryModel();
@@ -81,9 +84,12 @@ void teacherthirdmaindialog::on_tableView_clicked(const QModelIndex &index)
     NumberOfRow_Lesson = index.row();
     QString username = TeacherChangePassword::strUserTeacher;
     QSqlQuery qry1;
-    qry1.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
-                  from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
-                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by e.ID");
+//    qry1.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
+//                  from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
+//                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by e.ID");
+    qry1.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس' , TimeOfClass as 'رمان کلاس' \
+                 From tblLesson , tblErae , tblTeacher \
+               Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblErae.ID");
             qry1.bindValue(":teacode" , username);
             qry1.exec();
     qry1.seek(NumberOfRow_Lesson);
@@ -101,9 +107,9 @@ void teacherthirdmaindialog::on_tableView_2_clicked(const QModelIndex &index)
     NumberOfRow_Lesson = index.row();
     QString username = TeacherChangePassword::strUserTeacher;
     QSqlQuery qry1;
-    qry1.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
-                  from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
-                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by l.Title");
+    qry1.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس' , TimeOfClass as 'رمان کلاس' \
+                 From tblLesson , tblErae , tblTeacher \
+               Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblLesson.Title");
             qry1.bindValue(":teacode" , username);
             qry1.exec();
     qry1.seek(NumberOfRow_Lesson);
@@ -121,9 +127,9 @@ void teacherthirdmaindialog::on_tableView_3_clicked(const QModelIndex &index)
     NumberOfRow_Lesson = index.row();
     QString username = TeacherChangePassword::strUserTeacher;
     QSqlQuery qry1;
-    qry1.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
-                  from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
-                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by e.DaysOfWeek ");
+    qry1.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس' , TimeOfClass as 'رمان کلاس' \
+                 From tblLesson , tblErae , tblTeacher \
+               Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblErae.DaysOfWeek ");
             qry1.bindValue(":teacode" , username);
             qry1.exec();
     qry1.seek(NumberOfRow_Lesson);
@@ -147,9 +153,9 @@ void teacherthirdmaindialog::on_pushButton_refresh_clicked()
     QString username = TeacherChangePassword::strUserTeacher;
 
     QSqlQuery qry1;
-    qry1.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
-                  from Student.dbo.tblLesson l , Student.dbo.tblErae e , Student.dbo.tblTeacher t \
-                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by l.Title");
+    qry1.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس' , TimeOfClass as 'رمان کلاس' \
+                 From tblLesson , tblErae , tblTeacher \
+               Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblLesson.Title");
             qry1.bindValue(":teacode" , username);
             qry1.exec();
     this->model = new QSqlQueryModel();
@@ -159,9 +165,9 @@ void teacherthirdmaindialog::on_pushButton_refresh_clicked()
     //-----------------------------------------------------------------
 
     QSqlQuery qry2;
-    qry2.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
-                  from tblLesson l , tblErae e , tblTeacher t \
-                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by e.DaysOfWeek");
+    qry2.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس',TimeOfClass as 'رمان کلاس' \
+                 From tblLesson , tblErae , tblTeacher \
+               Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblErae.DaysOfWeek");
             qry2.bindValue(":teacode" , username);
             qry2.exec();
     this->model = new QSqlQueryModel();
@@ -171,9 +177,9 @@ void teacherthirdmaindialog::on_pushButton_refresh_clicked()
     //------------------------------------------------------------------
 
     QSqlQuery qry3;
-    qry3.prepare("Select l.Title as 'نام درس' , l.LessonCode as 'کد درس' , e.ID as 'مشخصه' , e.TimeOfClass as 'زمان کلاس' , e.DaysOfWeek as 'روز کلاس' , e.ClassNum as 'شماره کلاس' , e.jozve as 'جزوه'\
-                  from tblLesson l , tblErae e , tblTeacher t \
-                  where t.TeacherCode = :teacode and l.ID = e.ID_Lesson and e.ID_Teacher = t.ID order by e.ID");
+    qry3.prepare("Select Title as 'نام درس', LessonCode as 'کد درس', tblErae.ID as 'مشخصه', DaysOfWeek as 'روز کلاس', ClassNum as 'شماره کلاس' , TimeOfClass as 'رمان کلاس' \
+                 From tblLesson , tblErae , tblTeacher \
+               Where tblTeacher.TeacherCode=:teacode AND tblLesson.ID=tblErae.ID_Lesson AND tblErae.ID_Teacher=tblTeacher.ID order by tblErae.ID");
             qry3.bindValue(":teacode" , username);
             qry3.exec();
     this->model = new QSqlQueryModel();
