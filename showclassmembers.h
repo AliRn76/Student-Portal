@@ -18,7 +18,8 @@ public:
     int StuNumber;
     float score ;
     QString StuCode ;
-    QString FullName;
+    QString firstname;
+    QString lastname;
     static QString LessonCode;
     static QString LessonName;
 
